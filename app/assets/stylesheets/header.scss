@@ -1,5 +1,8 @@
 $orange_main: #ff5722;
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 .home-header {
   .navbar {
     background: url(header_bg.png) $orange_main;
@@ -40,7 +43,7 @@ $orange_main: #ff5722;
           display: inline-block;
           content: "";
           top: -8px;
-          right: 16px;
+          right: 40px;
           left: auto;
           width: 0;
           height: 0;

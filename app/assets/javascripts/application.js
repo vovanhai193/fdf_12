@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap.min
 //= require star-rating.min
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
 
 $(function () {
