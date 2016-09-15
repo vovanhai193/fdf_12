@@ -1,0 +1,4 @@
+common:
+  per_page: 20
+orders:
+  status: {open: "open", deliver: "deliver", close: "close"}

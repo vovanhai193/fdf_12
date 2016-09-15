@@ -12,9 +12,11 @@ gem "jbuilder", "~> 2.5"
 gem "devise"
 gem "cancancan",                 "1.10"
 gem "paranoia", "~> 2.2.0.pre"
-
+gem "kaminari"
+gem "bootstrap-kaminari-views"
+gem "config"
+gem "bootstrap-glyphicons"
 group :development, :test do
-
   gem "byebug", platform: :mri
   gem "factory_girl_rails"
   gem "rspec-rails", "~> 3.5"
