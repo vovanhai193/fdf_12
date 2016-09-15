@@ -64,3 +64,979 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 25ms (Views: 17.5ms | ActiveRecord: 0.0ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (2489.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_development`[0m
+  [1m[35m (754.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_test`[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE DATABASE `fdf_12_development` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE `fdf_12_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (286.3ms)[0m  [1m[35mCREATE TABLE `categories` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_categories_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (371.9ms)[0m  [1m[35mCREATE TABLE `comments` (`id` int AUTO_INCREMENT PRIMARY KEY, `content` text, `user_id` int, `commentable_type` varchar(255), `commentable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_comments_on_commentable_type_and_commentable_id` USING btree (`commentable_type`, `commentable_id`),  INDEX `index_comments_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (501.0ms)[0m  [1m[35mCREATE TABLE `coupons` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `coupon_type` int, `discount_type` int, `value` int, `code` varchar(255), `start_at` datetime, `end_at` datetime, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_coupons_on_name` USING btree (`name`),  INDEX `index_coupons_on_shop_id` USING btree (`shop_id`),  INDEX `index_coupons_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (480.1ms)[0m  [1m[35mCREATE TABLE `oder_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `quantity` int, `price` float(24), `notes` text, `user_id` int, `order_id` int, `product_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_oder_products_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_oder_products_on_order_id` USING btree (`order_id`),  INDEX `index_oder_products_on_product_id` USING btree (`product_id`),  INDEX `index_oder_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (386.3ms)[0m  [1m[35mCREATE TABLE `orders` (`id` int AUTO_INCREMENT PRIMARY KEY, `status` int, `end_at` datetime, `notes` text, `user_id` int, `shop_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_orders_on_shop_id` USING btree (`shop_id`),  INDEX `index_orders_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (370.3ms)[0m  [1m[35mCREATE TABLE `products` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `price` float(24), `image` varchar(255), `status` int, `category_id` int, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_category_id` USING btree (`category_id`),  INDEX `index_products_on_name` USING btree (`name`),  INDEX `index_products_on_shop_id` USING btree (`shop_id`),  INDEX `index_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (427.7ms)[0m  [1m[35mCREATE TABLE `reviews` (`id` int AUTO_INCREMENT PRIMARY KEY, `rating` float(24), `review` varchar(255), `user_id` int, `reviewable_type` varchar(255), `reviewable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_reviews_on_reviewable_type_and_reviewable_id` USING btree (`reviewable_type`, `reviewable_id`),  INDEX `index_reviews_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (601.6ms)[0m  [1m[35mCREATE TABLE `shop_managers` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `shop_id` int, `role` int DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_shop_managers_on_shop_id` USING btree (`shop_id`),  INDEX `index_shop_managers_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (284.6ms)[0m  [1m[35mCREATE TABLE `shops` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `status` int, `cover_image` varchar(255), `avatar` varchar(255), `averate_rating` float(24), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (359.3ms)[0m  [1m[35mCREATE TABLE `tag_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `tag_id` int, `product_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tag_products_on_product_id` USING btree (`product_id`),  INDEX `index_tag_products_on_tag_id` USING btree (`tag_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (305.0ms)[0m  [1m[35mCREATE TABLE `tags` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tags_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (414.0ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `avatar` varchar(255), `chatwork_id` varchar(255), `description` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), UNIQUE INDEX `index_users_on_email` USING btree (`email`), UNIQUE INDEX `index_users_on_reset_password_token` USING btree (`reset_password_token`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (832.3ms)[0m  [1m[35mALTER TABLE `comments` ADD CONSTRAINT `fk_rails_03de2dc08c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (924.1ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_08297f3ae9`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (776.3ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_69b54b3afe`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (798.9ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_cb149b5da1`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (1043.7ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_f713c610d3`
+FOREIGN KEY (`order_id`)
+  REFERENCES `orders` (`id`)
+[0m
+  [1m[35m (909.4ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_d389cf095f`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (787.4ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_2df8e6a289`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (967.1ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_907a5e9f62`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (855.9ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_7e761c2e1b`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (920.1ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_f868b47f6a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (972.1ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_fb915499a4`
+FOREIGN KEY (`category_id`)
+  REFERENCES `categories` (`id`)
+[0m
+  [1m[35m (1151.4ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_b169a26347`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (765.1ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_dee2631783`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (943.8ms)[0m  [1m[35mALTER TABLE `reviews` ADD CONSTRAINT `fk_rails_74a66bd6c5`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (844.1ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_cdb2549c92`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (755.5ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_8ead5dcd3c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (934.2ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_bd844f76c5`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (811.1ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_1d9147ab8d`
+FOREIGN KEY (`tag_id`)
+  REFERENCES `tags` (`id`)
+[0m
+  [1m[35m (299.1ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (40.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES ('20160915025835')[0m
+  [1m[35m (43.2ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160915024943'), ('20160915024411'), ('20160915014932'), ('20160915021432'), ('20160915020836'), ('20160915025230'), ('20160915021141'), ('20160915025804'), ('20160915020743'), ('20160915014526'), ('20160915015059'), ('20160915021732');
+
+[0m
+  [1m[35m (387.6ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2016-09-15 04:42:54', '2016-09-15 04:42:54')[0m
+  [1m[35m (44.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (322.2ms)[0m  [1m[35mCREATE TABLE `categories` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_categories_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (461.3ms)[0m  [1m[35mCREATE TABLE `comments` (`id` int AUTO_INCREMENT PRIMARY KEY, `content` text, `user_id` int, `commentable_type` varchar(255), `commentable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_comments_on_commentable_type_and_commentable_id` USING btree (`commentable_type`, `commentable_id`),  INDEX `index_comments_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (446.5ms)[0m  [1m[35mCREATE TABLE `coupons` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `coupon_type` int, `discount_type` int, `value` int, `code` varchar(255), `start_at` datetime, `end_at` datetime, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_coupons_on_name` USING btree (`name`),  INDEX `index_coupons_on_shop_id` USING btree (`shop_id`),  INDEX `index_coupons_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (522.0ms)[0m  [1m[35mCREATE TABLE `oder_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `quantity` int, `price` float(24), `notes` text, `user_id` int, `order_id` int, `product_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_oder_products_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_oder_products_on_order_id` USING btree (`order_id`),  INDEX `index_oder_products_on_product_id` USING btree (`product_id`),  INDEX `index_oder_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (472.8ms)[0m  [1m[35mCREATE TABLE `orders` (`id` int AUTO_INCREMENT PRIMARY KEY, `status` int, `end_at` datetime, `notes` text, `user_id` int, `shop_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_orders_on_shop_id` USING btree (`shop_id`),  INDEX `index_orders_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (665.2ms)[0m  [1m[35mCREATE TABLE `products` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `price` float(24), `image` varchar(255), `status` int, `category_id` int, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_category_id` USING btree (`category_id`),  INDEX `index_products_on_name` USING btree (`name`),  INDEX `index_products_on_shop_id` USING btree (`shop_id`),  INDEX `index_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (305.1ms)[0m  [1m[35mCREATE TABLE `reviews` (`id` int AUTO_INCREMENT PRIMARY KEY, `rating` float(24), `review` varchar(255), `user_id` int, `reviewable_type` varchar(255), `reviewable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_reviews_on_reviewable_type_and_reviewable_id` USING btree (`reviewable_type`, `reviewable_id`),  INDEX `index_reviews_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (415.2ms)[0m  [1m[35mCREATE TABLE `shop_managers` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `shop_id` int, `role` int DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_shop_managers_on_shop_id` USING btree (`shop_id`),  INDEX `index_shop_managers_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (404.0ms)[0m  [1m[35mCREATE TABLE `shops` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `status` int, `cover_image` varchar(255), `avatar` varchar(255), `averate_rating` float(24), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (398.9ms)[0m  [1m[35mCREATE TABLE `tag_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `tag_id` int, `product_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tag_products_on_product_id` USING btree (`product_id`),  INDEX `index_tag_products_on_tag_id` USING btree (`tag_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (387.4ms)[0m  [1m[35mCREATE TABLE `tags` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tags_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (340.8ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `avatar` varchar(255), `chatwork_id` varchar(255), `description` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), UNIQUE INDEX `index_users_on_email` USING btree (`email`), UNIQUE INDEX `index_users_on_reset_password_token` USING btree (`reset_password_token`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (911.7ms)[0m  [1m[35mALTER TABLE `comments` ADD CONSTRAINT `fk_rails_03de2dc08c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1032.1ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_08297f3ae9`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (900.2ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_69b54b3afe`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1023.3ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_cb149b5da1`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (1022.1ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_f713c610d3`
+FOREIGN KEY (`order_id`)
+  REFERENCES `orders` (`id`)
+[0m
+  [1m[35m (878.1ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_d389cf095f`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (1001.6ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_2df8e6a289`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1120.8ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_907a5e9f62`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (810.3ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_7e761c2e1b`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (999.3ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_f868b47f6a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1044.1ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_fb915499a4`
+FOREIGN KEY (`category_id`)
+  REFERENCES `categories` (`id`)
+[0m
+  [1m[35m (945.8ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_b169a26347`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (1066.7ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_dee2631783`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (833.1ms)[0m  [1m[35mALTER TABLE `reviews` ADD CONSTRAINT `fk_rails_74a66bd6c5`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (769.2ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_cdb2549c92`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (940.6ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_8ead5dcd3c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (844.6ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_bd844f76c5`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (856.3ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_1d9147ab8d`
+FOREIGN KEY (`tag_id`)
+  REFERENCES `tags` (`id`)
+[0m
+  [1m[35m (354.7ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (83.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES ('20160915025835')[0m
+  [1m[35m (109.8ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160915024943'), ('20160915024411'), ('20160915014932'), ('20160915021432'), ('20160915020836'), ('20160915025230'), ('20160915021141'), ('20160915025804'), ('20160915020743'), ('20160915014526'), ('20160915015059'), ('20160915021732');
+
+[0m
+  [1m[35m (354.7ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2016-09-15 04:43:17', '2016-09-15 04:43:17')[0m
+  [1m[35m (44.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (2581.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_development`[0m
+  [1m[35m (2804.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_test`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE DATABASE `fdf_12_development` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE `fdf_12_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (467.4ms)[0m  [1m[35mCREATE TABLE `categories` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_categories_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (505.4ms)[0m  [1m[35mCREATE TABLE `comments` (`id` int AUTO_INCREMENT PRIMARY KEY, `content` text, `user_id` int, `commentable_type` varchar(255), `commentable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_comments_on_commentable_type_and_commentable_id` USING btree (`commentable_type`, `commentable_id`),  INDEX `index_comments_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (432.0ms)[0m  [1m[35mCREATE TABLE `coupons` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `coupon_type` int, `discount_type` int, `value` int, `code` varchar(255), `start_at` datetime, `end_at` datetime, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_coupons_on_name` USING btree (`name`),  INDEX `index_coupons_on_shop_id` USING btree (`shop_id`),  INDEX `index_coupons_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (584.5ms)[0m  [1m[35mCREATE TABLE `oder_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `quantity` int, `price` float(24), `notes` text, `user_id` int, `order_id` int, `product_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_oder_products_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_oder_products_on_order_id` USING btree (`order_id`),  INDEX `index_oder_products_on_product_id` USING btree (`product_id`),  INDEX `index_oder_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (445.1ms)[0m  [1m[35mCREATE TABLE `orders` (`id` int AUTO_INCREMENT PRIMARY KEY, `status` int, `end_at` datetime, `notes` text, `user_id` int, `shop_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_orders_on_shop_id` USING btree (`shop_id`),  INDEX `index_orders_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (580.6ms)[0m  [1m[35mCREATE TABLE `products` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `price` float(24), `image` varchar(255), `status` int, `category_id` int, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_category_id` USING btree (`category_id`),  INDEX `index_products_on_name` USING btree (`name`),  INDEX `index_products_on_shop_id` USING btree (`shop_id`),  INDEX `index_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (347.9ms)[0m  [1m[35mCREATE TABLE `reviews` (`id` int AUTO_INCREMENT PRIMARY KEY, `rating` float(24), `review` varchar(255), `user_id` int, `reviewable_type` varchar(255), `reviewable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_reviews_on_reviewable_type_and_reviewable_id` USING btree (`reviewable_type`, `reviewable_id`),  INDEX `index_reviews_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (466.7ms)[0m  [1m[35mCREATE TABLE `shop_managers` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `shop_id` int, `role` int DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_shop_managers_on_shop_id` USING btree (`shop_id`),  INDEX `index_shop_managers_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (362.1ms)[0m  [1m[35mCREATE TABLE `shops` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `status` int, `cover_image` varchar(255), `avatar` varchar(255), `averate_rating` float(24), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (435.9ms)[0m  [1m[35mCREATE TABLE `tag_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `tag_id` int, `product_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tag_products_on_product_id` USING btree (`product_id`),  INDEX `index_tag_products_on_tag_id` USING btree (`tag_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (405.3ms)[0m  [1m[35mCREATE TABLE `tags` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tags_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (370.7ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `avatar` varchar(255), `chatwork_id` varchar(255), `description` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), UNIQUE INDEX `index_users_on_email` USING btree (`email`), UNIQUE INDEX `index_users_on_reset_password_token` USING btree (`reset_password_token`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (733.2ms)[0m  [1m[35mALTER TABLE `comments` ADD CONSTRAINT `fk_rails_03de2dc08c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1267.7ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_08297f3ae9`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (942.0ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_69b54b3afe`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1045.5ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_cb149b5da1`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (1010.9ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_f713c610d3`
+FOREIGN KEY (`order_id`)
+  REFERENCES `orders` (`id`)
+[0m
+  [1m[35m (966.0ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_d389cf095f`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (989.9ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_2df8e6a289`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1010.8ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_907a5e9f62`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (1054.7ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_7e761c2e1b`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (989.9ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_f868b47f6a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1055.1ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_fb915499a4`
+FOREIGN KEY (`category_id`)
+  REFERENCES `categories` (`id`)
+[0m
+  [1m[35m (1088.6ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_b169a26347`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (1052.5ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_dee2631783`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1069.1ms)[0m  [1m[35mALTER TABLE `reviews` ADD CONSTRAINT `fk_rails_74a66bd6c5`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1277.1ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_cdb2549c92`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (1066.1ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_8ead5dcd3c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1141.9ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_bd844f76c5`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (1464.5ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_1d9147ab8d`
+FOREIGN KEY (`tag_id`)
+  REFERENCES `tags` (`id`)
+[0m
+  [1m[35m (504.2ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (43.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES ('20160915025835')[0m
+  [1m[35m (88.7ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160915024943'), ('20160915024411'), ('20160915014932'), ('20160915021432'), ('20160915020836'), ('20160915025230'), ('20160915021141'), ('20160915025804'), ('20160915020743'), ('20160915014526'), ('20160915015059'), ('20160915021732');
+
+[0m
+  [1m[35m (576.6ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2016-09-15 04:48:20', '2016-09-15 04:48:20')[0m
+  [1m[35m (79.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (430.7ms)[0m  [1m[35mCREATE TABLE `categories` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_categories_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (725.5ms)[0m  [1m[35mCREATE TABLE `comments` (`id` int AUTO_INCREMENT PRIMARY KEY, `content` text, `user_id` int, `commentable_type` varchar(255), `commentable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_comments_on_commentable_type_and_commentable_id` USING btree (`commentable_type`, `commentable_id`),  INDEX `index_comments_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (584.5ms)[0m  [1m[35mCREATE TABLE `coupons` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `coupon_type` int, `discount_type` int, `value` int, `code` varchar(255), `start_at` datetime, `end_at` datetime, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_coupons_on_name` USING btree (`name`),  INDEX `index_coupons_on_shop_id` USING btree (`shop_id`),  INDEX `index_coupons_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (807.0ms)[0m  [1m[35mCREATE TABLE `oder_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `quantity` int, `price` float(24), `notes` text, `user_id` int, `order_id` int, `product_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_oder_products_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_oder_products_on_order_id` USING btree (`order_id`),  INDEX `index_oder_products_on_product_id` USING btree (`product_id`),  INDEX `index_oder_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (542.5ms)[0m  [1m[35mCREATE TABLE `orders` (`id` int AUTO_INCREMENT PRIMARY KEY, `status` int, `end_at` datetime, `notes` text, `user_id` int, `shop_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_orders_on_shop_id` USING btree (`shop_id`),  INDEX `index_orders_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (640.7ms)[0m  [1m[35mCREATE TABLE `products` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `price` float(24), `image` varchar(255), `status` int, `category_id` int, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_category_id` USING btree (`category_id`),  INDEX `index_products_on_name` USING btree (`name`),  INDEX `index_products_on_shop_id` USING btree (`shop_id`),  INDEX `index_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (549.4ms)[0m  [1m[35mCREATE TABLE `reviews` (`id` int AUTO_INCREMENT PRIMARY KEY, `rating` float(24), `review` varchar(255), `user_id` int, `reviewable_type` varchar(255), `reviewable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_reviews_on_reviewable_type_and_reviewable_id` USING btree (`reviewable_type`, `reviewable_id`),  INDEX `index_reviews_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (896.8ms)[0m  [1m[35mCREATE TABLE `shop_managers` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `shop_id` int, `role` int DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_shop_managers_on_shop_id` USING btree (`shop_id`),  INDEX `index_shop_managers_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (650.7ms)[0m  [1m[35mCREATE TABLE `shops` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `status` int, `cover_image` varchar(255), `avatar` varchar(255), `averate_rating` float(24), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (600.3ms)[0m  [1m[35mCREATE TABLE `tag_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `tag_id` int, `product_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tag_products_on_product_id` USING btree (`product_id`),  INDEX `index_tag_products_on_tag_id` USING btree (`tag_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (504.5ms)[0m  [1m[35mCREATE TABLE `tags` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tags_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (573.1ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `avatar` varchar(255), `chatwork_id` varchar(255), `description` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), UNIQUE INDEX `index_users_on_email` USING btree (`email`), UNIQUE INDEX `index_users_on_reset_password_token` USING btree (`reset_password_token`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (1096.3ms)[0m  [1m[35mALTER TABLE `comments` ADD CONSTRAINT `fk_rails_03de2dc08c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1237.9ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_08297f3ae9`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (1543.6ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_69b54b3afe`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1630.6ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_cb149b5da1`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (1066.6ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_f713c610d3`
+FOREIGN KEY (`order_id`)
+  REFERENCES `orders` (`id`)
+[0m
+  [1m[35m (1300.9ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_d389cf095f`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (1318.3ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_2df8e6a289`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1267.3ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_907a5e9f62`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (1143.9ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_7e761c2e1b`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (1133.8ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_f868b47f6a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1311.0ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_fb915499a4`
+FOREIGN KEY (`category_id`)
+  REFERENCES `categories` (`id`)
+[0m
+  [1m[35m (1154.7ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_b169a26347`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (1345.0ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_dee2631783`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1154.8ms)[0m  [1m[35mALTER TABLE `reviews` ADD CONSTRAINT `fk_rails_74a66bd6c5`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1328.7ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_cdb2549c92`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (1468.0ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_8ead5dcd3c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (943.6ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_bd844f76c5`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (1021.9ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_1d9147ab8d`
+FOREIGN KEY (`tag_id`)
+  REFERENCES `tags` (`id`)
+[0m
+  [1m[35m (406.1ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (51.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES ('20160915025835')[0m
+  [1m[35m (66.4ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160915024943'), ('20160915024411'), ('20160915014932'), ('20160915021432'), ('20160915020836'), ('20160915025230'), ('20160915021141'), ('20160915025804'), ('20160915020743'), ('20160915014526'), ('20160915015059'), ('20160915021732');
+
+[0m
+  [1m[35m (420.1ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2016-09-15 04:48:51', '2016-09-15 04:48:51')[0m
+  [1m[35m (41.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (2684.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_development`[0m
+  [1m[35m (2651.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_test`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE `fdf_12_development` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE `fdf_12_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (419.4ms)[0m  [1m[35mCREATE TABLE `categories` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_categories_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (339.2ms)[0m  [1m[35mCREATE TABLE `comments` (`id` int AUTO_INCREMENT PRIMARY KEY, `content` text, `user_id` int, `commentable_type` varchar(255), `commentable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_comments_on_commentable_type_and_commentable_id` USING btree (`commentable_type`, `commentable_id`),  INDEX `index_comments_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (474.0ms)[0m  [1m[35mCREATE TABLE `coupons` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `coupon_type` int, `discount_type` int, `value` int, `code` varchar(255), `start_at` datetime, `end_at` datetime, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_coupons_on_name` USING btree (`name`),  INDEX `index_coupons_on_shop_id` USING btree (`shop_id`),  INDEX `index_coupons_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (469.1ms)[0m  [1m[35mCREATE TABLE `oder_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `quantity` int, `price` float(24), `notes` text, `user_id` int, `order_id` int, `product_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_oder_products_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_oder_products_on_order_id` USING btree (`order_id`),  INDEX `index_oder_products_on_product_id` USING btree (`product_id`),  INDEX `index_oder_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (471.6ms)[0m  [1m[35mCREATE TABLE `orders` (`id` int AUTO_INCREMENT PRIMARY KEY, `status` int, `end_at` datetime, `notes` text, `user_id` int, `shop_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_orders_on_shop_id` USING btree (`shop_id`),  INDEX `index_orders_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (502.3ms)[0m  [1m[35mCREATE TABLE `products` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `price` float(24), `image` varchar(255), `status` int, `category_id` int, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_category_id` USING btree (`category_id`),  INDEX `index_products_on_name` USING btree (`name`),  INDEX `index_products_on_shop_id` USING btree (`shop_id`),  INDEX `index_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (382.5ms)[0m  [1m[35mCREATE TABLE `reviews` (`id` int AUTO_INCREMENT PRIMARY KEY, `rating` float(24), `review` varchar(255), `user_id` int, `reviewable_type` varchar(255), `reviewable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_reviews_on_reviewable_type_and_reviewable_id` USING btree (`reviewable_type`, `reviewable_id`),  INDEX `index_reviews_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (450.0ms)[0m  [1m[35mCREATE TABLE `shop_managers` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `shop_id` int, `role` int DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_shop_managers_on_shop_id` USING btree (`shop_id`),  INDEX `index_shop_managers_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (273.9ms)[0m  [1m[35mCREATE TABLE `shops` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `status` int, `cover_image` varchar(255), `avatar` varchar(255), `averate_rating` float(24), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (480.2ms)[0m  [1m[35mCREATE TABLE `tag_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `tag_id` int, `product_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tag_products_on_product_id` USING btree (`product_id`),  INDEX `index_tag_products_on_tag_id` USING btree (`tag_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (350.3ms)[0m  [1m[35mCREATE TABLE `tags` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tags_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (411.9ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `avatar` varchar(255), `chatwork_id` varchar(255), `description` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), UNIQUE INDEX `index_users_on_email` USING btree (`email`), UNIQUE INDEX `index_users_on_reset_password_token` USING btree (`reset_password_token`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (987.7ms)[0m  [1m[35mALTER TABLE `comments` ADD CONSTRAINT `fk_rails_03de2dc08c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (944.7ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_08297f3ae9`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (944.4ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_69b54b3afe`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (912.2ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_cb149b5da1`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (944.9ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_f713c610d3`
+FOREIGN KEY (`order_id`)
+  REFERENCES `orders` (`id`)
+[0m
+  [1m[35m (1086.1ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_d389cf095f`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (890.4ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_2df8e6a289`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (922.0ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_907a5e9f62`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (1189.0ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_7e761c2e1b`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (910.7ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_f868b47f6a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (876.0ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_fb915499a4`
+FOREIGN KEY (`category_id`)
+  REFERENCES `categories` (`id`)
+[0m
+  [1m[35m (1045.5ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_b169a26347`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (1010.7ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_dee2631783`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (778.0ms)[0m  [1m[35mALTER TABLE `reviews` ADD CONSTRAINT `fk_rails_74a66bd6c5`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (934.9ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_cdb2549c92`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (1152.2ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_8ead5dcd3c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (944.7ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_bd844f76c5`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (889.8ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_1d9147ab8d`
+FOREIGN KEY (`tag_id`)
+  REFERENCES `tags` (`id`)
+[0m
+  [1m[35m (305.2ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (68.1ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES ('20160915025835')[0m
+  [1m[35m (43.6ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160915024943'), ('20160915024411'), ('20160915014932'), ('20160915021432'), ('20160915020836'), ('20160915025230'), ('20160915021141'), ('20160915025804'), ('20160915020743'), ('20160915014526'), ('20160915015059'), ('20160915021732');
+
+[0m
+  [1m[35m (415.6ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.8ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2016-09-15 05:27:46', '2016-09-15 05:27:46')[0m
+  [1m[35m (44.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (304.9ms)[0m  [1m[35mCREATE TABLE `categories` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_categories_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (397.7ms)[0m  [1m[35mCREATE TABLE `comments` (`id` int AUTO_INCREMENT PRIMARY KEY, `content` text, `user_id` int, `commentable_type` varchar(255), `commentable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_comments_on_commentable_type_and_commentable_id` USING btree (`commentable_type`, `commentable_id`),  INDEX `index_comments_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (501.1ms)[0m  [1m[35mCREATE TABLE `coupons` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `coupon_type` int, `discount_type` int, `value` int, `code` varchar(255), `start_at` datetime, `end_at` datetime, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_coupons_on_name` USING btree (`name`),  INDEX `index_coupons_on_shop_id` USING btree (`shop_id`),  INDEX `index_coupons_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (706.7ms)[0m  [1m[35mCREATE TABLE `oder_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `quantity` int, `price` float(24), `notes` text, `user_id` int, `order_id` int, `product_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_oder_products_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_oder_products_on_order_id` USING btree (`order_id`),  INDEX `index_oder_products_on_product_id` USING btree (`product_id`),  INDEX `index_oder_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (395.8ms)[0m  [1m[35mCREATE TABLE `orders` (`id` int AUTO_INCREMENT PRIMARY KEY, `status` int, `end_at` datetime, `notes` text, `user_id` int, `shop_id` int, `coupon_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_coupon_id` USING btree (`coupon_id`),  INDEX `index_orders_on_shop_id` USING btree (`shop_id`),  INDEX `index_orders_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (694.1ms)[0m  [1m[35mCREATE TABLE `products` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `price` float(24), `image` varchar(255), `status` int, `category_id` int, `shop_id` int, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_category_id` USING btree (`category_id`),  INDEX `index_products_on_name` USING btree (`name`),  INDEX `index_products_on_shop_id` USING btree (`shop_id`),  INDEX `index_products_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (398.3ms)[0m  [1m[35mCREATE TABLE `reviews` (`id` int AUTO_INCREMENT PRIMARY KEY, `rating` float(24), `review` varchar(255), `user_id` int, `reviewable_type` varchar(255), `reviewable_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_reviews_on_reviewable_type_and_reviewable_id` USING btree (`reviewable_type`, `reviewable_id`),  INDEX `index_reviews_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (584.4ms)[0m  [1m[35mCREATE TABLE `shop_managers` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `shop_id` int, `role` int DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_shop_managers_on_shop_id` USING btree (`shop_id`),  INDEX `index_shop_managers_on_user_id` USING btree (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (305.3ms)[0m  [1m[35mCREATE TABLE `shops` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `status` int, `cover_image` varchar(255), `avatar` varchar(255), `averate_rating` float(24), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (382.1ms)[0m  [1m[35mCREATE TABLE `tag_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `tag_id` int, `product_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tag_products_on_product_id` USING btree (`product_id`),  INDEX `index_tag_products_on_tag_id` USING btree (`tag_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (482.0ms)[0m  [1m[35mCREATE TABLE `tags` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tags_on_name` USING btree (`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (401.3ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `avatar` varchar(255), `chatwork_id` varchar(255), `description` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), UNIQUE INDEX `index_users_on_email` USING btree (`email`), UNIQUE INDEX `index_users_on_reset_password_token` USING btree (`reset_password_token`)) ENGINE=InnoDB DEFAULT CHARSET=utf8[0m
+  [1m[35m (1540.7ms)[0m  [1m[35mALTER TABLE `comments` ADD CONSTRAINT `fk_rails_03de2dc08c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (834.5ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_08297f3ae9`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (988.8ms)[0m  [1m[35mALTER TABLE `coupons` ADD CONSTRAINT `fk_rails_69b54b3afe`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1120.7ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_cb149b5da1`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (1387.4ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_f713c610d3`
+FOREIGN KEY (`order_id`)
+  REFERENCES `orders` (`id`)
+[0m
+  [1m[35m (1054.7ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_d389cf095f`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (988.9ms)[0m  [1m[35mALTER TABLE `oder_products` ADD CONSTRAINT `fk_rails_2df8e6a289`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (978.8ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_907a5e9f62`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+[0m
+  [1m[35m (1089.2ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_7e761c2e1b`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (1198.0ms)[0m  [1m[35mALTER TABLE `orders` ADD CONSTRAINT `fk_rails_f868b47f6a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (1036.3ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_fb915499a4`
+FOREIGN KEY (`category_id`)
+  REFERENCES `categories` (`id`)
+[0m
+  [1m[35m (1056.7ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_b169a26347`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (1088.5ms)[0m  [1m[35mALTER TABLE `products` ADD CONSTRAINT `fk_rails_dee2631783`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (943.8ms)[0m  [1m[35mALTER TABLE `reviews` ADD CONSTRAINT `fk_rails_74a66bd6c5`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (876.8ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_cdb2549c92`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+[0m
+  [1m[35m (951.4ms)[0m  [1m[35mALTER TABLE `shop_managers` ADD CONSTRAINT `fk_rails_8ead5dcd3c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (837.6ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_bd844f76c5`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+[0m
+  [1m[35m (779.0ms)[0m  [1m[35mALTER TABLE `tag_products` ADD CONSTRAINT `fk_rails_1d9147ab8d`
+FOREIGN KEY (`tag_id`)
+  REFERENCES `tags` (`id`)
+[0m
+  [1m[35m (654.4ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (42.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES ('20160915025835')[0m
+  [1m[35m (43.4ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160915024943'), ('20160915024411'), ('20160915014932'), ('20160915021432'), ('20160915020836'), ('20160915025230'), ('20160915021141'), ('20160915025804'), ('20160915020743'), ('20160915014526'), ('20160915015059'), ('20160915021732');
+
+[0m
+  [1m[35m (442.8ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2016-09-15 05:28:11', '2016-09-15 05:28:11')[0m
+  [1m[35m (40.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (2571.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_development`[0m
+  [1m[35m (2522.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_test`[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE DATABASE `fdf_12_development` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE DATABASE `fdf_12_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_development`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_test`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE `fdf_12_development` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE DATABASE `fdf_12_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (414.4ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (366.2ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('4780483861263456360', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateUsers (20160915014526)
+  [1m[35m (391.5ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `avatar` varchar(255), `chatwork_id` varchar(255), `description` varchar(255), `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_users_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (20.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915014526')[0m
+  [1m[35m (43.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeviseToUsers (20160915014932)
+  [1m[35m (598.2ms)[0m  [1m[35mALTER TABLE `users` ADD `email` varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (633.1ms)[0m  [1m[35mALTER TABLE `users` ADD `encrypted_password` varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (588.7ms)[0m  [1m[35mALTER TABLE `users` ADD `reset_password_token` varchar(255)[0m
+  [1m[35m (635.0ms)[0m  [1m[35mALTER TABLE `users` ADD `reset_password_sent_at` datetime[0m
+  [1m[35m (688.1ms)[0m  [1m[35mALTER TABLE `users` ADD `remember_created_at` datetime[0m
+  [1m[35m (688.4ms)[0m  [1m[35mALTER TABLE `users` ADD `sign_in_count` int DEFAULT 0 NOT NULL[0m
+  [1m[35m (633.2ms)[0m  [1m[35mALTER TABLE `users` ADD `current_sign_in_at` datetime[0m
+  [1m[35m (767.9ms)[0m  [1m[35mALTER TABLE `users` ADD `last_sign_in_at` datetime[0m
+  [1m[35m (622.1ms)[0m  [1m[35mALTER TABLE `users` ADD `current_sign_in_ip` varchar(255)[0m
+  [1m[35m (666.5ms)[0m  [1m[35mALTER TABLE `users` ADD `last_sign_in_ip` varchar(255)[0m
+  [1m[35m (299.0ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  [1m[35m (298.9ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_reset_password_token`  ON `users` (`reset_password_token`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915014932')[0m
+  [1m[35m (64.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20160915015059)
+  [1m[35m (433.3ms)[0m  [1m[35mCREATE TABLE `categories` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_categories_on_name`  (`name`),  INDEX `index_categories_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915015059')[0m
+  [1m[35m (61.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateShops (20160915020743)
+  [1m[35m (405.2ms)[0m  [1m[35mCREATE TABLE `shops` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `status` int, `cover_image` varchar(255), `avatar` varchar(255), `averate_rating` float, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_shops_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915020743')[0m
+  [1m[35m (38.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateShopManagers (20160915020836)
+  [1m[35m (402.0ms)[0m  [1m[35mCREATE TABLE `shop_managers` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `shop_id` int, `role` int DEFAULT 0, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_shop_managers_on_user_id`  (`user_id`),  INDEX `index_shop_managers_on_shop_id`  (`shop_id`),  INDEX `index_shop_managers_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_8ead5dcd3c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_cdb2549c92`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX `index_shop_managers_on_shop_and_user`  ON `shop_managers` (`shop`, `user`) [0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT RELEASE_LOCK('4780483861263456360')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2016-09-15 05:33:54', '2016-09-15 05:33:54')[0m
+  [1m[35m (38.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (1145.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_development`[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS `fdf_12_test`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE `fdf_12_development` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE DATABASE `fdf_12_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35m (393.1ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (320.5ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('4780483861263456360', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateUsers (20160915014526)
+  [1m[35m (273.0ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `avatar` varchar(255), `chatwork_id` varchar(255), `description` varchar(255), `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_users_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915014526')[0m
+  [1m[35m (27.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeviseToUsers (20160915014932)
+  [1m[35m (621.2ms)[0m  [1m[35mALTER TABLE `users` ADD `email` varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (536.2ms)[0m  [1m[35mALTER TABLE `users` ADD `encrypted_password` varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (575.6ms)[0m  [1m[35mALTER TABLE `users` ADD `reset_password_token` varchar(255)[0m
+  [1m[35m (667.6ms)[0m  [1m[35mALTER TABLE `users` ADD `reset_password_sent_at` datetime[0m
+  [1m[35m (655.5ms)[0m  [1m[35mALTER TABLE `users` ADD `remember_created_at` datetime[0m
+  [1m[35m (690.2ms)[0m  [1m[35mALTER TABLE `users` ADD `sign_in_count` int DEFAULT 0 NOT NULL[0m
+  [1m[35m (510.9ms)[0m  [1m[35mALTER TABLE `users` ADD `current_sign_in_at` datetime[0m
+  [1m[35m (522.6ms)[0m  [1m[35mALTER TABLE `users` ADD `last_sign_in_at` datetime[0m
+  [1m[35m (578.5ms)[0m  [1m[35mALTER TABLE `users` ADD `current_sign_in_ip` varchar(255)[0m
+  [1m[35m (622.7ms)[0m  [1m[35mALTER TABLE `users` ADD `last_sign_in_ip` varchar(255)[0m
+  [1m[35m (276.5ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  [1m[35m (291.9ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_reset_password_token`  ON `users` (`reset_password_token`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915014932')[0m
+  [1m[35m (94.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20160915015059)
+  [1m[35m (387.8ms)[0m  [1m[35mCREATE TABLE `categories` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_categories_on_name`  (`name`),  INDEX `index_categories_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915015059')[0m
+  [1m[35m (28.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateShops (20160915020743)
+  [1m[35m (396.1ms)[0m  [1m[35mCREATE TABLE `shops` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `status` int, `cover_image` varchar(255), `avatar` varchar(255), `averate_rating` float, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_shops_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915020743')[0m
+  [1m[35m (81.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateShopManagers (20160915020836)
+  [1m[35m (449.6ms)[0m  [1m[35mCREATE TABLE `shop_managers` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `shop_id` int, `role` int DEFAULT 0, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_shop_managers_on_user_id`  (`user_id`),  INDEX `index_shop_managers_on_shop_id`  (`shop_id`),  INDEX `index_shop_managers_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_8ead5dcd3c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_cdb2549c92`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (261.7ms)[0m  [1m[35mCREATE  INDEX `index_shop_managers_on_shop_id_and_user_id`  ON `shop_managers` (`shop_id`, `user_id`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915020836')[0m
+  [1m[35m (42.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCoupons (20160915021141)
+  [1m[35m (505.3ms)[0m  [1m[35mCREATE TABLE `coupons` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `coupon_type` int, `discount_type` int, `value` int, `code` varchar(255), `start_at` datetime, `end_at` datetime, `shop_id` int, `user_id` int, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_coupons_on_shop_id`  (`shop_id`),  INDEX `index_coupons_on_user_id`  (`user_id`),  INDEX `index_coupons_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_08297f3ae9`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+, CONSTRAINT `fk_rails_69b54b3afe`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (239.4ms)[0m  [1m[35mCREATE  INDEX `index_coupons_on_name`  ON `coupons` (`name`) [0m
+  [1m[35m (210.1ms)[0m  [1m[35mCREATE  INDEX `index_coupons_on_shop_id_and_user_id`  ON `coupons` (`shop_id`, `user_id`) [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915021141')[0m
+  [1m[35m (65.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20160915021432)
+  [1m[35m (826.0ms)[0m  [1m[35mCREATE TABLE `products` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `description` text, `price` float, `image` varchar(255), `status` int, `category_id` int, `shop_id` int, `user_id` int, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_products_on_category_id`  (`category_id`),  INDEX `index_products_on_shop_id`  (`shop_id`),  INDEX `index_products_on_user_id`  (`user_id`),  INDEX `index_products_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_fb915499a4`
+FOREIGN KEY (`category_id`)
+  REFERENCES `categories` (`id`)
+, CONSTRAINT `fk_rails_b169a26347`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+, CONSTRAINT `fk_rails_dee2631783`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (261.5ms)[0m  [1m[35mCREATE  INDEX `index_products_on_name`  ON `products` (`name`) [0m
+  [1m[35m (310.3ms)[0m  [1m[35mCREATE  INDEX `index_products_on_shop_id_and_user_id`  ON `products` (`shop_id`, `user_id`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915021432')[0m
+  [1m[35m (42.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrders (20160915021732)
+  [1m[35m (437.8ms)[0m  [1m[35mCREATE TABLE `orders` (`id` int AUTO_INCREMENT PRIMARY KEY, `status` int, `end_at` datetime, `notes` text, `user_id` int, `shop_id` int, `coupon_id` int, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_orders_on_user_id`  (`user_id`),  INDEX `index_orders_on_shop_id`  (`shop_id`),  INDEX `index_orders_on_coupon_id`  (`coupon_id`),  INDEX `index_orders_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_f868b47f6a`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_7e761c2e1b`
+FOREIGN KEY (`shop_id`)
+  REFERENCES `shops` (`id`)
+, CONSTRAINT `fk_rails_907a5e9f62`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (496.8ms)[0m  [1m[35mCREATE  INDEX `index_orders_on_shop_id_and_user_id`  ON `orders` (`shop_id`, `user_id`) [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915021732')[0m
+  [1m[35m (32.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOderProducts (20160915024411)
+  [1m[35m (487.7ms)[0m  [1m[35mCREATE TABLE `oder_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `quantity` int, `price` float, `notes` text, `user_id` int, `order_id` int, `product_id` int, `coupon_id` int, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_oder_products_on_user_id`  (`user_id`),  INDEX `index_oder_products_on_order_id`  (`order_id`),  INDEX `index_oder_products_on_product_id`  (`product_id`),  INDEX `index_oder_products_on_coupon_id`  (`coupon_id`),  INDEX `index_oder_products_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_2df8e6a289`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_f713c610d3`
+FOREIGN KEY (`order_id`)
+  REFERENCES `orders` (`id`)
+, CONSTRAINT `fk_rails_d389cf095f`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+, CONSTRAINT `fk_rails_cb149b5da1`
+FOREIGN KEY (`coupon_id`)
+  REFERENCES `coupons` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (294.4ms)[0m  [1m[35mCREATE  INDEX `index_oder_products_on_order_id_and_product_id`  ON `oder_products` (`order_id`, `product_id`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915024411')[0m
+  [1m[35m (42.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20160915024943)
+  [1m[35m (431.6ms)[0m  [1m[35mCREATE TABLE `comments` (`id` int AUTO_INCREMENT PRIMARY KEY, `content` text, `user_id` int, `commentable_type` varchar(255), `commentable_id` int, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_comments_on_user_id`  (`user_id`),  INDEX `index_comments_on_commentable_type_and_commentable_id`  (`commentable_type`, `commentable_id`),  INDEX `index_comments_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_03de2dc08c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915024943')[0m
+  [1m[35m (38.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviews (20160915025230)
+  [1m[35m (434.9ms)[0m  [1m[35mCREATE TABLE `reviews` (`id` int AUTO_INCREMENT PRIMARY KEY, `rating` float, `review` varchar(255), `user_id` int, `reviewable_type` varchar(255), `reviewable_id` int, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_reviews_on_user_id`  (`user_id`),  INDEX `index_reviews_on_reviewable_type_and_reviewable_id`  (`reviewable_type`, `reviewable_id`),  INDEX `index_reviews_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_74a66bd6c5`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915025230')[0m
+  [1m[35m (63.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTags (20160915025804)
+  [1m[35m (382.5ms)[0m  [1m[35mCREATE TABLE `tags` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tags_on_name`  (`name`),  INDEX `index_tags_on_deleted_at`  (`deleted_at`)) ENGINE=InnoDB[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915025804')[0m
+  [1m[35m (39.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTagProducts (20160915025835)
+  [1m[35m (614.6ms)[0m  [1m[35mCREATE TABLE `tag_products` (`id` int AUTO_INCREMENT PRIMARY KEY, `tag_id` int, `product_id` int, `deleted_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_tag_products_on_tag_id`  (`tag_id`),  INDEX `index_tag_products_on_product_id`  (`product_id`),  INDEX `index_tag_products_on_deleted_at`  (`deleted_at`), CONSTRAINT `fk_rails_1d9147ab8d`
+FOREIGN KEY (`tag_id`)
+  REFERENCES `tags` (`id`)
+, CONSTRAINT `fk_rails_bd844f76c5`
+FOREIGN KEY (`product_id`)
+  REFERENCES `products` (`id`)
+) ENGINE=InnoDB[0m
+  [1m[35m (238.8ms)[0m  [1m[35mCREATE  INDEX `index_tag_products_on_tag_id_and_product_id`  ON `tag_products` (`tag_id`, `product_id`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160915025835')[0m
+  [1m[35m (31.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2016-09-15 05:34:14', '2016-09-15 05:34:14')[0m
+  [1m[35m (26.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('4780483861263456360')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSHOW CREATE TABLE `categories`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'categories'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `comments`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'comments'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `coupons`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'coupons'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `oder_products`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'oder_products'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSHOW CREATE TABLE `orders`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'orders'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `products`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'products'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `reviews`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'reviews'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `shop_managers`[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSHOW CREATE TABLE `shops`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'shops'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `tag_products`[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSHOW CREATE TABLE `tags`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'tags'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'categories'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'comments'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'coupons'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'oder_products'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'orders'
+[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'products'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'reviews'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'shop_managers'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'shops'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'tag_products'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'tags'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'fdf_12_development'
+  AND fk.table_name = 'users'
+[0m
