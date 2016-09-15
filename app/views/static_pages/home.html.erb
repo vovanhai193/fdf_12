@@ -1,0 +1,5 @@
+<h1><%= t "common.home" %></h1>
+<% unless current_user.nil? %>
+  <h5><%= current_user.email %></h5>
+  <%= link_to t("devise.user.sign_out"), destroy_user_session_path, method: :delete %>
+<% end %>

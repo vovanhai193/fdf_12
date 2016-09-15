@@ -213,4 +213,5 @@ ActiveRecord::Schema.define(version: 20160915025835) do
   add_foreign_key "shop_managers", "users"
   add_foreign_key "tag_products", "products"
   add_foreign_key "tag_products", "tags"
+
 end

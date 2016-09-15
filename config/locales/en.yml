@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  common:
+    base_title: "Framgia Food and Drink Order"
+    home: "Home"
+  devise:
+    user:
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      sign_out: "Sign out"
+      update_info: "Update Information"
+      forgot_password: "Forgot Password"
