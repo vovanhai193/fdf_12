@@ -1,0 +1,106 @@
+<div class="home-header">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <img src="assets/logo.png" alt="<%= t "common.base_title" %>">
+        </a>
+        <button type="button" class="navbar-toggle collapsed">
+          <span class="sr-only"><%= t "common.toggle_navigation" %></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse">
+        <div class="search-form navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" placeholder="Search" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-default">
+            <i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="navbar-orders">
+            <a href="#">
+              <i class="fa fa-list-ol"></i>
+              <span><%= t "common.your_orders" %></span>
+            </a>
+          </li>
+          <li class="block-notification-dropdown dropdown">
+            <a id="notifications-dropdown" class="dropdown-toggle"
+              aria-haspopup="true" aria-expanded="false" role="button"
+              dropdown-toggle="dropdown" href="#">
+              <div>
+                <div class="icon-notification">
+                  <i class="fa fa-bell fa-lg"></i>
+                </div>
+                <span><%= t "common.notifications" %></span>
+              </div>
+            </a>
+            <ul class="dropdown-menu" role="menu"
+              aria-labelledby="notifications-dropdown">
+              <li class="header clearfix">
+                <h4 class="title">
+                  <span><%= t "common.notifications" %></span>
+                </h4>
+              </li>
+              <li>
+                <p class="no-notification">
+                  <span><%= t "common.no_notifications" %></span>
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li class="navbar-user dropdown">
+            <a id="basic-nav-dropdown" class="dropdown-toggle"
+              aria-haspopup="true" aria-expanded="false" role="button" href="#"
+              dropdown-toggle="dropdown">
+              <div>
+                <span class="user-avatar">
+                  <img src="assets/draft/ui_1.jpg">
+                </span>
+                <span class="user-title"><%= t "draft.user_name" %></span>
+              </div>
+            </a>
+            <ul class="dropdown-menu" role="menu"
+              aria-labelledby="basic-nav-dropdown">
+              <li role="presentation" class="">
+                <a role="menuitem" href="#" tabindex="-1">
+                  <i class="fa fa-user"></i>
+                  <span><%= t "header.account" %></span></a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li role="separator" class="divider"></li>
+              <li role="presentation" class="">
+                <a role="menuitem" href="#" tabindex="-1">
+                  <i class="fa fa-flag-o"></i>
+                  <span><%= t "header.request_open_shop" %></span></a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li role="presentation" class="">
+                <a role="menuitem" href="#" tabindex="-1">
+                  <i class="fa fa-ticket"></i>
+                  <span><%= t "header.report_abuse" %></span>
+                </a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li role="presentation" class="">
+                <a role="menuitem" href="#" tabindex="-1">
+                  <i class="fa fa-cog"></i>
+                  <span><%= t "header.settings" %></span>
+                </a>
+              </li>
+              <li role="presentation" class="">
+                <a role="menuitem" href="#" tabindex="-1">
+                  <i class="fa fa-sign-in"></i>
+                  <span><%= t "header.logout" %></span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

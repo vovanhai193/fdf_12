@@ -1,5 +1,176 @@
-<h1><%= t "common.home" %></h1>
-<% unless current_user.nil? %>
-  <h5><%= current_user.email %></h5>
-  <%= link_to t("devise.user.sign_out"), destroy_user_session_path, method: :delete %>
-<% end %>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="block-item-list block">
+      <h3 class="title">
+        <span><%= t "common.categories" %></span>
+      </h3>
+      <div class="clearfix body">
+        <div class="category-list">
+          <a class="btn btn-default col-lg-6 col-md-12 active" href="#">
+            <span><%= t "common.category.all" %></span>
+            <span class="badge">11</span>
+          </a>
+          <a class="btn btn-default col-lg-6 col-md-12"
+             href="#">
+            <span><%= t "common.category.snack" %></span>
+            <span class="badge">4</span>
+          </a>
+          <a class="btn btn-default col-lg-6 col-md-12" href="#">
+            <span><%= t "common.category.drink" %></span>
+            <span class="badge">4</span>
+          </a>
+          <a class="btn btn-default col-lg-6 col-md-12" href="#">
+            <span><%= t "common.category.rice" %></span>
+            <span class="badge">5</span>
+          </a>
+          <a class="btn btn-default col-lg-6 col-md-12" href="#">
+            <span><%= t "common.category.bread" %></span>
+            <span class="badge">4</span>
+          </a>
+          <a
+          class="btn btn-default col-lg-6 col-md-12" href="#">
+            <span><%= t "common.category.service" %></span>
+            <span class="badge">2</span>
+          </a>
+          <a class="btn btn-default col-lg-6 col-md-12" href="#">
+            <span><%= t "common.category.others" %></span>
+            <span class="badge">5</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9">
+    <div id="id_top_products" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="assets/draft/ui_1.jpg" alt="Chania">
+          <div class="carousel-caption">
+            <h3><%= t "draft.shop_name" %></h3>
+            <p><%= t "draft.description" %></p>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="assets/draft/ui_2.jpg" alt="Chania">
+          <div class="carousel-caption">
+            <h3><%= t "draft.shop_name" %></h3>
+            <p><%= t "draft.description" %></p>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="assets/draft/ui_3.jpg" alt="Flower">
+          <div class="carousel-caption">
+            <h3><%= t "draft.shop_name" %></h3>
+            <p><%= t "draft.description" %></p>
+          </div>
+        </div>
+      </div>
+
+      <a class="left carousel-control" href="#id_top_products" role="button"
+         data-slide="prev">
+        <span class="fa fa-angle-left" aria-hidden="true"></span>
+        <span class="sr-only"><%= t "common.previous" %></span>
+      </a>
+      <a class="right carousel-control" href="#id_top_products" role="button"
+         data-slide="next">
+        <span class="fa fa-angle-right" aria-hidden="true"></span>
+        <span class="sr-only"><%= t "common.next" %></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<h2 class="section_title"><%= t "common.top_shops" %></h2>
+
+<div class="col-md-12 magin_top_10px" id="id_shops_list">
+  <% 5.times do %>
+    <div class="block row block-shop-feed-item">
+      <div class="col-xs-2">
+        <div class="row thumbnail">
+          <a href="#">
+            <img src="assets/draft/ui_4.jpg"
+              class="img-responsive">
+          </a>
+        </div>
+      </div>
+      <div class="col-xs-10">
+        <div class="row content">
+          <h3><a href="#"><%= t "draft.shop_name" %></a></h3>
+          <%= render "layouts/temp_star" %>
+          <div class="description quote"><%= t "draft.shop_desc" %></div>
+          <div class="category">
+            <ul class="nav">
+              <li>
+                <a href="#"><%= t "common.category.bread" %></a>
+              </li>
+              <li>
+                <a href="#"><%= t "common.category.rice" %></a>
+              </li>
+              <li>
+                <a href="#"><%= t "common.category.snack" %></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="btn_view_all_wrapper">
+  <button class="btn btn_view_all btn_view_all_shops">
+    <%= t "common.btn_view_all" %>
+  </button>
+</div>
+
+<h2 class="section_title">
+  <%= t "common.top_products" %>
+</h2>
+
+<div class="col-md-12 magin_top_10px" id="id_products_list">
+ <% 10.times do |i| %>
+   <div class="product_item_wrapper">
+     <div class="poster_info_area padding_5px">
+       <div class="avatar_area float_left">
+         <a href="#">
+           <img alt="User" class="gravatar img-circle"
+             src="assets/draft/ui_4.jpg">
+         </a>
+       </div>
+       <div class="poster_content_area">
+         <a href="#">
+           <h3><%= t "draft.user_name" %></h3>
+         </a>
+         <span>
+           <%= t "common.owner_of" %>
+           <a href="#"><%= t "draft.shop_name" %></a>
+         </span>
+       </div>
+     </div>
+     <div class="product_content_area">
+       <a href="#">
+         <img class="book_cover" src="assets/draft/ui_<%= i%5 %>.jpg">
+       </a>
+       <div class="product_text">
+         <%= t "draft.description" %>
+     </div>
+     </div>
+     <div class="interaction_area">
+       <button class="btn btn_order">
+         <%= t "common.btn_order_now" %>
+       </button>
+       <button class="btn btn-default btn_add_favorite">
+         <%= t "common.btn_add_to_favorite" %>
+       </button>
+     </div>
+   </div>
+  <% end %>
+</div>
+
+<div class="btn_view_all_wrapper">
+  <button class="btn btn_view_all btn_view_all_products">
+    <%= t "common.btn_view_all" %>
+  </button>
+</div>
