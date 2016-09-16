@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "home#index"
     resources :orders, only: [:index, :show, :destroy]
+    resources :shop_requests, only: [:index, :update]
   end
+
 end

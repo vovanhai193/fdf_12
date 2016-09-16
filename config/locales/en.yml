@@ -25,4 +25,16 @@ en:
         created_at: "Created at"
         view: "View"
         close: "Close"
+    shop_requests:
+      index:
+        page_title: "Manage Shop Requests"
+        title: "List Shop Requests"
+        name: "Shop Name"
+        description: "Description"
+        status: "Status"
+        cover_image: "Cover image"
+        avatar: "Avatar"
+        requested_at: "Requested at"
+        approve: "Approve"
+        reject: "Reject"
 
