@@ -28,9 +28,8 @@
             </a>
           </li>
           <li class="block-notification-dropdown dropdown">
-            <a id="notifications-dropdown" class="dropdown-toggle"
-              aria-haspopup="true" aria-expanded="false" role="button"
-              dropdown-toggle="dropdown" href="#">
+            <a href="#" id="notifications-dropdown" class="dropdown-toggle"
+              data-toggle="dropdown">
               <div>
                 <div class="icon-notification">
                   <i class="fa fa-bell fa-lg"></i>
@@ -53,14 +52,15 @@
             </ul>
           </li>
           <li class="navbar-user dropdown">
-            <a id="basic-nav-dropdown" class="dropdown-toggle"
-              aria-haspopup="true" aria-expanded="false" role="button" href="#"
-              dropdown-toggle="dropdown">
+            <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+              class="dropdown-toggle" role="button">
               <div>
                 <span class="user-avatar">
                   <img src="assets/draft/ui_1.jpg">
                 </span>
-                <span class="user-title"><%= t "draft.user_name" %></span>
+                <span class="user-title"><%= t "draft.user_name" %>
+                  <b class="caret"></b>
+                </span>
               </div>
             </a>
             <ul class="dropdown-menu" role="menu"
