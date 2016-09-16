@@ -1,0 +1,35 @@
+<div class="col-md-12 magin_top_10px" id="id_shops_list">
+  <% @shops.each do |shop| %>
+    <div class="block row block-shop-feed-item">
+      <div class="col-xs-2">
+        <div class="row thumbnail">
+          <a href="shops/10">
+          <%= image_tag "#{shop.avatar}", class: "img-responsive" %>
+          </a>
+        </div>
+      </div>
+      <div class="col-xs-10">
+        <div class="row content">
+          <h3><%= link_to shop.name %></h3>
+          <input id="shop-average-rating" type="number"
+              class="rating-loading star-rating" data-size="sm"
+              value=<%= shop.averate_rating %> >
+          <div class="description quote"><p><%= shop.description %></p></div>
+          <div class="category">
+            <ul class="nav">
+              <li>
+                <a href="/?category=4">Bread</a>
+              </li>
+              <li>
+                <a href="/?category=2">Drink</a>
+              </li>
+              <li>
+                <a href="/?category=1">Snack</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
