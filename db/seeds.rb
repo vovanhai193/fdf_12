@@ -19,6 +19,31 @@ Shop.create!(
   cover_image: "image",
   averate_rating: 5.0
 )
+#shop request
+
+Shop.create!(
+  name: "KFC",
+  description: "Chicken and chickend",
+  status: 0,
+  cover_image: "image",
+  avatar: "image2"
+)
+
+Shop.create!(
+  name: "Lotteria",
+  description: "Hamburger",
+  status: 0,
+  cover_image: "image",
+  avatar: "image2"
+)
+
+Shop.create!(
+  name: "Sushi",
+  description: "sushi",
+  status: 0,
+  cover_image: "image",
+  avatar: "image2"
+)
 
 Coupon.create!(
   name: "Sale 99%",

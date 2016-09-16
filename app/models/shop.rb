@@ -5,7 +5,7 @@ class Shop < ApplicationRecord
   has_many :shop_managers, dependent: :destroy
   has_many :users, through: :shop_managers
   has_many :orders
-  has_many :oder_products, through: :orders
+  has_many :order_products, through: :orders
 
   enum status: {pending: 0, active: 1, closed: 2, blocked: 3}
 end
