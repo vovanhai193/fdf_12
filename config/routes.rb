@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root "static_pages#home"
   namespace :admin do
     root "home#index"
+    resources :orders, only: [:index, :show, :destroy]
   end
 end
