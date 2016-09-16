@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :admins, path: "admin"
   devise_for :users
+
   root "static_pages#home"
   namespace :admin do
     root "home#index"
@@ -10,4 +11,5 @@ Rails.application.routes.draw do
     resources :categories
   end
 
+  resources :shops, only: :index
 end
