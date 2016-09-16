@@ -6,7 +6,7 @@ class Ability
     when Admin
       can :manage, :all
     when User
-
+      can :read, :all
     else
       can :read, :all
     end

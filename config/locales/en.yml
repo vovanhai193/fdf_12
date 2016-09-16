@@ -4,6 +4,11 @@ en:
     home: "Home"
     number: "Numbers"
     delete_confirm: "Are you sure want to delete it ?"
+    back_button: "Back"
+    submit_button: "Submit"
+    create_button: "Create"
+    edit_button: "Edit"
+    delete_button: "Delete"
   devise:
     user:
       sign_in: "Sign in"
@@ -11,6 +16,13 @@ en:
       sign_out: "Sign out"
       update_info: "Update Information"
       forgot_password: "Forgot Password"
+  flash:
+    success:
+      admin:
+        created_category: "Created category successfully!"
+    danger:
+      admin:
+        created_category: "Created category failed!"
   admin:
     orders:
       index:
@@ -37,4 +49,13 @@ en:
         requested_at: "Requested at"
         approve: "Approve"
         reject: "Reject"
-
+    categories:
+      index:
+        title: "List Categories"
+        heading: "Categories"
+        name: "Category's name"
+        actions: "Actions"
+        no_categories: "No categories."
+      new:
+        title: "New category"
+        category: "Category"

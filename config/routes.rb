@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     root "home#index"
     resources :orders, only: [:index, :show, :destroy]
     resources :shop_requests, only: [:index, :update]
+    resources :categories, only: [:index, :new, :create]
   end
 
 end
