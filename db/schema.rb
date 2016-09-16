@@ -162,10 +162,12 @@ ActiveRecord::Schema.define(version: 20160915081012) do
     t.string   "cover_image"
     t.string   "avatar"
     t.float    "averate_rating", limit: 24
+    t.integer  "user_id"
     t.datetime "deleted_at"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.index ["deleted_at"], name: "index_shops_on_deleted_at", using: :btree
+    t.index ["user_id"], name: "index_shops_on_user_id", using: :btree
   end
 
   create_table "tag_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -228,6 +230,7 @@ ActiveRecord::Schema.define(version: 20160915081012) do
   add_foreign_key "reviews", "users"
   add_foreign_key "shop_managers", "shops"
   add_foreign_key "shop_managers", "users"
+  add_foreign_key "shops", "users"
   add_foreign_key "tag_products", "products"
   add_foreign_key "tag_products", "tags"
 end

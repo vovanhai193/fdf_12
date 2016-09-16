@@ -104,3 +104,15 @@ en:
     50K- TẶNG NGAY 1 KEM TRÀNG TIỀN LẠNH OR FAMI LẠNH)"
     user_name: "Hoàng Đức"
     shop_name: "Ly Trish"
+  shops:
+    new:
+      create_shop: "Create Shop"
+      submit_button: "Save"
+      title: "Request create new shop"
+      shop: "Shop"
+    form:
+      shop_name: "Shop name"
+      shop_description: "Description"
+pictures:
+    max_size_message: "Maximum file size is %{max_size}MB. Please choose a smaller file."
+    error_message: "Image should be less than %{max_size}MB"

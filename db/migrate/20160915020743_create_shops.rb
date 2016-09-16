@@ -7,6 +7,7 @@ class CreateShops < ActiveRecord::Migration[5.0]
       t.string :cover_image
       t.string :avatar
       t.float :averate_rating
+      t.references :user, foreign_key: true
       t.datetime :deleted_at, index: true
 
       t.timestamps

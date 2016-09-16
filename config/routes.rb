@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root "static_pages#home"
+  resources :shops
   namespace :admin do
     root "home#index"
     resources :orders, only: [:index, :show, :destroy]
