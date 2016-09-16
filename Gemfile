@@ -18,6 +18,11 @@ gem "bootstrap-kaminari-views"
 gem "config"
 gem "bootstrap-glyphicons"
 gem "font-awesome-rails"
+gem "simple_form"
+gem "dropzonejs-rails"
+gem "carrierwave",             "0.10.0"
+gem "mini_magick",             "3.8.0"
+gem "cloudinary"
 
 group :development, :test do
   gem "byebug", platform: :mri
