@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :admins, path: "admin"
+  devise_for :admins, path: "admin",
+    controllers: {sessions: "admin/sessions"}
   devise_for :users
 
   root "static_pages#home"

@@ -1,6 +1,7 @@
 en:
   common:
     base_title: "Framgia Food and Drink Order"
+    admin_title: "Admin Framgia Orders"
     home: "Home"
     number: "Numbers"
     delete_confirm: "Are you sure want to delete it?"
@@ -120,6 +121,28 @@ en:
     form:
       shop_name: "Shop name"
       shop_description: "Description"
-pictures:
+  pictures:
     max_size_message: "Maximum file size is %{max_size}MB. Please choose a smaller file."
     error_message: "Image should be less than %{max_size}MB"
+  layouts:
+    admin_lte_2:
+      footer: "Framgia Orders. @2016@"
+    admin_lte_2_sidebar:
+      online: "Online"
+      header: "All"
+      home: "Dashboard"
+      categories: "Categories"
+      all_categories: "All"
+      new_category: "New"
+      orders: "Orders"
+      all_orders: "All"
+    admin_lte_2_header:
+      logo_mini: "F"
+      logo_medium: "Framgia"
+      logo_order: "Orders"
+      profile: "Profile"
+      log_out: "Signout"
+      member_since: "Joined %{time}"
+    admin_lte_2_login:
+      login_box_message: "Sign in to start your session"
+

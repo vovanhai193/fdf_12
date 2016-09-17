@@ -23,6 +23,7 @@ gem "dropzonejs-rails"
 gem "carrierwave",             "0.10.0"
 gem "mini_magick",             "3.8.0"
 gem "cloudinary"
+gem "adminlte2-rails"
 
 group :development, :test do
   gem "byebug", platform: :mri
@@ -46,6 +47,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-
-
