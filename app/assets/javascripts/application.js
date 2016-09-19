@@ -15,6 +15,9 @@
 //= require star-rating.min
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require bootstrap
+//= require jquery.slimscroll
+//= require app
 //= require_tree .
 
 $(function () {
