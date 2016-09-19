@@ -11,4 +11,8 @@ class Product < ApplicationRecord
   has_many :comments, as: :commentable
 
   enum status: {active: 0, inactive: 1}
+
+  scope :of_shop, -> shop_id  do
+    where(shop_id: shop_id)
+  end
 end
