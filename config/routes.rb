@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   namespace :dashboard do
     root "home#index"
-    resources :shops, only: [:new, :create]
+    resources :shops, only: [:new, :create] do
+      resources :products
+    end
   end
 
   resources :shops, only: [:index, :show]

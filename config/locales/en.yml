@@ -54,6 +54,8 @@ en:
         updated_category: "Updated category successfully!"
         deleted_category: "Deleted category successfully!"
         created_shop: "Requested creating shop successfully!"
+      dashboard:
+        create_product: "Created product successfully!"
     danger:
       admin:
         created_category: "Created category failed!"
@@ -61,6 +63,8 @@ en:
         deleted_category: "Deleted category failed!"
         created_shop: "Requested creating shop failed!"
       load_shop: "Cannot find shop!"
+      dashboard:
+        create_product: "Created product failed!"
     warning:
       admin:
         deleted_category: "Cannot delete because this category has products!"
@@ -161,3 +165,13 @@ en:
       form:
         shop_name: "Shop name"
         shop_description: "Description"
+    products:
+      new:
+        title: "New product"
+        product: "Product"
+      form:
+        product_description: "Description"
+        product_name: "Name"
+        product_price: "Price"
+
+
