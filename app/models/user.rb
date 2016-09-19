@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :shop_managers
   has_many :shops, through: :shop_managers
+  has_many :own_shops, class_name: "Shop", foreign_key: :owner_id
   has_many :comments
   has_many :products
   has_many :orders

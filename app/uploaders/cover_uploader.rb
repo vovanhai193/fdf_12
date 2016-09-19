@@ -2,11 +2,14 @@
 
 class CoverUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  include Cloudinary::CarrierWave
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+    process tags: ["post_picture"]
+  end
+
   process resize_to_limit: [1280, 860]
 
   process convert: "png"
-  process tags: ["post_picture"]
 
   version :standard do
     process resize_to_fill: [400, 300, :north]

@@ -53,11 +53,14 @@ en:
         created_category: "Created category successfully!"
         updated_category: "Updated category successfully!"
         deleted_category: "Deleted category successfully!"
+        created_shop: "Requested creating shop successfully!"
     danger:
       admin:
         created_category: "Created category failed!"
         updated_category: "Updated category failed!"
         deleted_category: "Deleted category failed!"
+        created_shop: "Requested creating shop failed!"
+      load_shop: "Cannot find shop!"
     warning:
       admin:
         deleted_category: "Cannot delete because this category has products!"
@@ -121,6 +124,9 @@ en:
     form:
       shop_name: "Shop name"
       shop_description: "Description"
+    show:
+      products: "Products"
+      no_product: "This shop has not any products."
   pictures:
     max_size_message: "Maximum file size is %{max_size}MB. Please choose a smaller file."
     error_message: "Image should be less than %{max_size}MB"
@@ -145,4 +151,13 @@ en:
       member_since: "Joined %{time}"
     admin_lte_2_login:
       login_box_message: "Sign in to start your session"
-
+  dashboard:
+    shops:
+      new:
+        create_shop: "Create Shop"
+        submit_button: "Save"
+        title: "Request create new shop"
+        shop: "Shop"
+      form:
+        shop_name: "Shop name"
+        shop_description: "Description"

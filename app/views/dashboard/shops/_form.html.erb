@@ -1,4 +1,4 @@
-<%= simple_form_for @shop do |f| %>
+<%= simple_form_for [:dashboard, @shop] do |f| %>
   <%= render "shared/error_messages", object: @shop %>
   <div class="form-group">
     <%= f.label :name %>
@@ -18,7 +18,6 @@
     <%= f.label :cover_image %>
     <%= f.file_field :cover_image, accept: Settings.pictures.accepted_files %>
   </div>
-  <%= f.hidden_field :owner_id, value: current_user.id %>
   <%= f.submit yield(:submit_button),
     class: "btn btn-primary space-top-submit" %>
 <% end %>
