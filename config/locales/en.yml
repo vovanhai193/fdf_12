@@ -31,6 +31,8 @@ en:
     edit_button: "Edit"
     delete_button: "Delete"
     save_button: "Save changes"
+    btn_ok: "Ok"
+    btn_cancel: "Cancel"
   header:
     account: "Account"
     request_open_shop: "Request open shop"
@@ -77,6 +79,7 @@ en:
         page_title: "Manage Shop Requests"
         title: "List Shop Requests"
         name: "Shop Name"
+        owner: "Shop Owner"
         description: "Description"
         status: "Status"
         cover_image: "Cover image"
@@ -84,6 +87,10 @@ en:
         requested_at: "Requested at"
         approve: "Approve"
         reject: "Reject"
+        approve_confirm: "Are you sure approve %{user} to open shop %{shop} ?"
+        reject_confirm: "Are you sure reject %{user} to open shop %{shop} ?"
+        update_shop_request_success: "Shop %{shop} is %{status}"
+        update_shop_request_failed: "Has error with %{shop} when %{status}"
     categories:
       index:
         title: "List Categories"

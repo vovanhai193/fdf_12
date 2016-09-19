@@ -12,6 +12,28 @@ User.create!(
   password_confirmation: "123456"
 )
 
+User.create!(
+  name: "Faker1",
+  email: "faker1@gmail.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+
+User.create!(
+  name: "Faker2",
+  email: "faker2@gmail.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+
+User.create!(
+  name: "Faker3",
+  email: "faker3@gmail.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+
+
 Shop.create!(
   name: "High Land",
   description: "Coffe",
@@ -37,12 +59,34 @@ Shop.create!(
   avatar: "image2"
 )
 
+
+
 Shop.create!(
   name: "Sushi",
   description: "sushi",
   status: 0,
   cover_image: "image",
   avatar: "image2"
+)
+
+#shop_manangers
+
+ShopManager.create!(
+  user_id: 2,
+  shop_id: 2,
+  role: 1,
+)
+
+ShopManager.create!(
+  user_id: 3,
+  shop_id: 3,
+  role: 1,
+)
+
+ShopManager.create!(
+  user_id: 4,
+  shop_id: 4,
+  role: 1,
 )
 
 Coupon.create!(
