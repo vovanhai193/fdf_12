@@ -174,4 +174,12 @@ en:
         product_name: "Name"
         product_price: "Price"
 
-
+  cart:
+    view_cart_all: "View all"
+    add_to_card: "Add to cart"
+    quantity: "Quantity"
+    price: "Price"
+    sub: "Sub"
+    add: "Add"
+    delete: "Delete"
+    vnd: "vnd"

@@ -123,24 +123,28 @@ Category.create!(
   name: "Bread"
 )
 
-Product.create!(
-  category_id: 1,
-  shop_id: 1,
-  user_id: 1,
-  name: "bread",
-  price: 6000,
-  description: "The atmosphere in Chania has a touch of Florence and Venice.",
-  image: "image2",
-  status: 1
-)
+puts "product ....."
 
-Product.create!(
-  category_id: 1,
-  shop_id: 1,
-  user_id: 1,
-  name: "Chicken",
-  price: 12000,
-  description: "The atmosphere in Chania has a touch of Florence and Venice.",
-  image: "image2",
-  status: 1
-)
+4.times do |n|
+  category_id = 1,
+  shop_id = 1,
+  user_id = 1,
+  name = "Bread",
+  price = 6000,
+  description = "The atmosphere in Chania",
+  image = "ui_2.jpg"
+  Product.create!(category_id: category_id, shop_id: shop_id, user_id: user_id,
+    name: name, price: price, description: description, image: image)
+end
+
+4.times do |n|
+  category_id = 1,
+  shop_id = 1,
+  user_id = 1,
+  name = "Chicken",
+  price = 12000,
+  description = "The atmosphere in Chania",
+  image = "ui_1.jpg"
+  Product.create!(category_id: category_id, shop_id: shop_id, user_id: user_id,
+    name: name, price: price, description: description, image: image)
+end
