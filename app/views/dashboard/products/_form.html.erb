@@ -1,0 +1,31 @@
+<%= simple_form_for [:dashboard, @shop, @product] do |f| %>
+  <%= render "shared/error_messages", object: @product %>
+   <div class="form-group">
+      <%= f.label :category_id %>
+      <%= f.select :category_id,
+        @categories.collect {|category| [category.name, category.id]},
+          {}, {class: "form-control"} %>
+        </div>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: t(".product_name"),
+      error: t(".product_name_error") , class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, placeholder: t(".product_description"),
+      error: t(".product_description_error"), class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.number_field :price, placeholder: t(".product_price"),
+      error: t(".product_price_error"), class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, accept: Settings.pictures.accepted_files %>
+  </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit yield(:submit_button),
+    class: "btn btn-primary space-top-submit" %>
+<% end %>
