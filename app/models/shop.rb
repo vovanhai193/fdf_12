@@ -11,10 +11,11 @@ class Shop < ApplicationRecord
 
   enum status: {pending: 0, active: 1, closed: 2, rejected: 3, blocked: 4}
 
-  after_create :create_shop_manager
+  after_create :create_shop_manager, :send_notification_after_requested
+  after_update :send_notification_after_confirmed
 
   validates :name, presence: true, length: {maximum: 50}
-  validates :description, presence: true, length: {maximum: 50}
+  validates :description, presence: true
   mount_uploader :cover_image, CoverUploader
   mount_uploader :avatar, PictureUploader
 
@@ -38,4 +39,13 @@ class Shop < ApplicationRecord
     end
   end
 
+  def send_notification_after_requested
+    ShopNotification.new(self).send_when_requested
+  end
+
+  def send_notification_after_confirmed
+    if self.status_changed? && !self.pending
+      ShopNotification.new(self).send_when_confirmed
+    end
+  end
 end
