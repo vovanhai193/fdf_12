@@ -75,3 +75,28 @@ Order.create!(
   shop_id: 1,
   coupon_id: 1
 )
+Category.create!(
+  name: "Bread"
+)
+
+Product.create!(
+  category_id: 1,
+  shop_id: 1,
+  user_id: 1,
+  name: "bread",
+  price: 6000,
+  description: "The atmosphere in Chania has a touch of Florence and Venice.",
+  image: "image2",
+  status: 1
+)
+
+Product.create!(
+  category_id: 1,
+  shop_id: 1,
+  user_id: 1,
+  name: "Chicken",
+  price: 12000,
+  description: "The atmosphere in Chania has a touch of Florence and Venice.",
+  image: "image2",
+  status: 1
+)
