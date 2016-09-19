@@ -1,28 +1,20 @@
 class ShopsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :load_shop, only: :show
 
   def index
     @shops = Shop.page(params[:page]).per Settings.common.per_page
   end
 
-  def new
-    @shop = Shop.new
-  end
-
-  def create
-    @shop = Shop.new shop_params
-    if @shop.save
-      flash[:success] = t "flash.success.create_shop"
-      redirect_to shops_path
-    else
-      flash[:danger] = t "flash.danger.create_shop"
-      render :new
-    end
+  def show
+    @products = @shop.products
   end
 
   private
-  def shop_params
-    params.require(:shop).permit :id, :name, :description,
-      :owner_id, :cover_image, :avatar
+  def load_shop
+    @shop = Shop.find_by id: params[:id]
+    unless @shop
+      flash[:danger] = t "flash.danger.load_shop"
+      redirect_to root_path
+    end
   end
 end

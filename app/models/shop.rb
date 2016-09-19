@@ -1,6 +1,4 @@
 class Shop < ApplicationRecord
-  attr_accessor :owner_id
-  after_create :create_shop_manager
   acts_as_paranoid
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
   has_many :reviews, as: :reviewable
@@ -9,8 +7,11 @@ class Shop < ApplicationRecord
   has_many :users, through: :shop_managers
   has_many :orders
   has_many :order_products, through: :orders
+  has_many :products
 
   enum status: {pending: 0, active: 1, closed: 2, rejected: 3, blocked: 4}
+
+  after_create :create_shop_manager
 
   validates :name, presence: true, length: {maximum: 50}
   validates :description, presence: true, length: {maximum: 50}
@@ -18,6 +19,9 @@ class Shop < ApplicationRecord
   mount_uploader :avatar, PictureUploader
 
   validate :image_size
+
+  delegate :name, to: :owner, prefix: :owner, allow_nil: true
+  delegate :email, to: :owner, prefix: :owner
 
   private
   def create_shop_manager

@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  resources :shops
+  namespace :dashboard do
+    root "home#index"
+    resources :shops, only: [:new, :create]
+  end
+
+  resources :shops, only: [:index, :show]
   resources :products, only: :index
 end

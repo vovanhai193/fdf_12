@@ -2,11 +2,14 @@
 
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  include Cloudinary::CarrierWave
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+    process tags: ["post_picture"]
+  end
+
   process resize_to_limit: [400, 400]
 
   process convert: "png"
-  process tags: ["post_picture"]
 
   version :standard do
     process resize_to_fill: [100, 150, :north]

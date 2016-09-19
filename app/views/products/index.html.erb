@@ -1,22 +1,3 @@
 <div class="col-md-12 magin_top_10px" id="id_products_list">
-  <% @products.each do |product| %>
-    <div class="product_item_wrapper">
-      <div class="product_content_area">
-        <a href="#">
-          <%= image_tag "#{product.image}", class: "img-responsive" %>
-        </a>
-        <div class="product_text">
-          <%= product.description %>
-        </div>
-      </div>
-      <div class="interaction_area">
-        <button class="btn btn_order">
-          <%= t "common.btn_order_now" %>
-        </button>
-        <button class="btn btn-default btn_add_favorite">
-          <%= t "common.btn_add_to_favorite" %>
-        </button>
-      </div>
-    </div>
-  <% end %>
+  <%= render @products %>
 </div>

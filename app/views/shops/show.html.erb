@@ -1,0 +1,52 @@
+<div class="block-shop-header clearfix">
+  <div class="shop-cover">
+    <h2 class="section_title"><%= @shop.name %></h2>
+    <%= image_tag @shop.cover_image.url %>
+    <div class="shop-info-wrapper col-md-12">
+      <div class="shop-avatar-wrapper row">
+        <div class="col-sm-3 col-xs-3 shop-avatar">
+        <%= image_tag @shop.avatar.url %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 shop-nav-wrapper">
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-6">
+          <div class="row shop-basic-info">
+            <h4 class="title">
+              <%= @shop.name %>
+              <span class="status opening">
+                <i class="fa fa fa-circle"></i>
+              </span>
+            </h4>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <ul class="nav shop-info">
+            <li>
+              <i class="fa fa-user"></i>
+              <span><%= link_to @shop.owner_name, "#" %></span>
+            </li>
+            <li>
+              <i class="fa fa-envelope"></i>
+              <span><%= mail_to @shop.owner_email %></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 description-wrapper">
+    <div class="quote">
+      <%= t @shop.description %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <h2 class="section_title">
+    <%= @products.any? ? t(".products") : t(".no_product") %>
+  </h2>
+  <div class="col-md-12" id="id_products_list">
+    <%= render @products %>
+  </div>
+</div>
