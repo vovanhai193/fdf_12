@@ -4,7 +4,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
   include Cloudinary::CarrierWave
-  process resize_to_limit: [1280, 860]
+  process resize_to_limit: [300, 300]
 
   process convert: "png"
   process tags: ["post_picture"]

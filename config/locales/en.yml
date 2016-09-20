@@ -182,6 +182,9 @@ en:
         title: "Edit"
         product: "Product"
       not_found: "Product not found"
+      index:
+        empty_list: "You don't have any product! Let's add new product now!"
+        new_button: "Add new product"
   cart:
     view_cart_all: "View all"
     add_to_card: "Add to cart"

@@ -1,10 +1,14 @@
 class Dashboard::ProductsController < BaseDashboardController
-  before_action :load_shop, except: :index
+  before_action :load_shop
   before_action :load_categories, only: [:edit, :new, :update]
-  before_action :load_product, except: [:index, :new]
+  before_action :load_product, only: [:edit, :update]
+  before_action :load_products, only: :index
 
   def new
     @product = @shop.products.new
+  end
+
+  def index
   end
 
   def edit
@@ -55,5 +59,9 @@ class Dashboard::ProductsController < BaseDashboardController
       flash[:danger] = t "flash.danger.dashboard.product.not_found"
       redirect_to dashboard_shop_products_path
     end
+  end
+
+  def load_products
+    @products = @shop.products
   end
 end
