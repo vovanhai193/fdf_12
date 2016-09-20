@@ -1,6 +1,6 @@
 <div class="block-shop-header clearfix">
   <div class="shop-cover">
-    <h2 class="section_title"><%= @shop.name %></h2>
+    <h2 class="section_title"><%= @shop.name %><%= @shop.status_text %></h2>
     <%= image_tag @shop.cover_image.url %>
     <div class="shop-info-wrapper col-md-12">
       <div class="shop-avatar-wrapper row">

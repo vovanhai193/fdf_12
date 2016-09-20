@@ -24,6 +24,9 @@ gem "carrierwave",             "0.10.0"
 gem "mini_magick",             "3.8.0"
 gem "cloudinary"
 gem "adminlte2-rails"
+gem "figaro"
+gem "activemodel-serializers-xml", github: "rails/activemodel-serializers-xml"
+gem "draper"
 
 group :development, :test do
   gem "byebug", platform: :mri

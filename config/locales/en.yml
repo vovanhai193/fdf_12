@@ -182,7 +182,6 @@ en:
         title: "Edit"
         product: "Product"
       not_found: "Product not found"
-
   cart:
     view_cart_all: "View all"
     add_to_card: "Add to cart"
@@ -192,3 +191,30 @@ en:
     add: "Add"
     delete: "Delete"
     vnd: "vnd"
+  status:
+    shops:
+      pending: "pending"
+      active: "actived"
+      closed: "closed"
+      rejected: "rejected"
+      blocked: "blocked"
+  user_mailer:
+    shop_request:
+      subject: "Shop requested: \"%{name}\""
+      hello: "Dear %{name},"
+      description: "Shop's description:"
+      status_message: "You've just sent a request to create shop: \"%{shop_name}\""
+    shop_confirmation:
+      subject: "Status changed for shop: \"%{name}\""
+      hello: "Dear %{name},"
+      status_message: "Your shop: \"%{shop_name}\" has been:"
+  admin_mailer:
+    shop_request:
+      subject: "New request for shop: \"%{name}\""
+      hello: "Dear %{name},"
+      description: "Shop's description:"
+      status_message: "You've just received a request to create shop: \"%{shop_name}\""
+    shop_confirmation:
+      subject: "Status changed for shop: \"%{name}\""
+      hello: "Dear %{name},"
+      status_message: "You've just setted status for \"%{shop_name}\":"

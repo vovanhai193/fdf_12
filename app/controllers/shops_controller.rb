@@ -7,6 +7,7 @@ class ShopsController < ApplicationController
 
   def show
     @products = @shop.products
+    @shop = @shop.decorate
   end
 
   private
