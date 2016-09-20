@@ -183,4 +183,12 @@ en:
         product: "Product"
       not_found: "Product not found"
 
-
+  cart:
+    view_cart_all: "View all"
+    add_to_card: "Add to cart"
+    quantity: "Quantity"
+    price: "Price"
+    sub: "Sub"
+    add: "Add"
+    delete: "Delete"
+    vnd: "vnd"
