@@ -1,0 +1,11 @@
+<tr>
+  <td><%= image_tag product.image.url %></td>
+  <td><%= product.name %></td>
+  <td><%= product.price %></td>
+  <td>
+    <%= link_to t("common.edit_button"), "#",
+      class: "btn btn-sm btn-primary" %>
+    <%= link_to t("common.delete_button"), "#",
+      class: "btn btn-sm btn-danger" %>
+  </td>
+</tr>

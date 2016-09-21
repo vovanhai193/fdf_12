@@ -58,6 +58,7 @@ en:
         create_product: "Created product successfully!"
         edit_product: "Edit product successfully!"
         update_product: "Update product successfully!"
+        updated_shop: "Update shop successfully!"
     danger:
       admin:
         created_category: "Created category failed!"
@@ -67,8 +68,9 @@ en:
       load_shop: "Cannot find shop!"
       dashboard:
         create_product: "Created product failed!"
-        edit_product: "Edit product successfully!"
-        update_product: "Update product successfully!"
+        edit_product: "Edit product failed!"
+        update_product: "Update product failed!"
+        updated_shop: "Update shop failed!"
     warning:
       admin:
         deleted_category: "Cannot delete because this category has products!"
@@ -185,6 +187,23 @@ en:
       index:
         empty_list: "You don't have any product! Let's add new product now!"
         new_button: "Add new product"
+    shops:
+      show:
+        edit: "Edit shop"
+        has_products: "Products"
+        no_product: "This shop has not any products."
+      products:
+        image: "Image"
+        name: "Name"
+        price: "Price"
+        actions: "Actions"
+      new:
+        title: "Request shop"
+      edit:
+        title: "Edit shop"
+      form:
+        shop_name: "Name"
+        shop_description: "Description"
   cart:
     view_cart_all: "View all"
     add_to_card: "Add to cart"

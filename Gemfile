@@ -26,7 +26,7 @@ gem "cloudinary"
 gem "adminlte2-rails"
 gem "figaro"
 gem "activemodel-serializers-xml", github: "rails/activemodel-serializers-xml"
-gem "draper"
+gem "draper", github: "audionerd/draper", branch: "rails5"
 
 group :development, :test do
   gem "byebug", platform: :mri
