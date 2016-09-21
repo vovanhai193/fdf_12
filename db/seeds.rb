@@ -12,6 +12,13 @@ User.create!(
   password_confirmation: "123456"
 )
 
+Admin.create!(
+  email: "admin@gmail.com",
+  password: "123456",
+  password_confirmation: "123456"
+
+)
+
 User.create!(
   name: "Faker1",
   email: "faker1@gmail.com",
