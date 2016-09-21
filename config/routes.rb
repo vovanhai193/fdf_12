@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   resources :shops, only: [:index, :show]
   resources :products, only: :index
   resources :carts
+  resources :orders
 end

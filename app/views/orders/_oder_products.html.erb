@@ -1,0 +1,23 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= t "oder.id" %></th>
+      <th><%= t "oder.name" %></th>
+      <th><%= t "oder.image" %></th>
+      <th><%= t "oder.quantity" %></th>
+      <th><%= t "oder.price" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% oder_products.each_with_index do |item, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= item.product.name %></td>
+        <td><%= image_tag item.product.image.url %></td>
+        <td class="text-center"><%= item.quantity %></td>
+        <td class="text-center">
+          <strong><%= number_to_currency item.total_price %></strong></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

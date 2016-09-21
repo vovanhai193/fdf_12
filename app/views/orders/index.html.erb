@@ -1,0 +1,9 @@
+<div class="page-content">
+  <div class="container">
+    <div class="row">
+      <% @orders.each do |order| %>
+        <%= render "list", order: order %>
+      <% end %>
+    </div>
+  </div>
+</div>
