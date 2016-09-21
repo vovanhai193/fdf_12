@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_order, only: [:show, :destroy]
 
   def index
     @orders = current_user.orders.by_date_newest.page(params[:page])
@@ -11,11 +12,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order =  Order.find_by id: params[:id]
-    unless @order
-      flash[:danger] = t "oder.not_oder"
-      redirect_to new_order_path
-    end
   end
 
   def create
@@ -35,10 +31,27 @@ class OrdersController < ApplicationController
     end
   end
 
+  def destroy
+    if @order.destroy
+      flash[:success] = t"oder.deleted"
+    else
+      flash[:danger] = t"oder.not_delete"
+    end
+    redirect_to orders_path
+  end
+
   private
 
   def order_params
     params.require(:order).permit(:notes)
       .merge! user: current_user, cart: @cart
+  end
+
+  def load_order
+    @order =  Order.find_by id: params[:id]
+    unless @order
+      flash[:danger] = t "oder.not_oder"
+      redirect_to new_order_path
+    end
   end
 end

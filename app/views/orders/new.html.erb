@@ -2,10 +2,10 @@
   <% if @cart.present? %>
     <div class="container">
       <div class="row">
-        <%= render "oder_products", oder_products: @cart.items %>
+        <%= render "order_products", order_products: @cart.items %>
         <div class="pull-right">
           <h4><b><%= t "oder.total" %>: </b>
-            <%= number_to_currency @cart.total_price %></h4>
+            <%= @cart.total_price %> <%= t "cart.vnd" %> </h4>
         </div>
       </div>
       <%= simple_form_for @orders do |f| %>

@@ -1,11 +1,11 @@
 <div class="panel-group">
   <div class="panel panel-default">
     <div class="panel-body">
-      <%= render "oder_products", oder_products: order.order_products %>
+      <%= render "order_products", order_products: order.order_products %>
       <div class="pull-right">
         <h4>
-          <b><%= t "oder.total" %>: </b>
-          <%= number_to_currency @cart.total_price %>
+          <b><%= t "oder.total" %></b>
+          <%= @cart.total_price %> <%= t"cart.vnd" %>
         </h4>
       </div>
     </div>
