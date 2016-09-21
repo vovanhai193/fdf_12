@@ -213,6 +213,7 @@ en:
     add: "Add"
     delete: "Delete"
     vnd: "vnd"
+
   status:
     shops:
       pending: "pending"
@@ -240,3 +241,17 @@ en:
       subject: "Status changed for shop: \"%{name}\""
       hello: "Dear %{name},"
       status_message: "You've just setted status for \"%{shop_name}\":"
+
+  oder:
+    btn_oder: "Oder"
+    id: "id"
+    category: "Category"
+    name: "Name"
+    image: "Image"
+    quantity: "Quantity"
+    price: "Price"
+    total: "Total"
+    btn_make_oder: "Make Oder"
+    confirm: "You sure !"
+    not_oder: "Have not Oder"
+    not_product_in_cart: "Have not products in cart"

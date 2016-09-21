@@ -1,0 +1,13 @@
+<div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= render "oder_products", oder_products: order.order_products %>
+      <div class="pull-right">
+        <h4>
+          <b><%= t "oder.total" %>: </b>
+          <%= number_to_currency @cart.total_price %>
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>

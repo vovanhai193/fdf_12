@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  attr_accessor :cart
   acts_as_paranoid
   belongs_to :user
   belongs_to :shop
@@ -8,4 +9,15 @@ class Order < ApplicationRecord
   delegate :name, to: :shop, prefix: :shop
   delegate :name, to: :user, prefix: :user, allow_nil: true
   delegate :name, to: :coupon, prefix: :coupon, allow_nil: true
+
+  after_save :build_order_products
+
+  scope :by_date_newest, ->{order created_at: :desc}
+
+  def build_order_products
+    cart.items.each do |item|
+      order_products.create product_id: item.product_id,
+        quantity: item.quantity
+    end
+  end
 end

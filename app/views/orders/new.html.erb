@@ -1,0 +1,17 @@
+<div class="page-content">
+  <% if @cart.present? %>
+    <div class="container">
+      <div class="row">
+        <%= render "oder_products", oder_products: @cart.items %>
+        <div class="pull-right">
+          <h4><b><%= t "oder.total" %>: </b>
+            <%= number_to_currency @cart.total_price %></h4>
+        </div>
+      </div>
+      <%= simple_form_for @orders do |f| %>
+       <%= f.input :notes, class: "form-control" %>
+       <%= f.submit data: {confirm: t("oder.confirm")}, class: "btn btn_order" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

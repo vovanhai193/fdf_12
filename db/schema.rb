@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20160915081012) do
     t.index ["user_id"], name: "index_coupons_on_user_id", using: :btree
   end
 
-  create_table "oder_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "order_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "quantity"
     t.float    "price",      limit: 24
     t.text     "notes",      limit: 65535
@@ -83,12 +83,12 @@ ActiveRecord::Schema.define(version: 20160915081012) do
     t.datetime "deleted_at"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.index ["coupon_id"], name: "index_oder_products_on_coupon_id", using: :btree
-    t.index ["deleted_at"], name: "index_oder_products_on_deleted_at", using: :btree
-    t.index ["order_id", "product_id"], name: "index_oder_products_on_order_id_and_product_id", using: :btree
-    t.index ["order_id"], name: "index_oder_products_on_order_id", using: :btree
-    t.index ["product_id"], name: "index_oder_products_on_product_id", using: :btree
-    t.index ["user_id"], name: "index_oder_products_on_user_id", using: :btree
+    t.index ["coupon_id"], name: "index_order_products_on_coupon_id", using: :btree
+    t.index ["deleted_at"], name: "index_order_products_on_deleted_at", using: :btree
+    t.index ["order_id", "product_id"], name: "index_order_products_on_order_id_and_product_id", using: :btree
+    t.index ["order_id"], name: "index_order_products_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_order_products_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_order_products_on_user_id", using: :btree
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -217,10 +217,10 @@ ActiveRecord::Schema.define(version: 20160915081012) do
   add_foreign_key "comments", "users"
   add_foreign_key "coupons", "shops"
   add_foreign_key "coupons", "users"
-  add_foreign_key "oder_products", "coupons"
-  add_foreign_key "oder_products", "orders"
-  add_foreign_key "oder_products", "products"
-  add_foreign_key "oder_products", "users"
+  add_foreign_key "order_products", "coupons"
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "products"
+  add_foreign_key "order_products", "users"
   add_foreign_key "orders", "coupons"
   add_foreign_key "orders", "shops"
   add_foreign_key "orders", "users"

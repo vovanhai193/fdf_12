@@ -102,23 +102,6 @@ Coupon.create!(
   user_id: 1
 )
 
-Order.create!(
-  status: 0,
-  end_at: "2016-09-12 08:00:00",
-  notes: "Quickly",
-  user_id: 1,
-  shop_id: 1,
-  coupon_id: 1
-)
-
-Order.create!(
-  status: 1,
-  end_at: "2016-09-12 08:00:00",
-  notes: "Quickly",
-  user_id: 1,
-  shop_id: 1,
-  coupon_id: 1
-)
 Category.create!(
   name: "Bread"
 )
