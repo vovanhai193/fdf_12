@@ -92,15 +92,15 @@ ActiveRecord::Schema.define(version: 20160915081012) do
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "status"
+    t.integer  "status",                   default: 0, null: false
     t.datetime "end_at"
     t.text     "notes",      limit: 65535
     t.integer  "user_id"
     t.integer  "shop_id"
     t.integer  "coupon_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.index ["coupon_id"], name: "index_orders_on_coupon_id", using: :btree
     t.index ["deleted_at"], name: "index_orders_on_deleted_at", using: :btree
     t.index ["shop_id", "user_id"], name: "index_orders_on_shop_id_and_user_id", using: :btree
