@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :destroy]
     resources :shop_requests, only: [:index, :update]
     resources :categories
+    resources :users, only: [:index, :edit, :update]
   end
 
   namespace :dashboard do

@@ -13,4 +13,17 @@ class User < ApplicationRecord
   has_many :orders
   has_many :order_products
   has_many :coupons
+
+  mount_uploader :avatar, PictureUploader
+
+  validates :name, presence: true
+  validate :image_size
+
+  private
+  def image_size
+    max_size = Settings.pictures.max_size
+    if avatar.size > max_size.megabytes
+      errors.add :avatar, I18n.t("pictures.error_message", max_size: max_size)
+    end
+  end
 end
