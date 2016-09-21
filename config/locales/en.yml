@@ -54,6 +54,7 @@ en:
         updated_category: "Updated category successfully!"
         deleted_category: "Deleted category successfully!"
         created_shop: "Requested creating shop successfully!"
+        updated_user: "Update user's information successfully!"
       dashboard:
         create_product: "Created product successfully!"
         edit_product: "Edit product successfully!"
@@ -65,6 +66,7 @@ en:
         updated_category: "Updated category failed!"
         deleted_category: "Deleted category failed!"
         created_shop: "Requested creating shop failed!"
+        updated_user: "Update user's information failed!"
       load_shop: "Cannot find shop!"
       dashboard:
         create_product: "Created product failed!"
@@ -119,6 +121,21 @@ en:
       edit:
         title: "Edit category"
         category: "Category"
+    users:
+      index:
+        title: "All users"
+        name: "User's name"
+        email: "Email"
+        chatwork: "Chatwork id"
+        actions: "Actions"
+        avatar: "Avatar"
+        description: "Description"
+        show_avatar: "Show avatar"
+      edit:
+        title: "Edit user"
+        user: "User's information"
+      form:
+        show_avatar: "Hover me to show avatar"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN
@@ -152,6 +169,10 @@ en:
       new_category: "New"
       orders: "Orders"
       all_orders: "All"
+      shop_requests: "Requested shop"
+      all_shop_requests: "All"
+      users: "Users"
+      all_users: "All"
     admin_lte_2_header:
       logo_mini: "F"
       logo_medium: "Framgia"
