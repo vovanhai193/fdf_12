@@ -3,6 +3,9 @@
     <a href="#">
       <%= image_tag product.image.url, class: "img-responsive" %>
     </a>
+    <div>
+      <%= link_to product.name, product %>
+    </div>
     <div class="product_text">
       <%= product.description %>
     </div>

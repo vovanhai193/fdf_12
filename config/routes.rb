@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :shops, only: [:index, :show]
-  resources :products, only: :index
+  resources :products, only: [:index, :show]
   resources :carts
   resources :orders
 end
