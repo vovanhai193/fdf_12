@@ -32,8 +32,13 @@
               </td>
               <td><%= user.description %></td>
               <td>
+                <input type="hidden" value="<%= user.id %>" class="user_id">
                 <%= link_to t("common.edit_button"),
                   edit_admin_user_path(user), class: "btn btn-primary" %>
+                <%= link_to t("common.delete_button"), admin_user_path(user),
+                  method: :delete, class: "btn btn-danger" %>
+                <input type="button" value="<%= user.status %>"
+                  class="btn btn-sm btn-danger btn_block" >
               </td>
             </tr>
           <% end %>
