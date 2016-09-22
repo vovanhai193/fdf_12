@@ -8,7 +8,10 @@
   </div>
   <div class="col-xs-10">
     <div class="row content">
-      <h3><%= link_to shop.name, dashboard_shop_path(shop) %></h3>
+      <h3>
+        <%= link_to shop.name, dashboard_shop_path(shop) %>
+      </h3>
+      <%= render "shared/shop_status_label", shop: shop %>
       <input id="shop-average-rating" type="number"
         class="rating-loading star-rating" data-size="sm"
         value=<%= shop.averate_rating %> >

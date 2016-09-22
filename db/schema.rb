@@ -92,15 +92,15 @@ ActiveRecord::Schema.define(version: 20160922024446) do
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "status"
+    t.integer  "status",                   default: 0, null: false
     t.datetime "end_at"
     t.text     "notes",      limit: 65535
     t.integer  "user_id"
     t.integer  "shop_id"
     t.integer  "coupon_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.index ["coupon_id"], name: "index_orders_on_coupon_id", using: :btree
     t.index ["deleted_at"], name: "index_orders_on_deleted_at", using: :btree
     t.index ["shop_id", "user_id"], name: "index_orders_on_shop_id_and_user_id", using: :btree
@@ -113,13 +113,13 @@ ActiveRecord::Schema.define(version: 20160922024446) do
     t.text     "description", limit: 65535
     t.float    "price",       limit: 24
     t.string   "image"
-    t.integer  "status"
+    t.integer  "status",                    default: 1
     t.integer  "category_id"
     t.integer  "shop_id"
     t.integer  "user_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["deleted_at"], name: "index_products_on_deleted_at", using: :btree
     t.index ["name"], name: "index_products_on_name", using: :btree
@@ -158,14 +158,14 @@ ActiveRecord::Schema.define(version: 20160922024446) do
   create_table "shops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.text     "description",    limit: 65535
-    t.integer  "status"
+    t.integer  "status",                       default: 0
     t.string   "cover_image"
     t.string   "avatar"
     t.float    "averate_rating", limit: 24
     t.integer  "owner_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.index ["deleted_at"], name: "index_shops_on_deleted_at", using: :btree
     t.index ["owner_id"], name: "index_shops_on_owner_id", using: :btree
   end
@@ -209,7 +209,7 @@ ActiveRecord::Schema.define(version: 20160922024446) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "status"
+    t.integer  "status",                 default: 0
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
