@@ -6,4 +6,12 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
   end
+
+  def show
+    @product = Product.find_by id: params[:id]
+    unless @product
+      flash[:danger] = t "product.not_product"
+      redirect_to products_path
+    end
+  end
 end

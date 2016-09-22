@@ -259,3 +259,8 @@ en:
     btn_cancel_oder: "Cancel"
     deleted: "Delete successfully"
     not_delete: "Not delete"
+
+  product:
+    name: "Product Name"
+    price: "Price"
+    not_product: "Have not product"
