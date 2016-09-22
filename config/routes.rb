@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :shop_requests, only: [:index, :update]
     resources :categories
     resources :users
-    resources :shops, only: :index
+    resources :shops, except: [:new, :create, :show]
   end
 
   namespace :dashboard do

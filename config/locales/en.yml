@@ -32,8 +32,10 @@ en:
     edit_button: "Edit"
     delete_button: "Delete"
     save_button: "Save changes"
+    set_button: "Set"
     btn_ok: "Ok"
     btn_cancel: "Cancel"
+    delete_confirm: "Are you sure you want to delete? This action cannot be undone!"
   header:
     account: "Account"
     request_open_shop: "Request open shop"
@@ -48,6 +50,8 @@ en:
       update_info: "Update Information"
       forgot_password: "Forgot Password"
   flash:
+    success_message: "Success!"
+    danger_message: "Failed!"
     success:
       admin:
         created_category: "Created category successfully!"
