@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.text :description
       t.float :price
       t.string :image
-      t.integer :status
+      t.integer :status, default: 1
       t.references :category, index: true, foreign_key: true
       t.references :shop, foreign_key: true
       t.references :user, foreign_key: true

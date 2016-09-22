@@ -60,6 +60,7 @@ en:
         edit_product: "Edit product successfully!"
         update_product: "Update product successfully!"
         updated_shop: "Update shop successfully!"
+        delete_product: "Delete product successfully!"
     danger:
       admin:
         created_category: "Created category failed!"
@@ -73,6 +74,8 @@ en:
         edit_product: "Edit product failed!"
         update_product: "Update product failed!"
         updated_shop: "Update shop failed!"
+        delete_product: "Delete product failed!"
+        order_product: "Product was ordered"
     warning:
       admin:
         deleted_category: "Cannot delete because this category has products!"
@@ -192,6 +195,7 @@ en:
       form:
         shop_name: "Shop name"
         shop_description: "Description"
+
       not_found: "Shop not found"
     products:
       new:
@@ -208,6 +212,7 @@ en:
       index:
         empty_list: "You don't have any product! Let's add new product now!"
         new_button: "Add new product"
+        delete: "Detete"
     shops:
       show:
         edit: "Edit shop"

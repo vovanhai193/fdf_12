@@ -1,7 +1,7 @@
 class Dashboard::ProductsController < BaseDashboardController
   before_action :load_shop
   before_action :load_categories, only: [:edit, :new, :update]
-  before_action :load_product, only: [:edit, :update]
+  before_action :load_product, only: [:edit, :update, :destroy]
   before_action :load_products, only: :index
 
   def new
@@ -28,11 +28,27 @@ class Dashboard::ProductsController < BaseDashboardController
   def update
     if @product.update_attributes product_params
       flash[:success] = t "flash.success.dashboard.edit_product"
-      redirect_to dashboard_shop_products_path
+      respond_to do |format|
+        format.json do
+          render json: {status: @product.status}
+        end
+        format.html {redirect_to dashboard_shop_products_path}
+      end
     else
       flash[:danger] = t "flash.danger.dashboard.edit_product"
       render :edit
     end
+  end
+
+  def destroy
+    if @product.order_products.any?
+      flash[:danger] = t "flash.danger.dashboard.order_product"
+    elsif @product.destroy
+      flash[:success] = t "flash.success.dashboard.delete_product"
+    else
+      flash[:danger] = t "flash.danger.dashboard.delete_product"
+    end
+    redirect_to dashboard_shop_products_path
   end
 
   private
@@ -46,7 +62,7 @@ class Dashboard::ProductsController < BaseDashboardController
 
   def product_params
     params.require(:product).permit :id, :name, :description, :price,
-      :category_id, :user_id, :image
+      :category_id, :user_id, :image, :status
   end
 
   def load_categories
