@@ -22,7 +22,7 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def index
-    @shops = current_user.own_shops
+    @shops = current_user.own_shops.decorate
   end
 
   def edit

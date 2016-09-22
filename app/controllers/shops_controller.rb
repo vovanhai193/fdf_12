@@ -2,7 +2,7 @@ class ShopsController < ApplicationController
   before_action :load_shop, only: :show
 
   def index
-    @shops = Shop.page(params[:page]).per Settings.common.per_page
+    @shops = Shop.page(params[:page]).per(Settings.common.per_page).decorate
   end
 
   def show

@@ -46,7 +46,8 @@ Shop.create!(
   description: "Coffe",
   status: 1,
   cover_image: "image",
-  averate_rating: 5.0
+  averate_rating: 5.0,
+  user_id: 1
 )
 #shop request
 
@@ -55,7 +56,8 @@ Shop.create!(
   description: "Chicken and chickend",
   status: 0,
   cover_image: "image",
-  avatar: "image2"
+  avatar: "image2",
+  user_id: 1
 )
 
 Shop.create!(
@@ -63,7 +65,8 @@ Shop.create!(
   description: "Hamburger",
   status: 0,
   cover_image: "image",
-  avatar: "image2"
+  avatar: "image2",
+  user_id: 1
 )
 
 
@@ -73,7 +76,8 @@ Shop.create!(
   description: "sushi",
   status: 0,
   cover_image: "image",
-  avatar: "image2"
+  avatar: "image2",
+  user_id: 1
 )
 
 #shop_manangers

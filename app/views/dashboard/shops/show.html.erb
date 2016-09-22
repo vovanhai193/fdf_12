@@ -19,9 +19,7 @@
           <div class="row shop-basic-info">
             <h4 class="title">
               <%= @shop.name %>
-              <span class="status opening">
-                <i class="fa fa fa-circle"></i>
-              </span>
+              <%= render "shared/shop_status_label", shop: @shop %>
             </h4>
           </div>
         </div>

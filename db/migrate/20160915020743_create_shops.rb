@@ -3,7 +3,7 @@ class CreateShops < ActiveRecord::Migration[5.0]
     create_table :shops do |t|
       t.string :name
       t.text :description
-      t.integer :status
+      t.integer :status, default: 0
       t.string :cover_image
       t.string :avatar
       t.float :averate_rating

@@ -23,4 +23,19 @@ class ShopDecorator < Draper::Decorator
       I18n.t "status.shops.pending"
     end
   end
+
+  def status_label
+    case self.status.to_sym
+    when :active
+      "success"
+    when :closed
+      "warning"
+    when :rejected
+      "info"
+    when :blocked
+      "danger"
+    else
+      "primary"
+    end
+  end
 end

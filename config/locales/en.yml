@@ -141,6 +141,14 @@ en:
         user: "User's information"
       form:
         show_avatar: "Hover me to show avatar"
+    shops:
+      index:
+        title: "All Shops"
+        name: "Shop Name"
+        owner: "Shop Owner"
+        description: "Description"
+        status: "Status"
+        actions: "Actions"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN
@@ -166,6 +174,7 @@ en:
     admin_lte_2:
       footer: "Framgia Orders. @2016@"
     admin_lte_2_sidebar:
+      all: "All"
       online: "Online"
       header: "All"
       home: "Dashboard"
@@ -175,7 +184,7 @@ en:
       orders: "Orders"
       all_orders: "All"
       shop_requests: "Requested shop"
-      all_shop_requests: "All"
+      shops: "Shops"
       users: "Users"
       all_users: "All"
     admin_lte_2_header:

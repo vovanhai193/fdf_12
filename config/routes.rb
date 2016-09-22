@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :shop_requests, only: [:index, :update]
     resources :categories
     resources :users
+    resources :shops, only: :index
   end
 
   namespace :dashboard do
