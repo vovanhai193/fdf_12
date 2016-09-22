@@ -245,6 +245,16 @@ en:
       form:
         shop_name: "Name"
         shop_description: "Description"
+    order:
+      title: "List Orders"
+      id: "ID"
+      created_at: "Date"
+      user_name: "User"
+      total_pay: "Total Pay"
+      status: "Status"
+      confirm: "Confirm"
+      detail_order: "Detail"
+
   cart:
     view_cart_all: "View all"
     add_to_card: "Add to cart"
@@ -298,10 +308,6 @@ en:
     not_product_in_cart: "Have not products in cart"
     status: "Status:"
     btn_cancel_oder: "Cancel"
+    btn_confirm_oder: "Confirm Order"
     deleted: "Delete successfully"
     not_delete: "Not delete"
-
-  product:
-    name: "Product Name"
-    price: "Price"
-    not_product: "Have not product"

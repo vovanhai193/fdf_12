@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     root "home#index"
     resources :shops do
       resources :products
+      resources :orders
     end
   end
 
