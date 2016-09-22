@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :order_products
   has_many :coupons
 
+  enum status: {active: 0, blocked: 1}
   mount_uploader :avatar, PictureUploader
 
   validates :name, presence: true

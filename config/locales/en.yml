@@ -55,6 +55,7 @@ en:
         deleted_category: "Deleted category successfully!"
         created_shop: "Requested creating shop successfully!"
         updated_user: "Update user's information successfully!"
+        deleted_user: "Delete user successfully!"
       dashboard:
         create_product: "Created product successfully!"
         edit_product: "Edit product successfully!"
@@ -68,6 +69,7 @@ en:
         deleted_category: "Deleted category failed!"
         created_shop: "Requested creating shop failed!"
         updated_user: "Update user's information failed!"
+        deleted_user: "Delete user failed!"
       load_shop: "Cannot find shop!"
       dashboard:
         create_product: "Created product failed!"

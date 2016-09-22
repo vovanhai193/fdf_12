@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915081012) do
+ActiveRecord::Schema.define(version: 20160922024446) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -92,15 +92,15 @@ ActiveRecord::Schema.define(version: 20160915081012) do
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "status",                   default: 0, null: false
+    t.integer  "status"
     t.datetime "end_at"
     t.text     "notes",      limit: 65535
     t.integer  "user_id"
     t.integer  "shop_id"
     t.integer  "coupon_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["coupon_id"], name: "index_orders_on_coupon_id", using: :btree
     t.index ["deleted_at"], name: "index_orders_on_deleted_at", using: :btree
     t.index ["shop_id", "user_id"], name: "index_orders_on_shop_id_and_user_id", using: :btree
@@ -209,6 +209,7 @@ ActiveRecord::Schema.define(version: 20160915081012) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "status"
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
