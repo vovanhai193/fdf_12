@@ -46,9 +46,16 @@
                 <%= render "shared/shop_status_label", shop: shop %>
               </td>
               <td>
-                <%= link_to t("common.edit_button"), "#",
-                  class: "btn btn-sm btn-warning" %>
-                <%= link_to t("common.delete_button"), "#",
+                <%= form_for [:admin, shop], url: admin_shop_path(shop),
+                  html: {class: "inline"} do |f| %>
+                  <%= f.select :status,
+                    Shop.statuses.keys.map{|status| [status.titleize, status]},
+                    {}, {class: "form-control inline"} %>
+                  <%= f.submit t("common.set_button"),
+                    class: "btn btn-sm btn-primary" %>
+                <% end %>
+                <%= link_to t("common.delete_button"), admin_shop_path(shop),
+                  method: :delete, data: {confirm: t("common.delete_confirm")},
                   class: "btn btn-sm btn-danger" %>
               </td>
             </tr>

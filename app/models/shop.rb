@@ -44,7 +44,7 @@ class Shop < ApplicationRecord
   end
 
   def send_notification_after_confirmed
-    if self.status_changed? && !self.pending
+    if self.status_changed? && !self.pending?
       ShopNotification.new(self).send_when_confirmed
     end
   end
