@@ -36,6 +36,7 @@ en:
     btn_ok: "Ok"
     btn_cancel: "Cancel"
     delete_confirm: "Are you sure you want to delete? This action cannot be undone!"
+    chania: "Chania"
   header:
     account: "Account"
     request_open_shop: "Request open shop"
@@ -140,6 +141,8 @@ en:
         avatar: "Avatar"
         description: "Description"
         show_avatar: "Show avatar"
+        blocked: "blocked"
+        active: "active"
       edit:
         title: "Edit user"
         user: "User's information"
