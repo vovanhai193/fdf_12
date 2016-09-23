@@ -314,3 +314,14 @@ en:
     btn_confirm_oder: "Confirm Order"
     deleted: "Delete successfully"
     not_delete: "Not delete"
+  product:
+    name: "Product Name"
+    price: "Price"
+    not_product: "Have not product"
+  shared:
+    comments:
+      comment_box: "Comments box"
+      can_comment_text: "LEAVE A COMMENT BELOW"
+      cant_comment_text: "PLEASE SIGNIN TO COMMENT"
+      comment_placeholder_text: "Type your comment here..."
+      comment_button: "Comment"
