@@ -325,3 +325,12 @@ en:
       cant_comment_text: "PLEASE SIGNIN TO COMMENT"
       comment_placeholder_text: "Type your comment here..."
       comment_button: "Comment"
+  date_format: "%d/%m/%Y"
+  users:
+    show:
+      email: "Email"
+      chatwork: "Chatwork id"
+      create_at: "Joined at"
+      status: "Status"
+      send_mail: "Mail me"
+      description: "Description"

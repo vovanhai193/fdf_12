@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   root "static_pages#home"
-  resources :shops
   namespace :admin do
     root "home#index"
     resources :orders, only: [:index, :show, :destroy]
@@ -30,4 +29,5 @@ Rails.application.routes.draw do
   resources :comments, only: :destroy
   resources :carts
   resources :orders
+  resources :users, only: :show
 end
