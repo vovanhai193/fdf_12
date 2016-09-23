@@ -1,13 +1,15 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
-
+class ShopCoverUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  include Cloudinary::CarrierWave
-  process resize_to_limit: [300, 300]
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+    process tags: ["post_picture"]
+  end
+
+  process resize_to_limit: [1280, 860]
 
   process convert: "png"
-  process tags: ["post_picture"]
 
   version :standard do
     process resize_to_fill: [400, 300, :north]
@@ -28,7 +30,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url *args
-    "/public/uploads/" + [version_name, "default.jpg"].compact.join('_')
+    "/assets/" + [version_name, "default_shop_cover.jpg"].compact.join('_')
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
