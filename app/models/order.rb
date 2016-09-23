@@ -5,12 +5,12 @@ class Order < ApplicationRecord
   belongs_to :shop
   belongs_to :coupon
   has_many :order_products, dependent: :destroy
-  enum status: {open: 0, deliver: 1, close: 2}
+  enum status: {pending: 0, confirm: 1}
   delegate :name, to: :shop, prefix: :shop
   delegate :name, to: :user, prefix: :user, allow_nil: true
   delegate :name, to: :coupon, prefix: :coupon, allow_nil: true
 
-  after_save :build_order_products
+  after_create :build_order_products
 
   scope :by_date_newest, ->{order created_at: :desc}
 

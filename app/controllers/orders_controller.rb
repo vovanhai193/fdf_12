@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:notes)
-      .merge! user: current_user, cart: @cart
+      .merge! user: current_user, total_pay: @cart.total_price, cart: @cart
   end
 
   def load_order
