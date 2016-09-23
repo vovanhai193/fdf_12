@@ -16,6 +16,13 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validate :image_size
 
+  delegate :name, to: :shop, prefix: :shop, allow_nil: true
+
+  scope :by_date_newest, ->{order created_at: :desc}
+  scope :by_active, ->{(where status: :active)}
+  scope :top_products, -> do
+    by_active.by_date_newest.limit Settings.index.max_shops
+  end
   private
   def image_size
     max_size = Settings.pictures.max_size

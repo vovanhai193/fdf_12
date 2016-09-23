@@ -10,3 +10,6 @@ pictures:
   avatar_small_size: "24"
 mailer:
   default_mail: "no-reply@fdf-12.herokuapp.com"
+index:
+  max_shops: 5
+  max_products: 10

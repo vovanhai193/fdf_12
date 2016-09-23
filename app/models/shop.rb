@@ -24,6 +24,10 @@ class Shop < ApplicationRecord
   delegate :name, to: :owner, prefix: :owner, allow_nil: true
   delegate :email, to: :owner, prefix: :owner
 
+  scope :by_date_newest, ->{order(created_at: :desc)}
+  scope :by_active, ->{(where status: :active)}
+  scope :top_shops, ->{by_active.by_date_newest.limit Settings.index.max_shops}
+
   private
   def create_shop_manager
     shop_managers.create user_id: owner_id

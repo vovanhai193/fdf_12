@@ -3,6 +3,8 @@ $(document).ready(function() {
     statusNow = $(this).val();
     btn = $(this);
     statusChange = (statusNow === 'blocked') ? 'active' : 'blocked';
+    classCssNow = (statusNow === 'blocked') ? 'btn-danger' : 'btn-primary';
+    classCssAfter = (statusChange === 'blocked') ? 'btn-danger' : 'btn-primary';
     parent = $(this).parent(),
     userId =  parent.children()[0].value,
     $.ajax({
@@ -11,11 +13,12 @@ $(document).ready(function() {
       dataType: 'json',
        data: {
         user: {
-          status: statusChange
+          status: statusNow
         }
       },
       success: function(data) {
         btn.val(statusChange);
+        $(btn).removeClass(classCssNow).addClass(classCssAfter);
       },
       error: function(error_message) {
         alert('error ' + error_message);

@@ -40,34 +40,21 @@
       </div>
     </div>
   </div>
+
+  <!-- Begin carousel -->
   <div class="col-sm-9">
     <div id="id_top_products" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img src="assets/draft/ui_1.jpg" alt="Chania">
-          <div class="carousel-caption">
-            <h3><%= t "draft.shop_name" %></h3>
-            <p><%= t "draft.description" %></p>
+        <% @shops.each_with_index do |shop, index| %>
+          <div class="<%= index == 0 ? 'item active' : 'item' %>">
+            <%= image_tag shop.avatar.url, alt: t('common.chania') %>
+            <div class="carousel-caption">
+              <h3><%= shop.name %></h3>
+              <p><%= shop.description %></p>
+            </div>
           </div>
-        </div>
-
-        <div class="item">
-          <img src="assets/draft/ui_2.jpg" alt="Chania">
-          <div class="carousel-caption">
-            <h3><%= t "draft.shop_name" %></h3>
-            <p><%= t "draft.description" %></p>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="assets/draft/ui_3.jpg" alt="Flower">
-          <div class="carousel-caption">
-            <h3><%= t "draft.shop_name" %></h3>
-            <p><%= t "draft.description" %></p>
-          </div>
-        </div>
+        <% end %>
       </div>
-
       <a class="left carousel-control" href="#id_top_products" role="button"
          data-slide="prev">
         <span class="fa fa-angle-left" aria-hidden="true"></span>
@@ -80,26 +67,25 @@
       </a>
     </div>
   </div>
+  <!-- End carousel -->
 </div>
+
 
 <h2 class="section_title"><%= t "common.top_shops" %></h2>
 
 <div class="col-md-12 magin_top_10px" id="id_shops_list">
-  <% 5.times do %>
+  <% @shops.each do |shop| %>
     <div class="block row block-shop-feed-item">
       <div class="col-xs-2">
         <div class="row thumbnail">
-          <a href="#">
-            <img src="assets/draft/ui_4.jpg"
-              class="img-responsive">
-          </a>
+          <%= image_tag shop.avatar.url %>
         </div>
       </div>
       <div class="col-xs-10">
         <div class="row content">
-          <h3><a href="#"><%= t "draft.shop_name" %></a></h3>
+          <h3><%= link_to shop.name, shops_path(shop) %></h3>
           <%= render "layouts/temp_star" %>
-          <div class="description quote"><%= t "draft.shop_desc" %></div>
+          <div class="description quote"><%= shop.description %></div>
           <div class="category">
             <ul class="nav">
               <li>
@@ -130,32 +116,25 @@
 </h2>
 
 <div class="col-md-12 magin_top_10px" id="id_products_list">
- <% 10.times do |i| %>
+ <% @products.each_with_index do |product, index| %>
    <div class="product_item_wrapper">
      <div class="poster_info_area padding_5px">
        <div class="avatar_area float_left">
-         <a href="#">
-           <img alt="User" class="gravatar img-circle"
-             src="assets/draft/ui_4.jpg">
-         </a>
-       </div>
+          <%= link_to image_tag(product.image_url), class: "gravatar img-circle" %>
+        </div>
        <div class="poster_content_area">
-         <a href="#">
-           <h3><%= t "draft.user_name" %></h3>
-         </a>
+         <%= link_to product.user.name, "#" %>
          <span>
            <%= t "common.owner_of" %>
-           <a href="#"><%= t "draft.shop_name" %></a>
+           <%= link_to product.shop_name, shops_path(product.shop) %>
          </span>
        </div>
      </div>
      <div class="product_content_area">
-       <a href="#">
-         <img class="book_cover" src="assets/draft/ui_<%= i%5 %>.jpg">
-       </a>
-       <div class="product_text">
-         <%= t "draft.description" %>
-     </div>
+        <%= link_to image_tag(product.image_url), class: "book_cover" %>
+        <div class="product_text">
+         <%= product.description %>
+        </div>
      </div>
      <div class="interaction_area">
        <button class="btn btn_order">
