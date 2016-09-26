@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
-    root "home#index"
+    root "shops#index", path: "/"
     resources :shops do
       resources :products
       resources :orders

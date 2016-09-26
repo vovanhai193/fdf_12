@@ -45,16 +45,19 @@
   </div>
 </div>
 <div class="row">
-  <% if @products.any? %>
-    <h2 class="section_title">
-      <%= t ".has_products" %>
-    </h2>
-    <div class="col-md-12">
-      <%= render "products" %>
+  <h2 class="section_title">
+    <div class="btn_view_all_wrapper pull-right">
+      <%= link_to t("common.btn_request"),
+        new_dashboard_shop_product_path(@shop),
+        class: "btn btn_view_all btn-warning" %>
     </div>
-  <% else %>
-    <h2 class="section_title">
+    <% if @products.any? %>
+      <%= t ".has_products" %>
+    <% else %>
       <%= t ".no_product" %>
-    </h2>
-  <% end %>
+    <% end %>
+  </h2>
+  <div class="col-md-12">
+    <%= render "products" if @products.any? %>
+  </div>
 </div>

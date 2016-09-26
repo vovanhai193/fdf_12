@@ -18,7 +18,7 @@ class Dashboard::ProductsController < BaseDashboardController
     @product = @shop.products.new product_params
     if @product.save
       flash[:success] = t "flash.success.dashboard.create_product"
-      redirect_to dashboard_shop_products_path
+      redirect_to dashboard_shop_path @shop
     else
       flash[:danger] = t "flash.danger.dashboard.create_product"
       render :new
@@ -32,7 +32,7 @@ class Dashboard::ProductsController < BaseDashboardController
         format.json do
           render json: {status: @product.status}
         end
-        format.html {redirect_to dashboard_shop_products_path}
+        format.html {redirect_to dashboard_shop_path @shop}
       end
     else
       flash[:danger] = t "flash.danger.dashboard.edit_product"
@@ -48,7 +48,7 @@ class Dashboard::ProductsController < BaseDashboardController
     else
       flash[:danger] = t "flash.danger.dashboard.delete_product"
     end
-    redirect_to dashboard_shop_products_path
+    redirect_to dashboard_shop_path @shop
   end
 
   private

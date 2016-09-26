@@ -34,6 +34,22 @@
           <%= f.password_field :password_confirmation, autocomplete: "off",
             class: "form-control" %>
         </div>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :chatwork_id %>
+          <%= f.text_field :chatwork_id, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :avatar %>
+          <%= f.file_field :avatar, accept: Settings.pictures.accepted_files %>
+        </div>
 
         <div class="field">
           <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />

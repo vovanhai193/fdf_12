@@ -1,11 +1,25 @@
 <tr>
-  <td><%= image_tag product.image.url %></td>
+  <td>
+    <%= link_to product do %>
+      <div class="shop-product-image">
+        <%= image_tag product.image.url %>
+      </div>
+    <% end %>
+  </td>
   <td><%= product.name %></td>
+  <td>
+    <div class="truncate">
+      <%= product.description %>
+    </div>
+  </td>
   <td><%= product.price %></td>
   <td>
-    <%= link_to t("common.edit_button"), "#",
+    <%= link_to t("common.edit_button"),
+      edit_dashboard_shop_product_path(product.shop, product),
       class: "btn btn-sm btn-primary" %>
-    <%= link_to t("common.delete_button"), "#",
+    <%= link_to t("common.delete_button"),
+      dashboard_shop_product_path(product.shop, product), method: :delete,
+      data: {confirm: t("common.delete_confirm")},
       class: "btn btn-sm btn-danger" %>
   </td>
 </tr>
