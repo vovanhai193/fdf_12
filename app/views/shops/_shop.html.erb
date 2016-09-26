@@ -1,0 +1,32 @@
+<div class="block row block-shop-feed-item">
+  <div class="col-xs-2">
+    <div class="row thumbnail">
+      <a href="shops/10">
+      <%= image_tag shop.avatar.url %>
+      </a>
+    </div>
+  </div>
+  <div class="col-xs-10">
+    <div class="row content">
+      <h3><%= link_to shop.name, shop %></h3>
+      <%= render "shared/shop_status_label", shop: shop %>
+      <input id="shop-average-rating" type="number"
+        class="rating-loading star-rating" data-size="sm"
+        value=<%= shop.averate_rating %> >
+      <div class="description quote"><p><%= shop.description %></p></div>
+      <div class="category">
+        <ul class="nav">
+          <li>
+            <a href="/?category=4">Bread</a>
+          </li>
+          <li>
+            <a href="/?category=2">Drink</a>
+          </li>
+          <li>
+            <a href="/?category=1">Snack</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

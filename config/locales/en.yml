@@ -37,9 +37,12 @@ en:
     btn_cancel: "Cancel"
     delete_confirm: "Are you sure you want to delete? This action cannot be undone!"
     chania: "Chania"
+    btn_your_shops: "Your shops"
+    btn_request: "Request"
+    all_shops: "All shops"
   header:
     account: "Account"
-    request_open_shop: "Request open shop"
+    shop_manager: "Shop management"
     report_abuse: "Report abuse"
     settings: "Settings"
     logout: "Logout"

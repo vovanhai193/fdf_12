@@ -26,6 +26,7 @@
     <%= f.file_field :image, accept: Settings.pictures.accepted_files %>
   </div>
   <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= link_to t("common.back_button"), :back, class: "btn btn-warning" %>
   <%= f.submit yield(:submit_button),
     class: "btn btn-primary space-top-submit" %>
 <% end %>

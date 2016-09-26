@@ -24,7 +24,8 @@
             <div>
               <input type="hidden" value="<%= product.id %>" class="product_id">
               <input type="hidden" value="<%= @shop.id %>" class="shop_id">
-              <%= link_to (t".delete"), dashboard_shop_product_path(@shop, product),
+              <%= link_to (t".delete"),
+                dashboard_shop_product_path(@shop, product),
                 method: :delete, class: "btn btn-sm btn-danger" %>
               <input type="button" value="<%= product.status %>"
                 class="btn btn-sm btn-danger id_btn_active" >

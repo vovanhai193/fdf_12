@@ -70,86 +70,30 @@
   <!-- End carousel -->
 </div>
 
-
-<h2 class="section_title"><%= t "common.top_shops" %></h2>
-
-<div class="col-md-12 magin_top_10px" id="id_shops_list">
-  <% @shops.each do |shop| %>
-    <div class="block row block-shop-feed-item">
-      <div class="col-xs-2">
-        <div class="row thumbnail">
-          <%= image_tag shop.avatar.url %>
-        </div>
-      </div>
-      <div class="col-xs-10">
-        <div class="row content">
-          <h3><%= link_to shop.name, shops_path(shop) %></h3>
-          <%= render "layouts/temp_star" %>
-          <div class="description quote"><%= shop.description %></div>
-          <div class="category">
-            <ul class="nav">
-              <li>
-                <a href="#"><%= t "common.category.bread" %></a>
-              </li>
-              <li>
-                <a href="#"><%= t "common.category.rice" %></a>
-              </li>
-              <li>
-                <a href="#"><%= t "common.category.snack" %></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+<div class="row">
+  <h2 class="section_title">
+    <%= t "common.top_shops" %>
+    <div class="btn_view_all_wrapper pull-right">
+      <%= link_to t("common.btn_view_all"), shops_path,
+        class: "btn btn_view_all btn-warning" %>
     </div>
-  <% end %>
+  </h2>
+
+  <div class="col-md-12 magin_top_10px" id="id_shops_list">
+    <%= render @shops %>
+  </div>
 </div>
 
-<div class="btn_view_all_wrapper">
-  <button class="btn btn_view_all btn_view_all_shops">
-    <%= t "common.btn_view_all" %>
-  </button>
-</div>
+<div class="row">
+  <h2 class="section_title">
+    <%= t "common.top_products" %>
+    <div class="btn_view_all_wrapper pull-right">
+      <%= link_to t("common.btn_view_all"), products_path,
+        class: "btn btn_view_all btn-warning" %>
+    </div>
+  </h2>
 
-<h2 class="section_title">
-  <%= t "common.top_products" %>
-</h2>
-
-<div class="col-md-12 magin_top_10px" id="id_products_list">
- <% @products.each_with_index do |product, index| %>
-   <div class="product_item_wrapper">
-     <div class="poster_info_area padding_5px">
-       <div class="avatar_area float_left">
-          <%= link_to image_tag(product.image_url), class: "gravatar img-circle" %>
-        </div>
-       <div class="poster_content_area">
-         <%= link_to product.user.name, "#" %>
-         <span>
-           <%= t "common.owner_of" %>
-           <%= link_to product.shop_name, shops_path(product.shop) %>
-         </span>
-       </div>
-     </div>
-     <div class="product_content_area">
-        <%= link_to image_tag(product.image_url), class: "book_cover" %>
-        <div class="product_text">
-         <%= product.description %>
-        </div>
-     </div>
-     <div class="interaction_area">
-       <button class="btn btn_order">
-         <%= t "common.btn_order_now" %>
-       </button>
-       <button class="btn btn-default btn_add_favorite">
-         <%= t "common.btn_add_to_favorite" %>
-       </button>
-     </div>
-   </div>
-  <% end %>
-</div>
-
-<div class="btn_view_all_wrapper">
-  <button class="btn btn_view_all btn_view_all_products">
-    <%= t "common.btn_view_all" %>
-  </button>
+  <div class="col-md-12 magin_top_10px" id="id_products_list">
+    <%= render @products %>
+  </div>
 </div>

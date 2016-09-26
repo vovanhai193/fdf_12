@@ -1,13 +1,24 @@
 <div class="product_item_wrapper">
   <div class="product_content_area">
-    <a href="#">
+    <%= link_to product do %>
       <%= image_tag product.image.url, class: "img-responsive" %>
-    </a>
-    <div>
-      <%= link_to product.name, product %>
+    <% end %>
+  </div>
+  <div class="description_area row">
+    <div class="col-md-2">
+      <%= link_to product do %>
+        <span class="shop-avatar">
+          <%= image_tag product.shop_avatar.url %>
+        </span>
+      <% end %>
     </div>
-    <div class="product_text">
-      <%= product.description %>
+    <div class="col-md-10">
+      <div>
+        <%= link_to product.shop_name, product.shop %>
+      </div>
+      <div class="product_text">
+        <%= product.name %>
+      </div>
     </div>
   </div>
   <div class="interaction_area">

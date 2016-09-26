@@ -255,6 +255,7 @@ $orange_main: #ff5722;
       text-align: center;
       padding: 10px;
       color: #428bca;
+      border-top: 1px solid #d2d2d2;
 
       .btn_order, .btn_add_to_cart {
         background: $orange_main;
@@ -263,6 +264,28 @@ $orange_main: #ff5722;
         &:hover {
           background: #ff2716;
         }
+      }
+    }
+    .description_area {
+      padding: 10px;
+
+      .btn_order, .btn_add_to_cart {
+        background: $orange_main;
+        color: #fff;
+
+        &:hover {
+          background: #ff2716;
+        }
+      }
+    }
+    .shop-avatar {
+      display: block;
+      float: left;
+      padding: 10px 5px 0 0;
+
+      img {
+        height: 24px;
+        border-radius: 4px;
       }
     }
   }

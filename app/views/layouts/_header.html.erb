@@ -37,10 +37,10 @@
             </ul>
           </li>
           <li class="navbar-orders">
-            <a href="#">
+            <%= link_to orders_path do %>
               <i class="fa fa-list-ol"></i>
               <span><%= t "common.your_orders" %></span>
-            </a>
+            <% end %>
           </li>
           <li class="block-notification-dropdown dropdown">
             <a href="#" id="notifications-dropdown" class="dropdown-toggle"
@@ -66,14 +66,15 @@
               </li>
             </ul>
           </li>
+          <% if user_signed_in? %>
           <li class="navbar-user dropdown">
             <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
               class="dropdown-toggle" role="button">
               <div>
                 <span class="user-avatar">
-                  <img src="/assets/draft/ui_1.jpg">
+                  <%= image_tag current_user.avatar.url %>
                 </span>
-                <span class="user-title"><%= t "draft.user_name" %>
+                <span class="user-title"><%= current_user.name %>
                   <b class="caret"></b>
                 </span>
               </div>
@@ -81,16 +82,18 @@
             <ul class="dropdown-menu" role="menu"
               aria-labelledby="basic-nav-dropdown">
               <li role="presentation" class="">
-                <a role="menuitem" href="#" tabindex="-1">
+                <%= link_to user_path(current_user) do %>
                   <i class="fa fa-user"></i>
-                  <span><%= t "header.account" %></span></a>
+                  <span><%= t "header.account" %></span>
+                <% end %>
               </li>
               <li role="separator" class="divider"></li>
               <li role="separator" class="divider"></li>
               <li role="presentation" class="">
-                <a role="menuitem" href="#" tabindex="-1">
+                <%= link_to dashboard_path do %>
                   <i class="fa fa-flag-o"></i>
-                  <span><%= t "header.request_open_shop" %></span></a>
+                  <span><%= t "header.shop_manager" %></span>
+                <% end %>
               </li>
               <li role="separator" class="divider"></li>
               <li role="presentation" class="">
@@ -101,21 +104,19 @@
               </li>
               <li role="separator" class="divider"></li>
               <li role="presentation" class="">
-                <a role="menuitem" href="#" tabindex="-1">
+                <%= link_to edit_user_registration_path do %>
                   <i class="fa fa-cog"></i>
                   <span><%= t "header.settings" %></span>
-                </a>
+                <% end %>
               </li>
               <li role="presentation" class="">
-                <a role="menuitem" href="#" tabindex="-1">
-                  <%= link_to destroy_user_session_path,
-                    method: :delete do %>
-                    <i class="fa fa-sign-in"></i>
-                    <span><%= t "header.logout" %></span>
-                  <% end %>
-                </a>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-in"></i>
+                  <span><%= t "header.logout" %></span>
+                <% end %>
               </li>
             </ul>
+            <% end %>
           </li>
         </ul>
       </div>

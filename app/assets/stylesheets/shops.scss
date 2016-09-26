@@ -369,3 +369,21 @@ $color_celeste_approx: #ccc;
     padding: 1.2em 20px;
   }
 }
+
+.shop-product-image {
+  display: block;
+  float: left;
+  padding: 10px 5px 0 0;
+
+  img {
+    height: 128px;
+    border-radius: 4px;
+  }
+}
+
+.truncate {
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

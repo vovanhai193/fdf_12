@@ -17,6 +17,7 @@ class Product < ApplicationRecord
   validate :image_size
 
   delegate :name, to: :shop, prefix: :shop, allow_nil: true
+  delegate :avatar, to: :shop, prefix: :shop
 
   scope :by_date_newest, ->{order created_at: :desc}
   scope :by_active, ->{(where status: :active)}
