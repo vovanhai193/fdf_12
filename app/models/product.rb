@@ -11,7 +11,7 @@ class Product < ApplicationRecord
   has_many :comments, as: :commentable
 
   enum status: {active: 0, inactive: 1}
-  mount_uploader :image, PictureUploader
+  mount_uploader :image, ProductImageUploader
   validates :name, presence: true, length: {maximum: 50}
   validates :description, presence: true
   validate :image_size

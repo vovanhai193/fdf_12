@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class PictureUploader < CarrierWave::Uploader::Base
+class ProductImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   if Rails.env.production?
     include Cloudinary::CarrierWave
@@ -12,7 +12,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   process convert: "png"
 
   version :standard do
-    process resize_to_fill: [100, 150, :north]
+    process resize_to_fill: [128, 128, :north]
   end
 
   version :thumbnail do
@@ -35,7 +35,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   def default_url *args
-    "/assets/" + [version_name, "default_avatar.png"].compact.join('_')
+    "/assets/" + [version_name, "no_image.png"].compact.join('_')
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

@@ -1,24 +1,33 @@
 # encoding: utf-8
 
-class CoverUploader < CarrierWave::Uploader::Base
+class UserAvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   if Rails.env.production?
     include Cloudinary::CarrierWave
     process tags: ["post_picture"]
   end
 
-  process resize_to_limit: [1280, 860]
+  process resize_to_limit: [300, 300]
 
   process convert: "png"
 
   version :standard do
-    process resize_to_fill: [400, 300, :north]
+    process resize_to_fill: [100, 100, :north]
   end
 
   version :thumbnail do
-    resize_to_fit 100, 100
+    resize_to_fit 50, 50
   end
 
+  version :medium do
+    resize_to_fit 300, 300
+  end
+
+  # Include RMagick or MiniMagick support:
+  # include CarrierWave::RMagick
+  # include CarrierWave::MiniMagick
+
+  # Choose what kind of storage to use for this uploader:
   unless Rails.env.production?
     storage :file
   end
@@ -30,7 +39,7 @@ class CoverUploader < CarrierWave::Uploader::Base
   end
 
   def default_url *args
-    "/public/uploads/" + [version_name, "default.jpg"].compact.join('_')
+    "/assets/" + [version_name, "default_user_avatar.png"].compact.join('_')
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -55,9 +64,9 @@ class CoverUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

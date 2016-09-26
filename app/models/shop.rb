@@ -16,8 +16,8 @@ class Shop < ApplicationRecord
 
   validates :name, presence: true, length: {maximum: 50}
   validates :description, presence: true
-  mount_uploader :cover_image, CoverUploader
-  mount_uploader :avatar, PictureUploader
+  mount_uploader :cover_image, ShopCoverUploader
+  mount_uploader :avatar, ShopAvatarUploader
 
   validate :image_size
 
