@@ -30,4 +30,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :orders
   resources :users, only: :show
+  resources :categories do
+    resources :products
+  end
 end

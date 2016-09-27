@@ -6,36 +6,19 @@
       </h3>
       <div class="clearfix body">
         <div class="category-list">
-          <a class="btn btn-default col-lg-6 col-md-12 active" href="#">
+          <%= link_to products_path,
+            class: "btn btn-default col-lg-6 col-md-12 active" do %>
             <span><%= t "common.category.all" %></span>
-            <span class="badge">11</span>
-          </a>
-          <a class="btn btn-default col-lg-6 col-md-12"
-             href="#">
-            <span><%= t "common.category.snack" %></span>
-            <span class="badge">4</span>
-          </a>
-          <a class="btn btn-default col-lg-6 col-md-12" href="#">
-            <span><%= t "common.category.drink" %></span>
-            <span class="badge">4</span>
-          </a>
-          <a class="btn btn-default col-lg-6 col-md-12" href="#">
-            <span><%= t "common.category.rice" %></span>
-            <span class="badge">5</span>
-          </a>
-          <a class="btn btn-default col-lg-6 col-md-12" href="#">
-            <span><%= t "common.category.bread" %></span>
-            <span class="badge">4</span>
-          </a>
-          <a
-          class="btn btn-default col-lg-6 col-md-12" href="#">
-            <span><%= t "common.category.service" %></span>
-            <span class="badge">2</span>
-          </a>
-          <a class="btn btn-default col-lg-6 col-md-12" href="#">
-            <span><%= t "common.category.others" %></span>
-            <span class="badge">5</span>
-          </a>
+          <% end %>
+          <% @catogories.each do |category|%>
+            <% cache category do %>
+              <%= link_to category_path(category),
+                class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                <span><%= category.name %></span>
+                <span class="badge"><%= category.products.size %></span>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
