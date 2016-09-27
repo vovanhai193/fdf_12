@@ -11,15 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require star-rating.min
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require jquery.slimscroll
 //= require app
 //= require_tree .
-
-$(function () {
-    $('.dropdown-toggle').dropdown();
-});
