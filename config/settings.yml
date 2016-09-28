@@ -1,5 +1,6 @@
 common:
-  per_page: 20
+  per_page: 5
+  products_per_page: 4
 orders:
   status: {open: "open", deliver: "deliver", close: "close"}
 pictures:

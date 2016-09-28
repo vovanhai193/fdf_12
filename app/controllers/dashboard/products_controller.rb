@@ -9,6 +9,7 @@ class Dashboard::ProductsController < BaseDashboardController
   end
 
   def index
+    @products.page(params[:page]).per Settings.common.products_per_page
   end
 
   def edit
