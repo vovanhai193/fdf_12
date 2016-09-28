@@ -40,9 +40,9 @@
                         method: :delete, remote: true,
                         class: "btn btn-xs btn-danger pull-right" %>
                     </span>
-                    <%= link_to t("cart.sub"), edit_cart_path(item.product), remote: true,
+                    <%= link_to t("cart.sub"), edit_cart_path(item.product_id), remote: true,
                       class: "pull-right btn btn-xs btn-primary" %>
-                    <%= link_to t("cart.add"), cart_path(item.product), remote: true,
+                    <%= link_to t("cart.add"), cart_path(item.product_id), remote: true,
                       method: :put, class: "pull-right btn btn-xs btn-primary" %>
                   </td>
                 </tr>

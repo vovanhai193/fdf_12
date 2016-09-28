@@ -43,7 +43,7 @@
       <div class="mar-bottom-30">
         <div class="a-divider--fit"></div>
       </div>
-      <%= link_to cart_path(@product), remote: true,
+      <%= link_to cart_path(@product.id), remote: true,
         method: :put, class: "btn btn-warning" do %>
         <span class="glyphicon glyphicon-shopping-cart"></span>
         <%= t "cart.add_to_card" %>
