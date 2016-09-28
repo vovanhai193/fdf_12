@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927150548) do
+ActiveRecord::Schema.define(version: 20160928075821) do
 
-  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.index ["name"], name: "index_categories_on_name", using: :btree
   end
 
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.text     "content",          limit: 65535
     t.integer  "user_id"
     t.string   "commentable_type"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
-  create_table "coupons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "coupons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.text     "description",   limit: 65535
     t.integer  "coupon_type"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.index ["user_id"], name: "index_coupons_on_user_id", using: :btree
   end
 
-  create_table "order_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "order_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "quantity"
     t.float    "price",      limit: 24
     t.text     "notes",      limit: 65535
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.index ["user_id"], name: "index_order_products_on_user_id", using: :btree
   end
 
-  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "status",                   default: 0, null: false
     t.datetime "end_at"
     t.text     "notes",      limit: 65535
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.text     "description", limit: 65535
     t.float    "price",       limit: 24
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
-  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.float    "rating",          limit: 24
     t.string   "review"
     t.integer  "user_id"
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
-  create_table "shop_managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "shop_managers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id"
     t.integer  "shop_id"
     t.integer  "role",       default: 0
@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.index ["user_id"], name: "index_shop_managers_on_user_id", using: :btree
   end
 
-  create_table "shops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "shops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.text     "description",    limit: 65535
     t.integer  "status",                       default: 0
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.index ["owner_id"], name: "index_shops_on_owner_id", using: :btree
   end
 
-  create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "tag_id"
     t.string   "taggable_type"
     t.integer  "taggable_id"
@@ -190,13 +190,13 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
   end
 
-  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string  "name",                       collation: "utf8_bin"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "avatar"
     t.string   "chatwork_id"
@@ -215,6 +215,10 @@ ActiveRecord::Schema.define(version: 20160927150548) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "status",                 default: 0
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.date     "oauth_expires_at"
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
