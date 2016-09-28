@@ -32,6 +32,7 @@ gem "acts-as-taggable-on", "~> 4.0"
 gem "bootstrap-tagsinput-rails"
 gem "social-share-button"
 gem "chartkick"
+gem "ransack"
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"
 end

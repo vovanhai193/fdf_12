@@ -278,6 +278,10 @@ en:
       status: "Status"
       confirm: "Confirm"
       detail_order: "Detail"
+      view_order_list: "View List Order"
+      btn_search: "Search"
+      Date: "Date"
+      Name: "Name"
 
   cart:
     view_cart_all: "View all"

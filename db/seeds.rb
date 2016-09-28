@@ -84,7 +84,7 @@ Shop.create!(
 
 ShopManager.create!(
   user_id: 2,
-  shop_id: 2,
+  shop_id: 1,
   role: 1,
 )
 
@@ -121,6 +121,7 @@ puts "product ....."
 
 4.times do |n|
   category_id = 1,
+  status = 0,
   shop_id = 1,
   user_id = 1,
   name = "Bread",
@@ -133,6 +134,7 @@ end
 
 4.times do |n|
   category_id = 1,
+  status = 0,
   shop_id = 1,
   user_id = 1,
   name = "Chicken",

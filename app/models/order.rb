@@ -14,6 +14,10 @@ class Order < ApplicationRecord
 
   scope :by_date_newest, ->{order created_at: :desc}
 
+  ransacker :created_at do
+    Arel.sql("date(created_at)")
+  end
+
   scope :between_date, -> begin_date, end_date do
     where(created_at: begin_date..end_date).
       group_year.group_month.group_day
