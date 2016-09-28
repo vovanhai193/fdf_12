@@ -16,6 +16,7 @@
 //= require star-rating.min
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require bootstrap-tagsinput
 //= require jquery.slimscroll
 //= require app
 //= require_tree .
