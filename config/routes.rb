@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :products
       resources :orders
     end
+    resources :statistics
   end
 
   resources :shops, only: [:index, :show]

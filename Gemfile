@@ -31,6 +31,10 @@ gem "jquery-turbolinks"
 gem "acts-as-taggable-on", "~> 4.0"
 gem "bootstrap-tagsinput-rails"
 gem "social-share-button"
+gem "chartkick"
+source "https://rails-assets.org" do
+  gem "rails-assets-datetimepicker"
+end
 
 group :development, :test do
   gem "byebug", platform: :mri
