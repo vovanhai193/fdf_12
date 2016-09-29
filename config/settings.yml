@@ -14,3 +14,5 @@ mailer:
 index:
   max_shops: 5
   max_products: 10
+comment:
+  num_posts: 2

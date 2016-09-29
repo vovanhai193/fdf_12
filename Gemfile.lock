@@ -246,6 +246,9 @@ GEM
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
     slop (3.6.0)
+    social-share-button (0.6.0)
+      coffee-rails
+      sass-rails
     spring (1.7.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -323,6 +326,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   shoulda-matchers (= 3.0.1)
   simple_form
+  social-share-button
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
@@ -332,4 +336,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.12.5
+   1.13.1

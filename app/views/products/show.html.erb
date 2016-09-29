@@ -6,6 +6,11 @@
       </div>
     </div>
     <div class="a-divider--hidden"></div>
+    <div class="share-product">
+      <%= social_share_button_tag @product.name %>
+    </div>
+    <div class="fb-like" data-href="<%= request.original_url %>"
+      data-layout="standard" data-action="like"></div>
     <ul class="tags">
       <% @product.tags.each do |tag| %>
         <li><%= link_to tag.name, tag_path(tag), class: "tag" %></li>
