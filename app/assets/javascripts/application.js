@@ -19,5 +19,8 @@
 //= require bootstrap-tagsinput
 //= require jquery.slimscroll
 //= require app
+//= require Chart.bundle
+//= require chartkick
+//= require datetimepicker
 //= require_tree .
 //= require social-share-button

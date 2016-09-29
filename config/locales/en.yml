@@ -1,4 +1,8 @@
 en:
+  current_week: "Current week"
+  current_month: "Current Month"
+  current_year: "Current Year"
+  year: "Year"
   common:
     base_title: "Framgia Food and Drink Order"
     admin_title: "Admin Framgia Orders"
@@ -210,6 +214,17 @@ en:
     admin_lte_2_login:
       login_box_message: "Sign in to start your session"
   dashboard:
+    statistics:
+      index:
+        tittle: "Statistics order"
+      search_between:
+        btn_search: "Filter"
+        start_date: "Start date"
+        end_date: "End date"
+      search_current:
+        btn_search: "Filter"
+      shop:
+        shop: "Shop"
     shops:
       new:
         create_shop: "Create Shop"

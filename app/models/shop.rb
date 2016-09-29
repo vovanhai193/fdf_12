@@ -28,6 +28,9 @@ class Shop < ApplicationRecord
   scope :by_date_newest, ->{order(created_at: :desc)}
   scope :top_shops, ->{active.by_date_newest.limit Settings.index.max_shops}
 
+  scope :by_active, ->{(where status: :active)}
+  scope :by_shop, -> shop_id {where id: shop_id if shop_id.present?}
+
   def all_tags
     tags.uniq
   end

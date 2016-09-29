@@ -16,3 +16,4 @@ index:
   max_products: 10
 comment:
   num_posts: 2
+date_format: "YYYY/MM/DD"
