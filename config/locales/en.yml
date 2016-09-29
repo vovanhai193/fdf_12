@@ -355,3 +355,6 @@ en:
       status: "Status"
       send_mail: "Mail me"
       description: "Description"
+    shared:
+      links:
+        facebook: "Facebook"

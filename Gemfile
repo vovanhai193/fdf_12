@@ -35,6 +35,9 @@ gem "chartkick"
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"
 end
+gem "omniauth-facebook"
+gem "omniauth-twitter"
+gem "omniauth"
 
 group :development, :test do
   gem "byebug", platform: :mri
