@@ -1,0 +1,40 @@
+<% if @products.blank? && @shops.blank? %>
+  <div class="row">
+    <h2 class="section_title">
+      <%= t "livesearch.no_result", name: params[:search] %>
+    </h2>
+  </div>
+<% else %>
+  <div class="row">
+    <h2 class="section_title">
+      <%= t "livesearch.see_more", num: (@products.size + @shops.size),
+        name: params[:search] %>
+    </h2>
+  </div>
+  <% @products.each do |product| %>
+    <div class="col-md-3">
+      <div class="card">
+        <%= link_to product do %>
+          <%= image_tag product.image.url, class: "img-responsive" %>
+        <% end %>
+        <div class="container">
+          <h4><b><%= link_to product.name, product %></b></h4>
+          <p><%= product.description %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% @shops.each do |shop| %>
+    <div class="col-md-3">
+      <div class="card">
+        <%= link_to shop do %>
+          <%= image_tag shop.avatar.url, class: "img-responsive" %>
+        <% end %>
+        <div class="container">
+          <h4><b><%= link_to shop.name, shop %></b></h4>
+          <p><%= shop.description %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

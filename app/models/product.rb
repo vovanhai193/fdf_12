@@ -30,6 +30,17 @@ class Product < ApplicationRecord
   scope :top_products, -> do
     by_active.by_date_newest.limit Settings.index.max_shops
   end
+  class << self
+    def search search
+      if search.nil?
+        Array.new
+      else
+        active.where("name LIKE ? OR description LIKE ?",
+          "%#{search}%", "%#{search}%").take Settings.search.min_results
+      end
+    end
+  end
+
   private
   def image_size
     max_size = Settings.pictures.max_size

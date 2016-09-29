@@ -367,3 +367,8 @@ en:
     shared:
       links:
         facebook: "Facebook"
+  livesearch:
+    see_more: "See all %{num} results for \"%{name}\""
+    no_result: "No results for \"%{name}\""
+    shop_products: "%{number} products"
+    search_placeholder: "Search shops and products..."

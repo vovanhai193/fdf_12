@@ -42,6 +42,17 @@ class Shop < ApplicationRecord
     tags.uniq
   end
 
+  class << self
+    def search search
+      if search.nil?
+        Array.new
+      else
+        active.where("name LIKE ? OR description LIKE ?",
+          "%#{search}%", "%#{search}%").take Settings.search.min_results
+      end
+    end
+  end
+
   private
   def create_shop_manager
     shop_managers.create user_id: owner_id
