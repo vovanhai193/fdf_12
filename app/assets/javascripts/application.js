@@ -20,3 +20,4 @@
 //= require jquery.slimscroll
 //= require app
 //= require_tree .
+//= require social-share-button
