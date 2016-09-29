@@ -3,8 +3,9 @@ class Dashboard::OrdersController < BaseDashboardController
 
   def index
     if @shop
-      @orders = @shop.orders.includes(:user).page(params[:page])
-        .per Settings.common.per_page
+      @q = @shop.orders.includes(:user).ransack(params[:q])
+      @orders = @q.result
+        .page(params[:page]).per Settings.common.per_page
     end
   end
 

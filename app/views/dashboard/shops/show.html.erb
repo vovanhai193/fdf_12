@@ -21,6 +21,9 @@
               <%= @shop.name %>
               <%= render "shared/shop_status_label", shop: @shop %>
             </h4>
+            <h4>
+              <%= link_to t("dashboard.order.view_order_list"), dashboard_shop_orders_path(@shop) %>
+            </h4>
           </div>
         </div>
         <div class="col-sm-3">
