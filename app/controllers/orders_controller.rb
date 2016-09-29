@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_user.orders.by_date_newest.page(params[:page])
-      .per(Settings.common.per_page)
+      .per Settings.common.per_page
   end
 
   def new

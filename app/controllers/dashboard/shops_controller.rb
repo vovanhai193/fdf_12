@@ -47,10 +47,11 @@ class Dashboard::ShopsController < BaseDashboardController
   end
 
   def load_shop
-    @shop = current_user.own_shops.find_by id: params[:id]
-    unless @shop
+    if Shop.exists? params[:id]
+      @shop = Shop.find params[:id]
+    else
       flash[:danger] = t "flash.danger.load_shop"
-      redirect_to :back
+      redirect_to root_path
     end
   end
 end

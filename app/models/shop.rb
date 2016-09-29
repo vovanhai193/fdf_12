@@ -1,5 +1,12 @@
 class Shop < ApplicationRecord
   acts_as_paranoid
+
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+  def slug_candidates
+    [:name, [:name, :id]]
+  end
+
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
   has_many :reviews, as: :reviewable
   has_many :comments, as: :commentable

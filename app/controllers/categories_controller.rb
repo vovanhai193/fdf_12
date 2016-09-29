@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
-
   def show
-    @category = Category.find_by id: params[:id]
-    unless @category
+    if Category.exists? params[:id]
+      @category = Category.find params[:id]
+    else
       flash[:danger] = t "flash.danger.load_category"
       redirect_to root_path
     end

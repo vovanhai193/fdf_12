@@ -2,6 +2,12 @@ class Product < ApplicationRecord
   acts_as_paranoid
   acts_as_taggable
 
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+  def slug_candidates
+    [:name, [:name, :id]]
+  end
+
   belongs_to :category
   belongs_to :shop
   belongs_to :user

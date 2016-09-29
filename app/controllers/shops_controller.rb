@@ -14,8 +14,9 @@ class ShopsController < ApplicationController
 
   private
   def load_shop
-    @shop = Shop.find_by id: params[:id]
-    unless @shop
+    if Shop.exists? params[:id]
+      @shop = Shop.find params[:id]
+    else
       flash[:danger] = t "flash.danger.load_shop"
       redirect_to root_path
     end
