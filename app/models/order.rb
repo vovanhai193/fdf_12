@@ -30,7 +30,7 @@ class Order < ApplicationRecord
 
   scope :group_week_this_month, -> do
     where(created_at: Time.now.beginning_of_month..Time.now.end_of_month).
-      group_month.group "week(created_at)"
+      group_month.group "EXTRACT(week FROM created_at)"
   end
 
   scope :group_month_this_year, -> do
@@ -38,9 +38,9 @@ class Order < ApplicationRecord
       group_year.group_month
   end
 
-  scope :group_year , -> {group "year(created_at)"}
-  scope :group_month, -> {group "month(created_at)"}
-  scope :group_day, -> {group "day(created_at)"}
+  scope :group_year , -> {group "EXTRACT(year FROM created_at)"}
+  scope :group_month, -> {group "EXTRACT(month FROM created_at)"}
+  scope :group_day, -> {group "EXTRACT(day FROM created_at)"}
 
   def build_order_products
     cart.items.each do |item|
