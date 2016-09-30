@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
           create_cart
           cart["items"].delete item
         end
-        flash[:success] = t "flash.success.order"
+        flash[:success] = t "oder.success"
         redirect_to order_path @order, shop_id: @shop.id
       else
         flash[:danger] = t "oder.not_oder"

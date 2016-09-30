@@ -2,6 +2,9 @@ class CartsController < ApplicationController
   before_action :load_product, only: :update
 
   def index
+    if @cart.blank?
+      flash[:danger] = t "cart.not_product"
+    end
   end
 
   def update

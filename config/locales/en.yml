@@ -297,6 +297,10 @@ en:
     add: "Add"
     delete: "Delete"
     vnd: "vnd"
+    your_cart: "Your Cart!"
+    not_product: "Your Cart have't product, Please order product !"
+    view_product: "View products at here "
+    btn_view_product: "View product"
 
   status:
     shops:
@@ -327,7 +331,8 @@ en:
       status_message: "You've just setted status for \"%{shop_name}\":"
 
   oder:
-    btn_oder: "Oder"
+    success: "Order successfully !"
+    btn_oder: "Order Now"
     id: "id"
     category: "Category"
     name: "Name"
@@ -336,7 +341,7 @@ en:
     price: "Price"
     total: "Total:"
     btn_make_oder: "Make Oder"
-    confirm: "You sure !"
+    confirm: "You sure ?"
     not_oder: "Have not Oder"
     not_product_in_cart: "Have not products in cart"
     status: "Status:"
@@ -344,6 +349,7 @@ en:
     btn_confirm_oder: "Confirm Order"
     deleted: "Delete successfully"
     not_delete: "Not delete"
+    create_order: "Create Order"
   product:
     name: "Product Name"
     price: "Price"
