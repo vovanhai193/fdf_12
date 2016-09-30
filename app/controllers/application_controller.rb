@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
       user_params.permit :name, :email, :chatwork_id, :avatar, :description,
         :password, :password_confirmation, :current_password
     end
+    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+      user_params.permit :name, :email, :chatwork_id, :avatar, :description,
+        :password, :password_confirmation
+    end
   end
 
   private
