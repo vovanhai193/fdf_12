@@ -47,7 +47,8 @@ class Shop < ApplicationRecord
       if search.nil?
         Array.new
       else
-        active.where("name LIKE N? OR description LIKE N?",
+        search.downcase!
+        active.where("LOWER(name) LIKE N? OR LOWER(description) LIKE N?",
           "%#{search}%", "%#{search}%").take Settings.search.min_results
       end
     end
