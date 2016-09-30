@@ -35,4 +35,5 @@ Rails.application.routes.draw do
     resources :products
   end
   resources :tags, only: :show
+  get "search(/:search)", to: "searches#index", as: :search
 end

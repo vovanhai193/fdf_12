@@ -17,3 +17,5 @@ index:
 comment:
   num_posts: 2
 date_format: "YYYY/MM/DD"
+search:
+  min_results: 5
