@@ -22,5 +22,6 @@
 //= require Chart.bundle
 //= require chartkick
 //= require datetimepicker
+//= require growl
 //= require_tree .
 //= require social-share-button

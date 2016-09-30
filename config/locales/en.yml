@@ -2,6 +2,7 @@ en:
   current_week: "Current week"
   current_month: "Current Month"
   current_year: "Current Year"
+  add_cart_succes: "Add to cart successfully!"
   year: "Year"
   common:
     base_title: "Framgia Food and Drink Order"

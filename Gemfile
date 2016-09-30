@@ -35,6 +35,7 @@ gem "chartkick"
 gem "ransack"
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"
+  gem "rails-assets-growl"
 end
 gem "omniauth-facebook"
 gem "omniauth-twitter"
