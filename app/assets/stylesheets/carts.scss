@@ -1,4 +1,6 @@
 $orange_main: #ff5722;
+@import "bootstrap-sprockets";
+@import "bootstrap";
 ul.dropdown-cart{
   min-width:250px;
 }
