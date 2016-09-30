@@ -111,13 +111,45 @@
               </li>
               <li role="presentation" class="">
                 <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="fa fa-sign-in"></i>
+                  <i class="fa fa-sign-out"></i>
                   <span><%= t "header.logout" %></span>
                 <% end %>
               </li>
             </ul>
-            <% end %>
           </li>
+          <% else %>
+            <li class="navbar-user dropdown">
+              <a href="#" id="basic-nav-dropdown" data-toggle="dropdown"
+                class="dropdown-toggle user-avatar" role="button">
+                <span class="glyphicon glyphicon-user"></span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" role="menu"
+                aria-labelledby="basic-nav-dropdown">
+                <li role="presentation" class="">
+                  <%= link_to new_user_session_path do %>
+                    <i class="fa fa-sign-in"></i>
+                    <span><%= t "header.sign_in" %></span>
+                  <% end %>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <%= link_to user_facebook_omniauth_authorize_path do %>
+                    <i class="fa fa-facebook-official primarys"></i>
+                    <span><%= t "header.sign_in_fb" %></span>
+                  <% end %>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <%= link_to new_user_registration_path do %>
+                    <i class="fa fa-plus-square"></i>
+                    <span><%= t "header.sign_up" %></span>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>

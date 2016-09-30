@@ -53,6 +53,9 @@ en:
     report_abuse: "Report abuse"
     settings: "Settings"
     logout: "Logout"
+    sign_in: "Sign in"
+    sign_in_fb: "Sign in with Facebook"
+    sign_up: "Sign up"
   devise:
     user:
       sign_in: "Sign in"
@@ -262,6 +265,7 @@ en:
         name: "Name"
         price: "Price"
         actions: "Actions"
+        status : "Status"
       new:
         title: "Request shop"
       edit:
