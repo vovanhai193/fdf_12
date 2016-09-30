@@ -30,12 +30,14 @@ class Product < ApplicationRecord
   scope :top_products, -> do
     by_active.by_date_newest.limit Settings.index.max_shops
   end
+
   class << self
     def search search
       if search.nil?
         Array.new
       else
-        active.where("name LIKE N? OR description LIKE N?",
+        search.downcase!
+        active.where("LOWER(name) LIKE N? OR LOWER(description) LIKE N?",
           "%#{search}%", "%#{search}%").take Settings.search.min_results
       end
     end
