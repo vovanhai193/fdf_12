@@ -27,10 +27,10 @@ class OrdersController < ApplicationController
       @order = Order.new order_params @cart_shop
       if @order.save
         cart = session["cart"]
-        item = cart["items"].find{|item| item["shop_id"] == @shop.id}
-        if item
+        items = cart["items"].select{|item| item["shop_id"] == @shop.id}
+        if items.present?
           create_cart
-          cart["items"].delete item
+          cart["items"] = cart["items"] - items
         end
         flash[:success] = t "oder.success"
         redirect_to order_path @order, shop_id: @shop.id
