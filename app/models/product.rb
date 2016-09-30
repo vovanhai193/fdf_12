@@ -35,7 +35,7 @@ class Product < ApplicationRecord
       if search.nil?
         Array.new
       else
-        active.where("name LIKE ? OR description LIKE ?",
+        active.where("name LIKE N? OR description LIKE N?",
           "%#{search}%", "%#{search}%").take Settings.search.min_results
       end
     end
