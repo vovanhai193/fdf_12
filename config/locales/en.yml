@@ -45,6 +45,7 @@ en:
     btn_your_shops: "Your shops"
     btn_request: "Request"
     all_shops: "All shops"
+    all_products: "All products"
     product_number: "%{number} products"
     view_button: "View"
     tags: "Tags"
@@ -170,6 +171,20 @@ en:
         description: "Description"
         status: "Status"
         actions: "Actions"
+    home:
+      index:
+        page_title: "Dashboard"
+        new_member_num: "%{num} new members"
+        new_member: "Latest members"
+        all_users: "View All Users"
+        new_shop_num: "%{num} new shops"
+        new_shop: "Latest shops"
+        all_shops: "View All Shops"
+        new_product_num: "%{num} new products"
+        new_product: "Latest products"
+        all_products: "View All Products"
+        updating: "Updating..."
+        tags_text: "Tags"
   draft:
     description: "The atmosphere in Chania has a touch of Florence and Venice."
     shop_desc: "NEM CHUA RÁN, BÁNH MỲ, MỲ TÔM , NÂU ĐÁ LẮC (MỖI ĐƠN TRÊN
