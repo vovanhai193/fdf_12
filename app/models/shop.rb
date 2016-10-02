@@ -3,8 +3,13 @@ class Shop < ApplicationRecord
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
+
   def slug_candidates
     [:name, [:name, :id]]
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
   end
 
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
@@ -40,18 +45,6 @@ class Shop < ApplicationRecord
 
   def all_tags
     tags.uniq
-  end
-
-  class << self
-    def search search
-      if search.nil?
-        Array.new
-      else
-        search.downcase!
-        active.where("LOWER(name) LIKE N? OR LOWER(description) LIKE N?",
-          "%#{search}%", "%#{search}%").take Settings.search.min_results
-      end
-    end
   end
 
   private

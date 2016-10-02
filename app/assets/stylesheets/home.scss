@@ -310,6 +310,17 @@ $orange_main: #ff5722;
   }
 }
 
+.item-thumbnail {
+  display: block;
+  margin: auto;
+  width: auto;
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 4px;
+  }
+}
+
 .login {
   color: orange;
 }

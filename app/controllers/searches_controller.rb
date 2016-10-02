@@ -1,7 +1,11 @@
 class SearchesController < ApplicationController
   def index
-    @products = Product.search params[:search]
-    @shops = Shop.search params[:search]
+    q = params[:search]
+    products = Product.active.search(name_or_description_cont: q).result
+      .includes :shop
+    shops = Shop.search(name_or_description_or_owner_name_cont: q).result
+      .includes(:owner).decorate
+    @items = products + shops
     respond_to do |format|
       format.js
       format.html
