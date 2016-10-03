@@ -378,3 +378,7 @@ en:
     no_result: "No results for \"%{name}\""
     shop_products: "%{number} products"
     search_placeholder: "Search shops and products..."
+    shop_owner: "%{status} Shop - %{name}"
+    shop_owner_text: "Owner:"
+    product_tags: "%{number} tag(s)"
+    search_all: "All"

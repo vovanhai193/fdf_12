@@ -4,8 +4,13 @@ class Product < ApplicationRecord
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
+
   def slug_candidates
     [:name, [:name, :id]]
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
   end
 
   belongs_to :category
@@ -28,19 +33,7 @@ class Product < ApplicationRecord
   scope :by_date_newest, ->{order created_at: :desc}
   scope :by_active, ->{(where status: :active)}
   scope :top_products, -> do
-    by_active.by_date_newest.limit Settings.index.max_shops
-  end
-
-  class << self
-    def search search
-      if search.nil?
-        Array.new
-      else
-        search.downcase!
-        active.where("LOWER(name) LIKE N? OR LOWER(description) LIKE N?",
-          "%#{search}%", "%#{search}%").take Settings.search.min_results
-      end
-    end
+    by_active.by_date_newest.limit Settings.index.max_products
   end
 
   private
