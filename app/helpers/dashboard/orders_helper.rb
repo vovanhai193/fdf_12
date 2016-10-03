@@ -12,7 +12,7 @@ module Dashboard::OrdersHelper
   end
 
   def option_status status, order
-    content_tag(:option, value: dashboard_shop_order_path(@shop, order,
+    content_tag(:option, value: dashboard_shop_order_path(@shop.id, order,
       order: {status: status}),
       selected: check_status?(status, order.status)) do
       status

@@ -1,6 +1,6 @@
 common:
   per_page: 5
-  products_per_page: 4
+  products_per_page: 12
 orders:
   status: {open: "open", deliver: "deliver", close: "close"}
 pictures:
@@ -13,7 +13,7 @@ mailer:
   default_mail: "no-reply@fdf-12.herokuapp.com"
 index:
   max_shops: 5
-  max_products: 12
+  max_products: 8
 comment:
   num_posts: 2
 date_format: "YYYY/MM/DD"

@@ -22,7 +22,7 @@
               <%= render "shared/shop_status_label", shop: @shop %>
             </h4>
             <h4>
-              <%= link_to t("dashboard.order.view_order_list"), dashboard_shop_orders_path(@shop) %>
+              <%= link_to t("dashboard.order.view_order_list"), dashboard_shop_orders_path(@shop.id) %>
             </h4>
           </div>
         </div>
