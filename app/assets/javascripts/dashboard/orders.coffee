@@ -14,6 +14,8 @@ ready = ->
       success: callback
       data: data
       contentType: type
+  $('body').on 'click', '#create_order', ->
+    $(".create_order").toggle 500
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

@@ -8,13 +8,14 @@
       <th><%= t "oder.quantity" %></th>
       <th><%= t ".status" %></th>
       <th><%= t "oder.price" %></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% order_products.each_with_index do |item, index| %>
       <tr>
         <td><%= index + 1 %></td>
-        <td><%= item.try(:user).try :name %></td>
+        <td><%= item.try(:user).try(:name) %></td>
         <td><%= item.product.name %></td>
         <td>
           <span class="product-thumbnail">
@@ -22,9 +23,19 @@
           </span>
         </td>
         <td class="text-center"><%= item.quantity %></td>
-        <td><%= status_order_product item %></td>
+        <td >
+          <div class="order-product-status-<%= item.id %>">
+            <%= status_order_product item %>
+          </div>
         <td class="text-center">
           <strong><%= item.total_price %> <%= t"cart.vnd" %> </strong></td>
+        <td class="col-md-1">
+          <select  class="form-control status-order">
+            <% OrderProduct.statuses.keys.each do |status| %>
+              <%= option_status_items status, item %>
+            <% end %>
+          </select>
+        </td>
       </tr>
     <% end %>
   </tbody>

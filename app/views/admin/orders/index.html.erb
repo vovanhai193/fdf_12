@@ -44,7 +44,7 @@
               </td>
               <td><%= order.coupon_name %></td>
               <td><%= order.end_at %></td>
-              <td><%= order.created_at %></td>
+              <td><%= l order.created_at, format: :short_date %></td>
               <td>
                 <%= link_to admin_order_path(order), class: "btn btn-info" do %>
                   <span class="glyphicon glyphicon-edit"></span>

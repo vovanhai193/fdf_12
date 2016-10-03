@@ -59,7 +59,7 @@
               <td>
 
               </td>
-              <td><%= shop.created_at %></td>
+              <td><%= l shop.created_at, format: :short_date %></td>
               <td>
                 <button class="btn btn-success width-80" data-toggle="modal"
                   onclick="updateShopRequest(this,

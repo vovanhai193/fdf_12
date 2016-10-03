@@ -1,27 +1,23 @@
 <div class="panel-group">
   <div class="panel panel-default">
     <div class="panel-body">
-      <%= order.created_at %>
-      <div class="col-md-1 pull-right">
+      <%= l order.created_at, format: :short_date %>
+      <div class="col-md-1">
         <div class="order-status-<%= order.id %>">
           <%= status_order order %>
         </div>
       </div>
-      <div class="col-md-2 pull-right">
-        <select  class="form-control status-order">
-          <% Order.statuses.keys.each do |status| %>
-            <%= option_status status, order %>
-          <% end %>
-        </select>
-      </div>
+      <%= link_to t("accept_all"),
+        dashboard_shop_order_path(@shop.id, order.id),
+        class: "btn btn-info pull-right", method: :put %>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-body">
-      <%= render "orders/order_products", order_products: order.order_products %>
+      <%= render "order_products", order_products: order.order_products %>
       <div class="pull-right">
         <h4>
-          <b><%= t ".total" %>: </b><%= order.total_pay %>
+          <b><%= t ".total" %>: </b><%= order.total_price %> <%= t"cart.vnd" %>
         </h4>
       </div>
     </div>
