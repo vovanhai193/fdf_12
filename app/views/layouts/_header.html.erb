@@ -20,7 +20,7 @@
               class: "form-control search dropdown-toggle",
               placeholder: t("livesearch.search_placeholder"),
               "data-toggle": "dropdown", "aria-hidden": :true,
-              autocomplete: :off, required: true %>
+              autocomplete: :off, required: true, id: "live-search-form" %>
             <ul class="dropdown-menu">
               <div id="livesearch"></div>
               <div id="livesearch_loading"></div>
@@ -100,11 +100,20 @@
               <li role="separator" class="divider"></li>
               <li role="separator" class="divider"></li>
               <li role="presentation" class="">
-                <%= link_to dashboard_path do %>
+                <%= link_to dashboard_shops_path do %>
                   <i class="fa fa-flag-o"></i>
                   <span><%= t "header.shop_manager" %></span>
                 <% end %>
               </li>
+              <% if current_user.shops.any? %>
+                <li role="separator" class="divider"></li>
+                <li role="presentation" class="">
+                  <%= link_to dashboard_path do %>
+                    <i class="fa fa-bar-chart"></i>
+                    <span><%= t "header.shop_statistic" %></span>
+                  <% end %>
+                </li>
+              <% end %>
               <li role="separator" class="divider"></li>
               <li role="presentation" class="">
                 <a role="menuitem" href="#" tabindex="-1">

@@ -1,0 +1,22 @@
+<% provide :title, t(".title") %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= form_tag dashboard_shop_shop_managers_path, method: :get,
+      class: "dropdown", id: "users_search_form" do |f| %>
+      <div class="form-group">
+        <%= text_field_tag :search, params[:search], autocomplete: :off,
+          placeholder: t("livesearch.user_search_placeholder"),
+          required: true, id: "users-search-form",
+          class: "form-control dropdown-toggle" %>
+        <%= hidden_field_tag :shop_id, @shop.id, id: "shop_id" %>
+        <ul class="dropdown-menu">
+          <div id="users_search_dom"></div>
+          <div id="livesearch_loading"></div>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <%= render "shop_managers" %>
+</div>

@@ -387,3 +387,13 @@ $color_celeste_approx: #ccc;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.user-item-image {
+  margin: 5px;
+  img {
+    display: inline;
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+  }
+}
