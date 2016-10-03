@@ -4,6 +4,8 @@ en:
   current_year: "Current Year"
   add_cart_succes: "Add to cart successfully!"
   year: "Year"
+  facebook: "Facebook"
+  google_oauth2: "Google"
   common:
     base_title: "Framgia Food and Drink Order"
     admin_title: "Admin Framgia Orders"

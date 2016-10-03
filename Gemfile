@@ -38,8 +38,9 @@ source "https://rails-assets.org" do
   gem "rails-assets-growl"
 end
 gem "omniauth-facebook"
-gem "omniauth-twitter"
+gem "omniauth-google-oauth2"
 gem "omniauth"
+gem "json"
 gem "friendly_id", "~> 5.1.0"
 
 group :development, :test do
