@@ -3,6 +3,8 @@ en:
   current_month: "Current Month"
   current_year: "Current Year"
   year: "Year"
+  facebook: "Facebook"
+  google_oauth2: "Google"
   common:
     base_title: "Framgia Food and Drink Order"
     admin_title: "Admin Framgia Orders"
