@@ -31,7 +31,7 @@ class Product < ApplicationRecord
   delegate :avatar, to: :shop, prefix: :shop
 
   scope :by_date_newest, ->{order created_at: :desc}
-  scope :by_active, ->{(where status: :active)}
+  scope :by_active, ->{where status: :active}
   scope :top_products, -> do
     by_active.by_date_newest.limit Settings.index.max_products
   end
@@ -40,7 +40,7 @@ class Product < ApplicationRecord
   def image_size
     max_size = Settings.pictures.max_size
     if image.size > max_size.megabytes
-      errors.add(:image, I18n.t("pictures.error_message", max_size: max_size))
+      errors.add :image, I18n.t("pictures.error_message", max_size: max_size)
     end
   end
 end

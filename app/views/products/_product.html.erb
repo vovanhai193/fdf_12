@@ -14,10 +14,13 @@
     </div>
     <div class="col-md-10">
       <div>
-        <%= link_to product.shop_name, product.shop %>
+        <strong><%= link_to product.shop_name, product.shop %></strong>
       </div>
       <div class="product_text">
-        <%= product.name %>
+        <strong><%= product.name %></strong>
+      </div>
+      <div class="product_text">
+        <%= number_to_currency product.price %>
       </div>
     </div>
   </div>

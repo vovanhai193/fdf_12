@@ -28,6 +28,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validate :image_size
 
+  scope :by_date_newest, ->{order created_at: :desc}
+
   class << self
     def from_omniauth auth
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

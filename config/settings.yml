@@ -1,6 +1,6 @@
 common:
   per_page: 5
-  products_per_page: 4
+  products_per_page: 12
 orders:
   status: {open: "open", deliver: "deliver", close: "close"}
 pictures:
@@ -19,3 +19,6 @@ comment:
 date_format: "YYYY/MM/DD"
 search:
   min_results: 5
+admin:
+  dashboard:
+    max_items: 10

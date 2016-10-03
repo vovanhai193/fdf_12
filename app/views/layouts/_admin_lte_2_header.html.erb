@@ -2,14 +2,14 @@
 <header class="main-header">
 
   <!-- Logo -->
-  <a href="/admin" class="logo">
+  <%= link_to admin_path, class: "logo" do %>
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b><%= t ".logo_mini" %></b></span>
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg">
       <b><%= t ".logo_medium" %></b><%= t ".logo_order" %>
     </span>
-  </a>
+  <% end %>
 
   <!-- Header Navbar -->
   <nav class="navbar navbar-static-top" role="navigation">
@@ -117,7 +117,7 @@
             <!-- The user image in the navbar-->
             <img src="/assets/user2-160x160.jpg" class="user-image" alt="User Image"/>
             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-            <span class="hidden-xs">Alexander Pierce</span>
+            <span class="hidden-xs"><%= current_admin.email %></span>
           </a>
           <ul class="dropdown-menu">
             <!-- The user image in the menu -->

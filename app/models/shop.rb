@@ -37,10 +37,10 @@ class Shop < ApplicationRecord
   delegate :name, to: :owner, prefix: :owner, allow_nil: true
   delegate :email, to: :owner, prefix: :owner
 
-  scope :by_date_newest, ->{order(created_at: :desc)}
+  scope :by_date_newest, ->{order created_at: :desc}
   scope :top_shops, ->{active.by_date_newest.limit Settings.index.max_shops}
 
-  scope :by_active, ->{(where status: :active)}
+  scope :by_active, ->{where status: :active}
   scope :by_shop, -> shop_id {where id: shop_id if shop_id.present?}
 
   def all_tags
@@ -55,10 +55,11 @@ class Shop < ApplicationRecord
   def image_size
     max_size = Settings.pictures.max_size
     if cover_image.size > max_size.megabytes
-      errors.add(:cover_image, I18n.t("pictures.error_message", max_size: max_size))
+      errors.add :cover_image,
+        I18n.t("pictures.error_message", max_size: max_size)
     end
     if avatar.size > max_size.megabytes
-      errors.add(:avatar, I18n.t("pictures.error_message", max_size: max_size))
+      errors.add :avatar, I18n.t("pictures.error_message", max_size: max_size)
     end
   end
 

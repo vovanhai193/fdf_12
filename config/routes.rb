@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root "static_pages#home"
   namespace :admin do
-    root "home#index"
+    root "home#index", path: "/"
     resources :orders, only: [:index, :show, :destroy]
     resources :shop_requests, only: [:index, :update]
     resources :categories
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
-    root "shops#index", path: "/"
+    root "statistics#index", path: "/"
     resources :shops do
       resources :products
       resources :orders
