@@ -16,6 +16,8 @@
 //= require star-rating.min
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require jquery.raty
+//= require ratyrate
 //= require bootstrap-tagsinput
 //= require jquery.slimscroll
 //= require app

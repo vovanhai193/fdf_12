@@ -22,3 +22,4 @@ search:
 admin:
   dashboard:
     max_items: 10
+rate: "rate"

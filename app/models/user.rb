@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   acts_as_paranoid
-
+  ratyrate_rater
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
   def slug_candidates
