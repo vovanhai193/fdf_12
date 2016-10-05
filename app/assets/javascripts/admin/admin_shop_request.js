@@ -15,6 +15,7 @@ function updateShopRequest(button, message, shop_id){
     status = null;
   }
   $('.shop-request-modal').modal('show');
+  $('.modal-backdrop').css('z-index', -1);
   $('.btn-ok').on('click', function(){
     $.ajax({
       type: 'post',
