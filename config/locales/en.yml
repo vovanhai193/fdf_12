@@ -51,9 +51,11 @@ en:
     product_number: "%{number} products"
     view_button: "View"
     tags: "Tags"
+    shop_managers: "Managers"
   header:
     account: "Account"
     shop_manager: "Shop management"
+    shop_statistic: "Shop statistics"
     report_abuse: "Report (comming soon)"
     settings: "Settings"
     logout: "Logout"
@@ -304,7 +306,18 @@ en:
       btn_search: "Search"
       Date: "Date"
       Name: "Name"
-
+    shop_managers:
+      index:
+        title: "All managers"
+        name: "User's name"
+        email: "Email"
+        chatwork: "Chatwork id"
+        actions: "Actions"
+        avatar: "Avatar"
+        description: "Description"
+        show_avatar: "Show avatar"
+        blocked: "blocked"
+        active: "active"
   cart:
     view_cart_all: "View all"
     add_to_card: "Add to cart"
@@ -399,3 +412,8 @@ en:
     shop_owner_text: "Owner:"
     product_tags: "%{number} tag(s)"
     search_all: "All"
+    user_search_placeholder: "Type username or email to add..."
+    added: "Added"
+    new: "New"
+    add: "Add"
+    remove: "Remove"

@@ -1,6 +1,6 @@
 $(document).on("ready page:load", $(function () {
   $('.dropdown-toggle').dropdown();
-  $('input.search').searchbox({
+  $('#live-search-form').searchbox({
     url: '/search/',
     param: 'search',
     dom_id: '#livesearch',

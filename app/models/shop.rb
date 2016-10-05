@@ -43,8 +43,16 @@ class Shop < ApplicationRecord
   scope :by_active, ->{where status: :active}
   scope :by_shop, -> shop_id {where id: shop_id if shop_id.present?}
 
+  def is_owner? user
+    owner == user
+  end
+
   def all_tags
     tags.uniq
+  end
+
+  def get_shop_manager_by user
+    shop_managers.by_user(user).first
   end
 
   private

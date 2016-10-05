@@ -27,16 +27,23 @@
           </div>
         </div>
         <div class="col-sm-3">
-          <ul class="nav shop-info">
-            <li>
-              <i class="fa fa-user"></i>
-              <span><%= link_to @shop.owner_name, "#" %></span>
-            </li>
-            <li>
-              <i class="fa fa-envelope"></i>
-              <span><%= mail_to @shop.owner_email %></span>
-            </li>
-          </ul>
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <%= t "common.shop_managers" %>
+            </div>
+            <div class="panel-body">
+              <% @shop.users.each do |user| %>
+                <%= link_to user, class: "user-item-image" do %>
+                  <%= image_tag user.avatar.url, alt: user.name %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="panel-footer">
+              <%= link_to t("common.btn_view_all"),
+                dashboard_shop_shop_managers_path(@shop),
+                class: "btn btn-default btn-block" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
