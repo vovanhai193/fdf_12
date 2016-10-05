@@ -1,16 +1,18 @@
 class Order < ApplicationRecord
-  attr_accessor :cart
+  attr_accessor :cart, :change_status, :current_user
   acts_as_paranoid
   belongs_to :user
   belongs_to :shop
   belongs_to :coupon
   has_many :order_products, dependent: :destroy
-  enum status: {pending: 0, confirm: 1}
+  has_many :products, through: :order_products
+  enum status: {pending: 0, open: 1, closed: 2}
   delegate :name, to: :shop, prefix: :shop
   delegate :name, to: :user, prefix: :user, allow_nil: true
   delegate :name, to: :coupon, prefix: :coupon, allow_nil: true
 
-  after_create :build_order_products
+  after_update :build_order_products
+  after_create :build_order_products, on: :user
 
   scope :by_date_newest, ->{order created_at: :desc}
 
@@ -43,9 +45,11 @@ class Order < ApplicationRecord
   scope :group_day, -> {group "EXTRACT(day FROM created_at)"}
 
   def build_order_products
-    cart.items.each do |item|
-      order_products.create product_id: item.product_id,
-        quantity: item.quantity
+    unless self.change_status
+      cart.items.each do |item|
+        order_products.create product_id: item.product_id,
+          quantity: item.quantity, user: current_user
+      end
     end
   end
 
@@ -77,5 +81,19 @@ class Order < ApplicationRecord
         {name: shop.name, data: shop.orders.send(method_send).count}
       end
     end
+  end
+
+  def total_price
+    order_products.inject(0){|sum, item| sum + item.total_price}
+  end
+
+  def total_pay_user user
+    order_products.by_user(user)
+      .inject(0){|sum, item| sum + item.total_price}
+  end
+
+  def total_price_accepted
+    order_products.accepted
+      .inject(0){|sum, item| sum + item.total_price}
   end
 end

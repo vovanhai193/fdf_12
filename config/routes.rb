@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :products
       resources :orders
       resources :shop_managers, only: [:index, :create, :destroy]
+      resources :order_products
     end
     resources :statistics
   end
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
   resources :comments, only: :destroy
   resources :carts
   resources :orders
+  resource :orders
   resources :users, only: :show
   resources :categories do
     resources :products

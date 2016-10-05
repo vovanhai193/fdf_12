@@ -31,9 +31,11 @@
         <th><%= t "dashboard.order.created_at" %></th>
         <th><%= t "dashboard.order.user_name" %></th>
         <th><%= t "dashboard.order.total_pay" %></th>
+        <th><%= t ".note" %></th>
         <th><%= t "dashboard.order.status" %></th>
         <th><%= t "dashboard.order.confirm" %></th>
-        <th><%= t "dashboard.order.detail_order" %></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -42,15 +44,16 @@
           <td>
             <%= index + 1 %>
           </td>
-          <td><%= order.created_at %></td>
-          <td><%= order.user.name %></td>
+          <td><%= l order.created_at, format: :short_date %></td>
+          <td><%= order.user.try :name %></td>
           <td><%= order.total_pay %> <%= t "cart.vnd" %> </td>
+          <td><%= order.notes %></td>
           <td>
             <div class="order-status-<%= order.id %>">
               <%= status_order order %>
             </div>
           </td>
-          <td class="col-md-1">
+          <td class="col-md-2">
             <select  class="form-control status-order">
               <% @shop.orders.statuses.keys.each do |status| %>
                 <%= option_status status, order %>
@@ -58,8 +61,13 @@
             </select>
           </td>
           <td class="text-center">
+            <%= link_to edit_dashboard_shop_order_path(@shop.id, order) do %>
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            <% end %>
+          </td>
+          <td>
             <%= link_to dashboard_shop_order_path(@shop.id, order) do %>
-              <i class="text-primary glyphicon glyphicon-eye-open"> </i>
+              <i class="fa fa-eye" aria-hidden="true"></i>
             <% end %>
           </td>
         </tr>
@@ -67,4 +75,18 @@
     </tbody>
   </table>
   <%= paginate @orders, theme: "twitter-bootstrap-3" %>
+  <button class="btn btn-info pull-right" id="create_order" >
+    <%= t".order" %>
+  </button>
+</div>
+
+<div class="create_order display_hide">
+  <div class="panel panel-success">
+    <div class="panel-heading text-center">
+      <%= t ".order" %>
+    </div>
+    <div class="panel-body">
+      <%= render "form" %>
+    </div>
+  </div>
 </div>

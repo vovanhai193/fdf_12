@@ -1,7 +1,42 @@
-<div class="page-content">
-  <div class="container">
-    <div class="row">
-      <%= render "list", order: @order %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= l @order.created_at, format: :short_date %>
+    <div class="col-md-1">
+      <div>
+        <%= status_order @order %>
+      </div>
     </div>
   </div>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th><%= t "oder.id" %></th>
+      <th><%= t "oder.name" %></th>
+      <th><%= t "oder.image" %></th>
+      <th><%= t "oder.quantity" %></th>
+      <th><%= t "oder.price" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_products.each_with_index do |item, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= item.product.name %></td>
+        <td>
+          <span class="product-thumbnail">
+            <%= image_tag item.product.image.url %>
+          </span>
+        </td>
+        <td class="text-center"><%= item.total %></td>
+        <td class="text-center">
+          <strong><%= total_price item.product.price, item.total %> <%= t"cart.vnd" %> </strong></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="pull-right">
+  <h4>
+    <b><%= t ".total" %>: </b><%= @order.total_price_accepted %> <%= t"cart.vnd" %>
+  </h4>
 </div>

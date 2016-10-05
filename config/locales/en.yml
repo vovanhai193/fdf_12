@@ -1,11 +1,22 @@
 en:
+  time:
+    formats:
+      short_date: "%m/%d/%Y"
   current_week: "Current week"
   current_month: "Current Month"
   current_year: "Current Year"
   add_cart_succes: "Add to cart successfully!"
+  load_order: "Cannot find order"
+  order_open_blank: "Don't have any order open!"
+  submit: "Submit"
+  order_open_present: "List order open."
+  confirm: "Are you sure?"
   year: "Year"
   facebook: "Facebook"
   google_oauth2: "Google"
+  add_order: "Add order"
+  accept_all: "Accept All"
+  create_order: "Create new order"
   common:
     base_title: "Framgia Food and Drink Order"
     admin_title: "Admin Framgia Orders"
@@ -73,6 +84,8 @@ en:
     success_message: "Success!"
     danger_message: "Failed!"
     success:
+      create_order: "Created order successfully!"
+      update_order: "Updated order successfully!"
       admin:
         created_category: "Created category successfully!"
         updated_category: "Updated category successfully!"
@@ -87,6 +100,8 @@ en:
         updated_shop: "Update shop successfully!"
         delete_product: "Delete product successfully!"
     danger:
+      load_order: "Cannot find order. plz choose order! "
+      load_items: "Cannot find order items"
       admin:
         created_category: "Created category failed!"
         updated_category: "Updated category failed!"
@@ -318,6 +333,16 @@ en:
         show_avatar: "Show avatar"
         blocked: "blocked"
         active: "active"
+    orders:
+      form:
+        end_date: "End date"
+        note: "Note"
+        end_at_note: "Set end time for auto close order"
+      index:
+        new_order: "create Order"
+        end_date: "End date"
+        note: "Note"
+        order: "Create order"
   cart:
     view_cart_all: "View all"
     add_to_card: "Add to cart"
