@@ -25,4 +25,15 @@ module ApplicationHelper
     options.reverse_merge! theme: "twitter-bootstrap-3"
     super objects, options
   end
+
+  def count_notification_read
+    if user_signed_in?
+      number_noti =  @count_unread_notification
+      if number_noti == Settings.notification.number_unread_not_display
+        number_noti = ""
+      else
+        number_noti
+      end
+    end
+  end
 end

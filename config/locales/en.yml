@@ -442,3 +442,7 @@ en:
     new: "New"
     add: "Add"
     remove: "Remove"
+  notification:
+    ago: "ago"
+    shop: "has just changed status"
+    index: "Your Notification"

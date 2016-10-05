@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :create_cart
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :load_events
 
   protected
   def configure_permitted_parameters
@@ -20,6 +21,13 @@ class ApplicationController < ActionController::Base
     @cart = Cart.build_from_hash session[:cart]
     @cart_group = @cart.items.group_by(&:shop_id).map  do |q|
       {shop_id: q.first, items: q.second.each.map { |qn| qn }}
+    end
+  end
+
+  def load_events
+    if user_signed_in?
+      @events = current_user.events.by_date
+      @count_unread_notification = @events.unread.size
     end
   end
 end

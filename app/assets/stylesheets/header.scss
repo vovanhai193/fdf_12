@@ -155,7 +155,6 @@ $orange_main: #ff5722;
 
     .dropdown-menu {
       width: 406px;
-
       .header {
         padding: 7px 15px;
         border-bottom: 1px solid #eef;
@@ -179,6 +178,21 @@ $orange_main: #ff5722;
       }
     }
   }
+}
+.dropdown-notification {
+  height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  .message-notification{
+    margin-top: 15px;
+    margin-right: 0px;
+  }
+}
+
+.notification-hover:hover, .notification-hover:focus {
+  background-color: #f3f3f3;
 }
 
 .dropdown-menu {

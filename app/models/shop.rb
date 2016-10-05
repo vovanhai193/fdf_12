@@ -23,11 +23,12 @@ class Shop < ApplicationRecord
   has_many :order_products, through: :orders
   has_many :products
   has_many :tags, through: :products
-
+  has_many :events , as: :eventable
   enum status: {pending: 0, active: 1, closed: 2, rejected: 3, blocked: 4}
 
   after_create :create_shop_manager, :send_notification_after_requested
   after_update :send_notification_after_confirmed
+  after_update_commit :send_notification
 
   validates :name, presence: true, length: {maximum: 50}
   validates :description, presence: true
@@ -81,5 +82,10 @@ class Shop < ApplicationRecord
     if self.status_changed? && !self.pending?
       ShopNotification.new(self).send_when_confirmed
     end
+  end
+
+  def send_notification
+     Event.create message: self.status, user_id: owner_id,
+       eventable_id: id, eventable_type: Shop.name
   end
 end

@@ -52,27 +52,43 @@
               <span><%= t "common.your_orders" %></span>
             <% end %>
           </li>
-          <li class="block-notification-dropdown dropdown">
+          <li class="block-notification-dropdown dropdown event">
             <a href="#" id="notifications-dropdown" class="dropdown-toggle"
               data-toggle="dropdown">
               <div>
                 <div class="icon-notification">
                   <i class="fa fa-bell fa-lg"></i>
+                  <% if user_signed_in? %>
+                    <span class="items-count", id="notification_count">
+                      <%= count_notification_read %>
+                    </span>
+                  <% end %>
                 </div>
                 <span><%= t "common.notifications" %></span>
               </div>
             </a>
-            <ul class="dropdown-menu" role="menu"
+            <ul class="dropdown-menu dropdown-noti" role="menu"
               aria-labelledby="notifications-dropdown">
-              <li class="header clearfix">
-                <h4 class="title">
-                  <span><%= t "common.notifications" %></span>
-                </h4>
-              </li>
+              <div class="dropdown-notification">
+                <li class="header clearfix">
+                  <h4 class="title">
+                    <span><%= t "common.notifications" %></span>
+                  </h4>
+                </li>
+                <% if user_signed_in? %>
+                  <%= render "events/list_events" %>
+                <% else %>
+                  <li>
+                    <p class="no-notification">
+                      <span><%= t "common.no_notifications" %></span>
+                    </p>
+                  </li>
+                <% end %>
+              </div>
+              <li class="divider"></li>
               <li>
-                <p class="no-notification">
-                  <span><%= t "common.no_notifications" %></span>
-                </p>
+                <%= link_to t("cart.view_cart_all"),events_path ,
+                  class: "text-center" %>
               </li>
             </ul>
           </li>
