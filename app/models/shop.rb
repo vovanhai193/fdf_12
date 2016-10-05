@@ -1,6 +1,8 @@
 class Shop < ApplicationRecord
   acts_as_paranoid
 
+  ratyrate_rateable Settings.rate
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
 

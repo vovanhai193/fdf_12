@@ -42,6 +42,7 @@ gem "omniauth-google-oauth2"
 gem "omniauth"
 gem "json"
 gem "friendly_id", "~> 5.1.0"
+gem "ratyrate"
 
 group :development, :test do
   gem "byebug", platform: :mri
