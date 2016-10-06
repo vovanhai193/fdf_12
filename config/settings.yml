@@ -23,3 +23,5 @@ admin:
   dashboard:
     max_items: 10
 rate: "rate"
+notification:
+  number_unread_not_display: 0

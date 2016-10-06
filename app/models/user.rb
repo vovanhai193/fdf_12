@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   acts_as_paranoid
   ratyrate_rater
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders]
   def slug_candidates
@@ -21,6 +22,7 @@ class User < ApplicationRecord
   has_many :orders
   has_many :order_products
   has_many :coupons
+  has_many :events
 
   enum status: {active: 0, blocked: 1}
   mount_uploader :avatar, UserAvatarUploader
