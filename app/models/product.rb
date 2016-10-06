@@ -20,6 +20,7 @@ class Product < ApplicationRecord
   has_many :order_products
   has_many :reviews, as: :reviewable
   has_many :comments, as: :commentable
+  has_many :events, as: :eventable
 
   enum status: {active: 0, inactive: 1}
   mount_uploader :image, ProductImageUploader

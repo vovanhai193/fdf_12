@@ -4,8 +4,11 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :shop
   belongs_to :coupon
+
   has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
+  has_many :events , as: :eventable
+
   enum status: {pending: 0, open: 1, closed: 2}
   delegate :name, to: :shop, prefix: :shop
   delegate :name, to: :user, prefix: :user, allow_nil: true
@@ -13,6 +16,8 @@ class Order < ApplicationRecord
 
   after_update :build_order_products
   after_create :build_order_products, on: :user
+  after_create_commit :send_notification
+
 
   scope :by_date_newest, ->{order created_at: :desc}
 
@@ -95,5 +100,10 @@ class Order < ApplicationRecord
   def total_price_accepted
     order_products.accepted
       .inject(0){|sum, item| sum + item.total_price}
+  end
+
+  def send_notification
+    Event.create message: "",
+      user_id: self.shop.owner_id, eventable_id: id, eventable_type: Order.name
   end
 end
