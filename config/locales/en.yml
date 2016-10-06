@@ -446,3 +446,5 @@ en:
     ago: "ago"
     shop: "has just changed status"
     index: "Your Notification"
+    product: "has a comment"
+    order: "has new order"

@@ -24,6 +24,7 @@ class Shop < ApplicationRecord
   has_many :products
   has_many :tags, through: :products
   has_many :events , as: :eventable
+
   enum status: {pending: 0, active: 1, closed: 2, rejected: 3, blocked: 4}
 
   after_create :create_shop_manager, :send_notification_after_requested
