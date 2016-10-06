@@ -5,6 +5,8 @@ class OrderProduct < ApplicationRecord
   belongs_to :product
   belongs_to :coupon
   enum status: {pending: 0, accepted: 1, rejected: 2}
+  delegate :name, to: :user, prefix: true, allow_nil: true
+  delegate :name, to: :product, prefix: true
 
   def total_price
     product.price * quantity
