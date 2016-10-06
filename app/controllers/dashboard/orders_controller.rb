@@ -31,6 +31,7 @@ class Dashboard::OrdersController < BaseDashboardController
     else
       order = Order.find_by id: params[:id]
       order.order_products.update_all status: :accepted
+      send_mail_to_user order.order_products
       flash[:success] = t "flash.success.update_order"
       redirect_to edit_dashboard_shop_order_path(@shop.id, order.id)
     end
@@ -76,6 +77,12 @@ class Dashboard::OrdersController < BaseDashboardController
     else
       flash[:danger] = t "flash.danger.load_shop"
       redirect_to dashboard_shops_path
+    end
+  end
+
+  def send_mail_to_user products_order
+    products_order.each do |product_order|
+      OrderMailer.shop_confirmation(product_order).deliver_later
     end
   end
 end

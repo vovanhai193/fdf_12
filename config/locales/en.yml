@@ -384,7 +384,9 @@ en:
       subject: "Status changed for shop: \"%{name}\""
       hello: "Dear %{name},"
       status_message: "You've just setted status for \"%{shop_name}\":"
-
+  order_mailer:
+    subject: "Status order request shop"
+    title: "View your product order status "
   oder:
     success: "Order successfully !"
     btn_oder: "Order Now"
