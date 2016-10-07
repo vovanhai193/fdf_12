@@ -1,4 +1,4 @@
-<div class="cart-item">
+<div class="cart-item scrollable-menu">
   <% @cart.items.each do |item| %>
     <li id="item-<%= item.product_id %>">
       <span class="item">
@@ -19,14 +19,14 @@
               <tr>
                 <td><span><%= item.quantity %></span></td>
                 <td><span><%= item.total_price %> <%= t "cart.vnd" %></span></td>
-                <td>
-                  <span class="item-right">
-                    <%= link_to t("cart.delete"), cart_path(item.product_id),
-                      method: :delete, remote: true,
-                      class: "btn btn-xs btn-danger pull-right" %>
-                  </span>
-                  <%= link_to t("cart.sub"), edit_cart_path(item.product_id), remote: true,
-                    class: "pull-right btn btn-xs btn-primary" %>
+                <td class="btn-action">
+
+                  <%= link_to t("cart.delete"), cart_path(item.product_id),
+                    method: :delete, remote: true,
+                    class: "btn btn-xs btn-danger pull-right" %>
+
+                  <%= link_to t("cart.sub"), edit_cart_path(item.product_id),
+                    remote: true, class: "pull-right btn btn-xs btn-primary" %>
                   <%= link_to t("cart.add"), cart_path(item.product_id), remote: true,
                     method: :put, class: "pull-right btn btn-xs btn-primary" %>
                 </td>

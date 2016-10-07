@@ -1,8 +1,18 @@
 $orange_main: #ff5722;
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.btn-action {
+  a {
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 40px;
+    text-align: center;
+  }
+}
+
 ul.dropdown-cart{
-  min-width:250px;
+  min-width:400px;
 }
 ul.dropdown-cart li .item{
   width: 400px;
