@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  attr_accessor :cart, :change_status, :current_user
+  attr_accessor :cart, :change_status
   acts_as_paranoid
   belongs_to :user
   belongs_to :shop
@@ -15,7 +15,7 @@ class Order < ApplicationRecord
   delegate :name, to: :coupon, prefix: :coupon, allow_nil: true
 
   after_update :build_order_products
-  after_create :build_order_products, on: :user
+  after_create :build_order_products
   after_create_commit :send_notification
 
 
@@ -53,7 +53,7 @@ class Order < ApplicationRecord
     unless self.change_status
       cart.items.each do |item|
         order_products.create product_id: item.product_id,
-          quantity: item.quantity, user: current_user
+          quantity: item.quantity, user_id: user_id
       end
     end
   end

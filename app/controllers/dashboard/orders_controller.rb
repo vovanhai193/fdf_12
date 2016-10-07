@@ -55,7 +55,7 @@ class Dashboard::OrdersController < BaseDashboardController
 
   def order_params_create
     params.require(:order).permit(:end_at, :notes)
-      .merge! user: current_user
+      .merge! user: current_user, change_status: true
   end
 
   def load_shop

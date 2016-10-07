@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     @cart_shop = load_cart_shop
     if @cart_shop.present?
       @order = Order.new params_create_order @cart_shop
-      if @order.save context: :user
+      if @order.save
         delete_cart_item_shop session["cart"], @shop
         flash[:success] = t "oder.success"
         redirect_to order_path @order, shop_id: @shop.id
@@ -66,11 +66,11 @@ class OrdersController < ApplicationController
   private
 
   def order_params cart_shop
-    {cart: cart_shop, shop: @shop, current_user: current_user}
+    {cart: cart_shop, shop: @shop, user: current_user}
   end
 
   def params_create_order cart_shop
-    {current_user: current_user, total_pay: cart_shop.total_price,
+    {user: current_user, total_pay: cart_shop.total_price,
       cart: cart_shop, shop: @shop}
   end
 
