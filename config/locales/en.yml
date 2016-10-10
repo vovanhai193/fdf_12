@@ -190,6 +190,7 @@ en:
         description: "Description"
         status: "Status"
         actions: "Actions"
+        avatar: "Avatar"
     home:
       index:
         page_title: "Dashboard"

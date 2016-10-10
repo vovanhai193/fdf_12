@@ -20,11 +20,8 @@
     <%= f.file_field :avatar, accept: Settings.pictures.accepted_files %>
   </div>
   <div class="row">
-    <div class="col-md-4 user_avatar btn btn-success">
-      <%= t ".show_avatar" %>
-      <span>
-        <%= image_tag @user.avatar.url, class:"thumbnail" %>
-      </span>
+    <div class="col-md-4 search-user-image">
+      <%= image_tag @user.avatar.url, class: "thumbnail" %>
     </div>
     <div class="col-md-4 text-center">
       <%= link_to t("common.back_button"), :back,
