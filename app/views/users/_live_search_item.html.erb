@@ -17,11 +17,17 @@
             </span>
           </div>
           <div class="col-md-2">
-            <%= link_to t("livesearch.remove"),
-              dashboard_shop_shop_manager_path(@shop,
-              @shop.get_shop_manager_by(user)),
-              method: :delete, data: {confirm: t("common.delete_confirm")},
-              class: "btn btn-sm btn-danger" %>
+            <% if @shop.is_owner? user %>
+              <span class="label label-info">
+                <%= t "livesearch.owner" %>
+              </span>
+            <% else %>
+              <%= link_to t("livesearch.remove"),
+                dashboard_shop_shop_manager_path(@shop,
+                  @shop.get_shop_manager_by(user)),
+                method: :delete, data: {confirm: t("common.delete_confirm")},
+                class: "btn btn-sm btn-danger" %>
+            <% end %>
           </div>
         <% else %>
           <div class="col-md-10">
