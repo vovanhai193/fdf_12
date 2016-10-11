@@ -445,6 +445,7 @@ en:
     new: "New"
     add: "Add"
     remove: "Remove"
+    owner: "Owner"
   notification:
     ago: "ago"
     shop: "has just changed status"
