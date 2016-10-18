@@ -49,7 +49,6 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "rspec-rails", "~> 3.5"
   gem "pry"
-  gem "simplecov", require: false
   gem "faker"
 end
 

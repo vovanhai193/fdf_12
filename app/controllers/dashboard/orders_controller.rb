@@ -1,13 +1,15 @@
 class Dashboard::OrdersController < BaseDashboardController
-  before_action :load_shop, except: [:show, :destroy]
-  before_action :load_shop_order, only: [:show, :edit]
+  before_action :load_shop, except: :show
+  before_action :load_shop_order, only: [:show, :edit, :destroy]
 
   def index
     @order = Order.new
     if @shop
       @q = @shop.orders.includes(:user).ransack params[:q]
-      @orders = @q.result.by_date_newest
+      @orders = @q.result.includes(:order_products).by_date_newest
         .page(params[:page]).per Settings.common.per_page
+      @products = Product.includes(:accepted_order_products)
+        .order_products_not_nil
     end
   end
 
@@ -20,17 +22,10 @@ class Dashboard::OrdersController < BaseDashboardController
 
   def update
     if params[:order].present?
-      if @shop
-        @order = @shop.orders.find_by id: params[:id]
-        if @order.update_attributes order_params
-          flash[:success] = t "flash.success.update_order"
-        else
-          render :back
-        end
-      end
+      render_json_shop
     else
       order = Order.find_by id: params[:id]
-      order.order_products.update_all status: :accepted
+      render_json_shop
       send_mail_to_user order.order_products
       flash[:success] = t "flash.success.update_order"
       redirect_to edit_dashboard_shop_order_path(@shop.id, order.id)
@@ -45,6 +40,15 @@ class Dashboard::OrdersController < BaseDashboardController
     else
       render :back
     end
+  end
+
+  def destroy
+    if @order.destroy
+      flash[:success] = t "oder.deleted"
+    else
+      flash[:danger] = t "oder.not_delete"
+    end
+    redirect_to dashboard_shop_orders_path
   end
 
   private
@@ -83,6 +87,21 @@ class Dashboard::OrdersController < BaseDashboardController
   def send_mail_to_user products_order
     products_order.each do |product_order|
       OrderMailer.shop_confirmation(product_order).deliver_later
+    end
+  end
+
+  def render_json_shop
+    if @shop
+      @order = @shop.orders.find_by id: params[:id]
+      if @order.update_attributes order_params
+        respond_to do |format|
+          format.json do
+            render json: {status: @order.status}
+          end
+        end
+      end
+    else
+      render :back
     end
   end
 end

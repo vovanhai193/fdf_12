@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   has_many :products, through: :order_products
   has_many :events , as: :eventable
 
-  enum status: {pending: 0, open: 1, closed: 2}
+  enum status: {pending: 0, accepted: 1, rejected: 2, done: 3}
   delegate :name, to: :shop, prefix: :shop
   delegate :name, to: :user, prefix: :user, allow_nil: true
   delegate :name, to: :coupon, prefix: :coupon, allow_nil: true
@@ -17,6 +17,7 @@ class Order < ApplicationRecord
   after_update :build_order_products
   after_create :build_order_products
   after_create_commit :send_notification
+  after_create :check_status_order
 
 
   scope :by_date_newest, ->{order created_at: :desc}
