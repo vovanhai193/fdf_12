@@ -2,6 +2,8 @@ en:
   time:
     formats:
       short_date: "%m/%d/%Y"
+      short_time: "%H:%M"
+  split: " -"
   current_week: "Current week"
   current_month: "Current Month"
   current_year: "Current Year"
@@ -226,6 +228,7 @@ en:
   pictures:
     max_size_message: "Maximum file size is %{max_size}MB. Please choose a smaller file."
     error_message: "Image should be less than %{max_size}MB"
+  error_message_time: "Start date should be before end date"
   layouts:
     admin_lte_2:
       footer: "Framgia Orders. @2016@"
@@ -357,6 +360,7 @@ en:
     not_product: "Your Cart have't product, Please order product !"
     view_product: "View products at here "
     btn_view_product: "View product"
+    order_time_text: "order time:"
 
   status:
     shops:
