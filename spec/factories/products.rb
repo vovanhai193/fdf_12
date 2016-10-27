@@ -1,12 +1,7 @@
 FactoryGirl.define do
   factory :product do
-    name "MyString"
-    description "MyText"
-    price ""
-    image "MyString"
-    status 1
-    category nil
-    shop nil
-    user nil
+    name {Faker::Lorem.word}
+    description {Faker::Hacker.say_something_smart}
+    price {Faker::Number.number(5)}
   end
 end
