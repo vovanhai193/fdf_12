@@ -1,11 +1,8 @@
 FactoryGirl.define do
   factory :shop do
-    name "MyString"
-    description "MyText"
+    name {Faker::Name.name}
+    description {Faker::Hacker.say_something_smart}
     status 1
-    cover_image "MyString"
-    avatar "MyString"
-    averate_rating ""
-    user nil
+    users {[FactoryGirl.create(:user)]}
   end
 end
