@@ -1,6 +1,11 @@
 class Admin::CategoriesController < AdminController
   load_and_authorize_resource
 
+  def index
+    @categories = @categories.asc_by_name.page(params[:page])
+      .per Settings.common.per_page
+  end
+
   def new
   end
 
@@ -12,10 +17,6 @@ class Admin::CategoriesController < AdminController
       flash[:danger] = t "flash.danger.admin.created_category"
       render :new
     end
-  end
-
-  def index
-    @categories = @categories.page(params[:page]).per Settings.common.per_page
   end
 
   def edit

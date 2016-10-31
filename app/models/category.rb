@@ -6,5 +6,7 @@ class Category < ApplicationRecord
 
   has_many :products
 
+  scope :asc_by_name, ->{order :name}
+
   validates :name, presence: true, uniqueness: true
 end
