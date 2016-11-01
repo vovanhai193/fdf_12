@@ -68,6 +68,7 @@ en:
   header:
     account: "Account"
     shop_manager: "Shop management"
+    order_manager: "Orders manager"
     shop_statistic: "Shop statistics"
     report_abuse: "Report (comming soon)"
     settings: "Settings"
@@ -328,6 +329,7 @@ en:
       confirm: "Confirm"
       detail_order: "Detail"
       view_order_list: "View List Order"
+      view_history_orders: "View History Orders"
       btn_search: "Search"
       Date: "Date"
       Name: "Name"
@@ -353,6 +355,12 @@ en:
         end_date: "End date"
         note: "Note"
         order: "Create order"
+    order_managers:
+      index:
+        title: "Orders Manager"
+        done_orders: "Done Orders"
+        reject_orders: "Reject Orders"
+        not_products: "Not has any products"
   cart:
     view_cart_all: "View all"
     add_to_card: "Add to cart"

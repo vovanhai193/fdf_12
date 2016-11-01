@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :products
       resources :orders
       resources :shop_managers, only: [:index, :create, :destroy]
+      resources :order_managers, only: :index
       resources :order_products
     end
     resources :statistics
