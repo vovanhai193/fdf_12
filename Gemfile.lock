@@ -274,6 +274,10 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rspec-activemodel-mocks (1.0.3)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -401,6 +405,7 @@ DEPENDENCIES
   rails-controller-testing
   ransack
   ratyrate
+  rspec-activemodel-mocks
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   shoulda-matchers (= 3.0.1)
@@ -416,4 +421,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.13.1
+   1.13.6

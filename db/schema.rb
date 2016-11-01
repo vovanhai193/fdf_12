@@ -179,6 +179,8 @@ ActiveRecord::Schema.define(version: 20161031073514) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.string   "slug"
+    t.time     "start_hour"
+    t.time     "end_hour"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["deleted_at"], name: "index_products_on_deleted_at", using: :btree
     t.index ["name"], name: "index_products_on_name", using: :btree
