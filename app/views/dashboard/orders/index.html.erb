@@ -2,14 +2,14 @@
 
 <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
   <div class="btn-group" role="group">
-    <button type="button" id="stars" class="btn btn-primary tab1"
+    <button type="button" id="stars" class="btn btn-primary step1"
       href="#step1" data-toggle="tab">
       <span class="fa fa-check" aria-hidden="true"></span>
       <div class="hidden-xs"><%= t "order_statistics.step1"%></div>
     </button>
   </div>
   <div class="btn-group" role="group">
-    <button type="button" id="favorites" class="btn btn-default tab2"
+    <button type="button" id="favorites" class="btn btn-default step2"
       href="#step2" data-toggle="tab">
       <span class="fa fa-list-alt" aria-hidden="true"></span>
       <div class="hidden-xs"><%= t "order_statistics.step2"%></div>
@@ -25,13 +25,13 @@
           <div class="dropdown action">
             <input type="hidden" value = "<%= @shop.id %>" id="shop-id">
             <%= check_box_tag "orders[]", @orders.ids, false, class: "checkbox", id: "checkbox" %>
-            <button class="list btn btn-primary btn-action button">
+            <button class="list btn btn-primary btn-action button" value="accepted">
               <%= t "order_statistics.accept"%>
             </button>
-            <button class="list btn btn-danger btn-action button">
+            <button class="list btn btn-danger btn-action button" value="rejected">
               <%= t "order_statistics.reject"%>
             </button>
-            <button class="list btn btn-success pull-right btnNext tab2"
+            <button class="list btn btn-success pull-right btnNext step2"
               id="tab-1" href="#step2" data-toggle="tab">
               <%= t "order_statistics.continue"%>
             </button>
