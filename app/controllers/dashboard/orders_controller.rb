@@ -61,14 +61,6 @@ class Dashboard::OrdersController < BaseDashboardController
       .merge! user: current_user, change_status: true
   end
 
-  def load_shop
-    @shop = Shop.find_by id: params[:shop_id]
-    unless @shop
-      flash[:danger] = t "flash.danger.load_shop"
-      redirect_to dashboard_shops_path
-    end
-  end
-
   def load_shop_order
     shop = Shop.find_by id: params[:shop_id]
     if shop

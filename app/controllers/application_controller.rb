@@ -30,4 +30,12 @@ class ApplicationController < ActionController::Base
       @count_unread_notification = @events.unread.size
     end
   end
+
+  def load_shop
+    @shop = Shop.find_by id: params[:shop_id]
+    unless @shop
+      flash[:danger] = t "flash.danger.load_shop"
+      redirect_to dashboard_shops_path
+    end
+  end
 end
