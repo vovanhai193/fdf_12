@@ -1,0 +1,37 @@
+<% products.each do |key, value| %>
+  <div class="panel panel-default">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="order-status-2 orders">
+          <span class="pull-left">
+            <strong><%= key %></strong>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body orders-hidden">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th><%= t "order_statistics.id" %></th>
+            <th><%= t "order_statistics.name" %></th>
+            <th class="text-center"><%= t "order_statistics.quantity" %></th>
+            <th class="text-center"><%= t "order_statistics.price" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% value.each_with_index do |product, index| %>
+            <tr>
+              <td><%= increase_one index %></td>
+              <td><%= product.name %></td>
+              <td class="text-center"><%= product.quantity %></td>
+              <td class="text-center">
+                <strong><%= product.price.to_i %> <%= t "cart.vnd" %> </strong>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
