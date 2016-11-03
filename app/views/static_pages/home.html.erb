@@ -6,18 +6,36 @@
       </h3>
       <div class="clearfix body">
         <div class="category-list">
-          <%= link_to products_path,
-            class: "btn btn-default col-lg-6 col-md-12 active" do %>
-            <span><%= t "common.category.all" %></span>
-          <% end %>
-          <% @catogories.each do |category|%>
-            <% cache category do %>
-              <%= link_to category_path(category),
-                class: "btn btn-default col-lg-6 col-md-12 active" do %>
-                <span><%= category.name %></span>
-                <span class="badge"><%= category.products.size %></span>
+          <% if @catogories.size < Settings.max_content_scroll %>
+            <%= link_to products_path,
+              class: "btn btn-default col-lg-6 col-md-12 active" do %>
+              <span><%= t "common.category.all" %></span>
+            <% end %>
+            <% @catogories.each do |category|%>
+              <% cache category do %>
+                <%= link_to category_path(category),
+                  class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                  <span><%= category.name %></span>
+                  <span class="badge"><%= category.products.size %></span>
+                <% end %>
               <% end %>
             <% end %>
+          <% else %>
+            <div class="scroll">
+              <%= link_to products_path,
+              class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                <span><%= t "common.category.all" %></span>
+              <% end %>
+              <% @catogories.each do |category|%>
+                <% cache category do %>
+                  <%= link_to category_path(category),
+                    class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                    <span><%= category.name %></span>
+                    <span class="badge"><%= category.products.size %></span>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -28,18 +46,36 @@
       </h3>
       <div class="clearfix body">
         <div class="category-list">
-          <%= link_to products_path,
-            class: "btn btn-default col-lg-6 col-md-12 active" do %>
-            <span><%= t "common.category.all" %></span>
-          <% end %>
-          <% @tags.each do |tag|%>
-            <% if tag.taggings_count > 0 %>
-              <%= link_to tag_path(tag),
-                class: "btn btn-default col-lg-6 col-md-12 active" do %>
-                <span><%= tag.name %></span>
-                <span class="badge"><%= tag.taggings_count %></span>
+          <% if @tags.size < Settings.max_content_scroll %>
+            <%= link_to products_path,
+              class: "btn btn-default col-lg-6 col-md-12 active" do %>
+              <span><%= t "common.category.all" %></span>
+            <% end %>
+            <% @tags.each do |tag|%>
+              <% if tag.taggings_count > Settings.count_tag %>
+                <%= link_to tag_path(tag),
+                  class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                  <span><%= tag.name %></span>
+                  <span class="badge"><%= tag.taggings_count %></span>
+                <% end %>
               <% end %>
             <% end %>
+          <% else %>
+            <div class="scroll">
+              <%= link_to products_path,
+              class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                <span><%= t "common.category.all" %></span>
+              <% end %>
+              <% @tags.each do |tag|%>
+                <% if tag.taggings_count > Settings.count_tag %>
+                  <%= link_to tag_path(tag),
+                    class: "btn btn-default col-lg-6 col-md-12 active" do %>
+                    <span><%= tag.name %></span>
+                    <span class="badge"><%= tag.taggings_count %></span>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
