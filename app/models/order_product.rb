@@ -1,14 +1,19 @@
 class OrderProduct < ApplicationRecord
   acts_as_paranoid
+
   belongs_to :user
   belongs_to :order
   belongs_to :product
   belongs_to :coupon
 
+  has_many :events , as: :eventable
+
   enum status: {pending: 0, accepted: 1, rejected: 2, done: 3}
   delegate :name, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :product, prefix: true
   delegate :email, to: :user, prefix: true
+
+  after_update_commit :send_notification
 
   def total_price
     product.price * quantity
@@ -32,5 +37,15 @@ class OrderProduct < ApplicationRecord
         orders.shop_id = ?", status, Product.statuses[:active], shop_id)
       .group("order_products.product_id,
         DATE_FORMAT(order_products.created_at, '%Y%m%d')")
+  end
+
+  private
+
+  def send_notification
+    if self.rejected?
+      self.events.create message: :rejected, user_id: self.user.id
+    else
+      self.events.create message: :accepted, user_id: self.user.id
+    end
   end
 end

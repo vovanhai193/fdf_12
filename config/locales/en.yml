@@ -470,6 +470,7 @@ en:
     index: "Your Notification"
     product: "has a comment"
     order: "has new order"
+    status: "has just"
   order_statistics:
     id: "ID"
     name: "Productname"

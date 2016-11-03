@@ -23,6 +23,10 @@ class Event < ApplicationRecord
       "#{eventable_type} #{I18n.t "notification.order"}
         :#{message.upcase} \n #{time_ago_in_words(created_at)}
         #{I18n.t "notification.ago"}"
+    when OrderProduct.name
+      "#{eventable_type} #{I18n.t "notification.status"}
+        :#{message.upcase} \n #{time_ago_in_words(created_at)}
+        #{I18n.t "notification.ago"}"
     end
   end
 
