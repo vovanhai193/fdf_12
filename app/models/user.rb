@@ -2,7 +2,8 @@ class User < ApplicationRecord
   ratyrate_rater
 
   extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :finders]
+  friendly_id :slug_candidates, use: [:slugged]
+
   def slug_candidates
     [:name, [:name, :id]]
   end
@@ -41,6 +42,10 @@ class User < ApplicationRecord
         user.uid = auth.uid
       end
     end
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed? || super
   end
 
   private

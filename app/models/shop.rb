@@ -11,7 +11,7 @@ class Shop < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
+    slug.blank? || name_changed? || super
   end
 
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
