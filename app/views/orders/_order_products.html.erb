@@ -24,7 +24,7 @@
         <td class="text-center"><%= item.quantity %></td>
         <td><%= status_order_product item if item.try(:status).present? %></td>
         <td class="text-center">
-          <strong><%= item.total_price %> <%= t"cart.vnd" %> </strong></td>
+          <strong><%= format_price item.total_price %> </strong></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,4 @@
 <div class="cart-item-show">
-  <h3 class="col-md-offset-1 total-cart text-success">
-    <b><%= t ".total" %>:</b><%= @cart.total_price %> <%= t"cart.vnd" %> </h3><hr>
   <% @cart_group.each do |cart| %>
     <div class="panel-body">
       <div class="col-md-12 magin_top_10px">
@@ -30,20 +28,28 @@
                     <%= item.quantity %>
                   </td>
                   <td class="col-sm-3 col-md-3 text-center">
-                    <strong> <%= t "cart.vnd" %> <%= item.total_price %></strong></td>
+                    <strong><%= format_price item.total_price %></strong></td>
                 </tr>
                 <tr>
                   <td></td>
                   <td>
                     <span class="item-right">
-                      <%= link_to t("cart.delete"), cart_path(item.product_id),
-                        method: :delete, remote: true,
-                        class: "btn btn-xs btn-danger pull-right" %>
+                      <%= link_to cart_path(item.product_id), method: :delete,
+                        remote: true, class: "pull-right" do %>
+                        <span class="glyphicon glyphicon-trash text-danger
+                          action-padding"></span>
+                      <% end %>
                     </span>
-                    <%= link_to t("cart.sub"), edit_cart_path(item.product_id), remote: true,
-                      class: "pull-right btn btn-xs btn-primary" %>
-                    <%= link_to t("cart.add"), cart_path(item.product_id), remote: true,
-                      method: :put, class: "pull-right btn btn-xs btn-primary" %>
+                    <%= link_to edit_cart_path(item.product_id), remote: true,
+                      class: "pull-right" do %>
+                      <span class="glyphicon glyphicon-minus-sign
+                        text-primary action-padding"></span>
+                    <% end %>
+                    <%= link_to cart_path(item.product_id), remote: true,
+                      method: :put, class: "pull-right" do %>
+                      <span class="glyphicon glyphicon-plus-sign text-success
+                        action-padding"></span>
+                    <% end %>
                   </td>
                 </tr>
               </tbody>
@@ -51,10 +57,18 @@
           </div>
         <% end %>
       </div>
-      <div class="col-md-2">
-        <% if cart.present? %>
-          <%= link_to t("oder.btn_oder"), new_order_path(shop_id: cart[:shop_id]), class: "btn btn-primary" %>
-        <% end %>
+      <div class="row">
+        <hr>
+        <div class="pull-right">
+          <h3 class="total-cart text-success">
+            <b><%= t ".total" %>:</b> <%= format_price @cart.total_price %>
+          </h3>
+        </div>
+        <div class="pull-left padding-top-20">
+          <% if cart.present? %>
+            <%= link_to t("oder.btn_oder"), new_order_path(shop_id: cart[:shop_id]), class: "btn btn-primary" %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

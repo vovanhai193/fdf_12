@@ -26,7 +26,7 @@
               <td><%= product.name %></td>
               <td class="text-center"><%= product.quantity %></td>
               <td class="text-center">
-                <strong><%= product.price.to_i %> <%= t "cart.vnd" %> </strong>
+                <strong><%= format_price product.price %></strong>
               </td>
             </tr>
           <% end %>
