@@ -1,12 +1,12 @@
-<div class="block row block-shop-feed-item">
-  <div class="col-xs-2">
+<div class="col-sm-6 block row block-shop-feed-item">
+  <div class="col-md-4">
     <div class="row thumbnail">
       <%= link_to shop do %>
         <%= image_tag shop.avatar.url %>
       <% end %>
     </div>
   </div>
-  <div class="col-xs-10">
+  <div class="col-md-8">
     <div class="row content">
       <h3><%= link_to shop.name, shop %></h3>
       <%= render "shared/shop_status_label", shop: shop %>
