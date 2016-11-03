@@ -355,6 +355,8 @@ en:
         end_date: "End date"
         note: "Note"
         order: "Create order"
+      orders_statistics:
+        not_products_accepted: "Not has any products accepted"
     order_managers:
       index:
         title: "Orders Manager"

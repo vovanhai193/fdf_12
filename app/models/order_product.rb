@@ -19,7 +19,7 @@ class OrderProduct < ApplicationRecord
     product.price * quantity
   end
 
-  scope :by_accepted, ->{where Order.statuses[:accepted]}
+  scope :accepted, ->{where status: OrderProduct.statuses[:accepted]}
   scope :by_user, ->user {where user: user}
   scope :group_product, -> do
     joins(:product)
@@ -27,20 +27,27 @@ class OrderProduct < ApplicationRecord
       .group("order_products.product_id")
       .order("total DESC")
   end
-
   scope :history_by_day_with_status, ->(shop_id, status) do
     joins(:product, :order)
       .select("products.name as name, sum(quantity) as quantity,
         sum(quantity) * products.price as price, order_products.created_at as
         created_at, products.id as product_id")
-      .where("order_products.status = ? and products.status = ? and
-        orders.shop_id = ?", status, Product.statuses[:active], shop_id)
+      .where("order_products.status = ? and orders.status = ? and
+        orders.shop_id = ?", status, Order.statuses[:done], shop_id)
       .group("order_products.product_id,
         DATE_FORMAT(order_products.created_at, '%Y%m%d')")
   end
+  scope :order_products_accepted, ->shop_id do
+    joins(:product, :order)
+      .select("products.name as name, sum(quantity) * products.price as price,
+        sum(quantity) as quantity, products.id as product_id, orders.id as shop_id")
+      .where("order_products.status = ? and orders.shop_id = ? and
+        date(orders.created_at) = date(now())",
+        OrderProduct.statuses[:accepted], shop_id)
+      .group("order_products.product_id")
+  end
 
   private
-
   def send_notification
     if self.rejected?
       self.events.create message: :rejected, user_id: self.user.id

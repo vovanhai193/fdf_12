@@ -13,7 +13,7 @@ class Dashboard::ProductsController < BaseDashboardController
   end
 
   def show
-    @order_products = @product.order_products.by_accepted
+    @order_products = @product.order_products.accepted
   end
 
   def edit

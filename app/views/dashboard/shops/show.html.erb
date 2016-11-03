@@ -22,10 +22,11 @@
               <%= render "shared/shop_status_label", shop: @shop %>
             </h4>
             <h4>
-              <%= link_to t("dashboard.order.view_order_list"), dashboard_shop_orders_path(@shop.id) %>
-            </h4>
-            <h4>
-              <%= link_to t("dashboard.order.view_history_orders"), dashboard_shop_order_managers_path(@shop.id) %>
+              <%= link_to t("dashboard.order.view_order_list"),
+                dashboard_shop_orders_path(@shop.id), class: "btn btn-theme" %>
+              <%= link_to t("dashboard.order.view_history_orders"),
+                dashboard_shop_order_managers_path(@shop.id),
+                class: "btn btn-theme" %>
             </h4>
           </div>
         </div>
