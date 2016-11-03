@@ -5,8 +5,9 @@
         <%= t "order_statistics.back"%>
       </button>
       <% if @products.any? %>
-        <%= link_to t("order_statistics.done"), "#",
-          class: "list btn btn-success btn-action pull-right" %>
+        <%= link_to t("order_statistics.done"),
+          dashboard_shop_order_products_path(@shop.id),
+         class: "list btn btn-success btn-action pull-right" %>
       <% end %>
     </div>
   </div>

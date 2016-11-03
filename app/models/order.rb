@@ -50,6 +50,7 @@ class Order < ApplicationRecord
   scope :group_year , -> {group "EXTRACT(year FROM created_at)"}
   scope :group_month, -> {group "EXTRACT(month FROM created_at)"}
   scope :group_day, -> {group "EXTRACT(day FROM created_at)"}
+  scope :on_today, -> {where "date(orders.created_at) = date(now())"}
 
   def build_order_products
     unless self.change_status
