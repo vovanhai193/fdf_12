@@ -324,3 +324,11 @@ $orange_main: #ff5722;
 .login {
   color: orange;
 }
+
+.scroll{
+  height: 70px;
+  width: 242px;
+  overflow: auto;
+  border: 1px solid #ccc;
+  padding: 2%
+}

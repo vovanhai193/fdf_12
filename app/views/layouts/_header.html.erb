@@ -42,7 +42,7 @@
               <%= render "shared/cart" %>
               <li class="divider"></li>
               <li>
-                <%= link_to t("cart.view_cart_all"), carts_path, class: "text-center" %>
+                <%= link_to t("cart.view_cart_all"), carts_path, class: "text-center hightline" %>
               </li>
             </ul>
           </li>
@@ -67,7 +67,7 @@
                 <span><%= t "common.notifications" %></span>
               </div>
             </a>
-            <ul class="dropdown-menu dropdown-noti" role="menu"
+            <ul class="dropdown-menu dropdown-notification" role="menu"
               aria-labelledby="notifications-dropdown">
               <div class="dropdown-notification">
                 <li class="header clearfix">
@@ -88,7 +88,7 @@
               <li class="divider"></li>
               <li>
                 <%= link_to t("cart.view_cart_all"),events_path ,
-                  class: "text-center" %>
+                  class: "text-center hightline" %>
               </li>
             </ul>
           </li>

@@ -26,3 +26,5 @@ rate: "rate"
 notification:
   number_unread_not_display: 0
 delay_check_order: 1
+max_content_scroll: 3
+count_tag: 0
