@@ -20,6 +20,8 @@ class Order < ApplicationRecord
   after_create :check_status_order, if: -> {self.pending?}
 
   scope :by_date_newest, ->{order created_at: :desc}
+  scope :unfinished, ->{where.not status: Order.statuses[:done]}
+  scope :on_today, ->{where "date(orders.created_at) = date(now())"}
 
   ransacker :created_at do
     Arel.sql("date(created_at)")

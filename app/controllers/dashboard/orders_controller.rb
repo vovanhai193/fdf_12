@@ -6,10 +6,9 @@ class Dashboard::OrdersController < BaseDashboardController
     @order = Order.new
     if @shop
       @q = @shop.orders.includes(:user).ransack params[:q]
-      @orders = @q.result.includes(:order_products).by_date_newest
-        .page(params[:page]).per Settings.common.per_page
-      @products = Product.includes(:accepted_order_products)
-        .order_products_not_nil
+      @orders = @q.result.includes(:order_products).unfinished.on_today
+        .by_date_newest.page(params[:page]).per Settings.common.per_page
+      @products = OrderProduct.order_products_accepted @shop.id
     end
   end
 

@@ -22,9 +22,6 @@ class Product < ApplicationRecord
   has_many :comments, as: :commentable
   has_many :events, as: :eventable
   has_many :orders, through: :order_products
-  has_many :accepted_order_products, -> do
-    where status: OrderProduct.statuses[:accepted]
-  end, class_name: OrderProduct.name
 
   enum status: {active: 0, inactive: 1}
   mount_uploader :image, ProductImageUploader
@@ -41,7 +38,6 @@ class Product < ApplicationRecord
   scope :top_products, -> do
     by_active.by_date_newest.limit Settings.index.max_products
   end
-  scope :order_products_not_nil, ->{where.not order_products: {id: nil}}
 
   private
   def image_size
