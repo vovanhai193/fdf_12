@@ -1,4 +1,4 @@
-<div class="col-sm-6 block row block-shop-feed-item">
+<div class="col-sm-5 block row block-shop-feed-item">
   <div class="col-md-4">
     <div class="row thumbnail">
       <%= link_to shop do %>
@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="col-md-8">
-    <div class="row content">
+    <div class="row">
       <h3><%= link_to shop.name, shop %></h3>
       <%= render "shared/shop_status_label", shop: shop %>
       <input id="shop-average-rating" type="number"

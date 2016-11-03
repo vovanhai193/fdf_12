@@ -240,8 +240,6 @@ img {
     top: 50px;
     left: 10px;
     color: #e74c3c;
-    background-color:#e74c3c;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    background: rgba(0, 0, 0, 0.7);
   }
 }
