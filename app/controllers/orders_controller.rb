@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   def index
     @orders = current_user.orders.by_date_newest.page(params[:page])
       .per Settings.common.per_page
+    @order_days = @orders.group_by{|t| t.created_at.beginning_of_day}
   end
 
   def new

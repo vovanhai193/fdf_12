@@ -1,7 +1,12 @@
 <div class="page-content">
   <div class="container">
     <div class="row">
-      <%= render @orders %>
+      <% @order_days.sort.each do |day, orders|  %>
+        <h3><dt><%= t "order_day" %>: <%= I18n.localize day, format: :short_date %></dt></h3>
+        <% orders.each do |order| %>
+          <%= render "list", order: order %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
