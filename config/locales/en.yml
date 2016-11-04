@@ -486,3 +486,4 @@ en:
     step1: "Step 1: Check Order"
     step2: "Step 2: Close Order"
     continue: "Continue"
+  order_day: "Order day"
