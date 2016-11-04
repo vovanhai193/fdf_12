@@ -18,17 +18,23 @@
             <tbody>
               <tr>
                 <td><span><%= item.quantity %></span></td>
-                <td><span><%= item.total_price %> <%= t "cart.vnd" %></span></td>
-                <td class="btn-action">
-
-                  <%= link_to t("cart.delete"), cart_path(item.product_id),
-                    method: :delete, remote: true,
-                    class: "btn btn-xs btn-danger pull-right" %>
-
-                  <%= link_to t("cart.sub"), edit_cart_path(item.product_id),
-                    remote: true, class: "pull-right btn btn-xs btn-primary" %>
-                  <%= link_to t("cart.add"), cart_path(item.product_id), remote: true,
-                    method: :put, class: "pull-right btn btn-xs btn-primary" %>
+                <td><span><%= format_price item.total_price %></span></td>
+                <td class="pull-right">
+                  <%= link_to cart_path(item.product_id),
+                    method: :delete, remote: true, class: "pull-right" do %>
+                    <span class="glyphicon glyphicon-trash text-danger
+                      action-padding"></span>
+                  <% end %>
+                  <%= link_to edit_cart_path(item.product_id),
+                    remote: true, class: "pull-right" do %>
+                    <span class="glyphicon glyphicon-minus-sign
+                      text-primary action-padding"></span>
+                  <% end %>
+                  <%= link_to cart_path(item.product_id), remote: true,
+                    method: :put, class: "pull-right" do %>
+                    <span class="glyphicon glyphicon-plus-sign text-success
+                      action-padding"></span>
+                  <% end %>
                 </td>
               </tr>
             </tbody>

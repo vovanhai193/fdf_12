@@ -5,5 +5,5 @@
       dashboard_shop_product_path(product.shop_id, product.product_id) %>
   </td>
   <td><%= product.quantity %></td>
-  <td><%= product.price.to_i %> <%= t "cart.vnd" %></td>
+  <td><%= format_price product.price %></td>
 </tr>

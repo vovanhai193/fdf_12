@@ -2,7 +2,7 @@
   <div class="product_content_area">
     <div class="image_product">
       <%= link_to product do %>
-        <%= image_tag product.image.url, class: "img-responsive" %>
+        <%= image_tag product.image.url, class: "image-shop" %>
       <% end %>
       <% if Time.now.is_between_short_time? product.start_hour,
           product.end_hour %>
@@ -30,7 +30,7 @@
         <strong><%= product.name %></strong>
       </div>
       <div class="product_text">
-        <%= number_to_currency product.price %>
+        <%= format_price product.price %>
       </div>
     </div>
   </div>

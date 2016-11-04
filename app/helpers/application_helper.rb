@@ -40,4 +40,8 @@ module ApplicationHelper
   def total_price price, quantity
     price * quantity
   end
+
+  def format_price price
+    price.to_i.to_s + t("cart.vnd")
+  end
 end

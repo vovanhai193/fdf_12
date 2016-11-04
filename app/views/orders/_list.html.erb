@@ -6,7 +6,7 @@
       <div class="pull-right">
         <h4>
           <b><%= t "oder.total" %></b>
-          <%= order.total_pay_user current_user %> <%= t "cart.vnd" %>
+          <%= format_price (order.total_pay_user current_user) %>
         </h4>
       </div>
     </div>

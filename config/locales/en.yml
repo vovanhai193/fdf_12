@@ -371,7 +371,7 @@ en:
     sub: "Sub"
     add: "Add"
     delete: "Delete"
-    vnd: "vnd"
+    vnd: " VND"
     your_cart: "Your Cart!"
     not_product: "Your Cart have't product, Please order product !"
     view_product: "View products at here "
