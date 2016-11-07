@@ -36,6 +36,10 @@
           <% end %>
         </tbody>
       </table>
+      <strong>
+        <%= t "order_statistics.total_price" %>
+        <%= format_price value.sum &:price %>
+      </strong>
     </div>
   </div>
 <% end %>

@@ -8,6 +8,12 @@ class Dashboard::OrderManagersController < ApplicationController
     @order_products_reject = OrderProduct.history_by_day_with_status(@shop.id,
       OrderProduct.statuses[:rejected]).group_by{|i| l(i.created_at,
         format: :short_date)}
+    if params[:start_date] && params[:end_date]
+      @order_products_done = @order_products_done
+        .select {|key| (params[:start_date]..params[:end_date]).include? key}
+      @order_products_reject = @order_products_reject
+        .select {|key| (params[:start_date]..params[:end_date]).include? key}
+    end
   end
 
   private
