@@ -236,11 +236,8 @@ img {
 .image_product {
   position: relative;
   h3 {
-    position: absolute;
+    text-align: center !important;
     top: 50px;
-    left: 10px;
-    color: white;
-    background-color: #ff5722;
-    font-weight: bold;
+    color: black;
   }
 }
