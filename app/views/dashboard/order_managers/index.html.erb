@@ -12,8 +12,8 @@
     <div id="done" class="tab-pane fade in active">
       <div class="well">
         <div class="panel-group">
-          <% if @products_done.present? %>
-            <%= render "product", products: @products_done %>
+          <% if @order_products_done.present? %>
+            <%= render "order_product", order_products: @order_products_done %>
           <% else %>
             <span class="text-danger"><%= t ".not_products" %></span>
           <% end %>
@@ -23,8 +23,8 @@
     <div id="reject" class="tab-pane fade">
       <div class="well">
         <div class="panel-group">
-          <% if @products_reject.present? %>
-            <%= render "product", products: @products_reject %>
+          <% if @order_products_reject.present? %>
+            <%= render "order_product", order_products: @order_products_reject %>
           <% else %>
             <span class="text-danger"><%= t ".not_products" %></span>
           <% end %>
