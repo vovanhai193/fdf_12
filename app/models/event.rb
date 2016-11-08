@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   include ActionView::Helpers::DateHelper
 
-  after_create_commit {EventBroadcastJob.perform_later self}
+  after_create_commit :send_notification
 
   belongs_to :user
   belongs_to :eventable, polymorphic: true
@@ -43,6 +43,16 @@ class Event < ApplicationRecord
     case eventable_type
     when Shop.name
       "/dashboard/shops/#{eventable_id}"
+    when Product.name
+      "/products/#{eventable_id}"
+    when Order.name
+      "/dashboard/shops/#{eventable_id}/orders"
+    when OrderProduct.name
+      "/orders"
     end
+  end
+
+  def send_notification
+    EventBroadcastJob.perform_later Event.unread.count, self
   end
 end

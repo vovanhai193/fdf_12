@@ -3,10 +3,14 @@ class Dashboard::OrderProductsController < BaseDashboardController
   before_action :load_shop, only: :index
 
   def index
-    @orders = @shop.orders.on_today
+    @orders = @shop.orders.unfinished.on_today
+    updated_orders = @orders.to_a
     @order_products = @shop.order_products.accepted
     if (@order_products.update_all status: :done) &&
       (@orders.update_all status: :done)
+      updated_orders.each do |order|
+        order.send_done_notification
+      end
       flash[:success] = t "flash.success.update_order"
       redirect_to :back
     end

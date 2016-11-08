@@ -2,7 +2,6 @@
   <thead>
     <tr>
       <th><%= t "oder.id" %></th>
-      <th><%= t ".user" %></th>
       <th><%= t "oder.name" %></th>
       <th><%= t "oder.image" %></th>
       <th><%= t "oder.quantity" %></th>
@@ -14,7 +13,6 @@
     <% order_products.each_with_index do |item, index| %>
       <tr>
         <td><%= index + 1 %></td>
-        <td><%= item.try(:user_name) %></td>
         <td><%= item.product.name %></td>
         <td>
           <span class="product-thumbnail">

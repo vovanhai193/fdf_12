@@ -17,9 +17,9 @@ class CartsController < ApplicationController
     if item.quantity > 1
       item.decrement
       session["cart"] = @cart.sort
-    end
-    respond_to do |format|
-      format.js {render :update}
+      respond_to do |format|
+        format.js {render :update}
+      end
     end
   end
 

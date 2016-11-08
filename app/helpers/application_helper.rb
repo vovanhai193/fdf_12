@@ -26,7 +26,7 @@ module ApplicationHelper
     super objects, options
   end
 
-  def count_notification_read
+  def count_notification_unread
     if user_signed_in?
       number_noti =  @count_unread_notification
       if number_noti == Settings.notification.number_unread_not_display
@@ -43,5 +43,11 @@ module ApplicationHelper
 
   def format_price price
     price.to_i.to_s + t("cart.vnd")
+  end
+
+  def bg_unread event
+    if event.read == false
+      "unread"
+    end
   end
 end

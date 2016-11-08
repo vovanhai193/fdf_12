@@ -25,5 +25,6 @@
 //= require chartkick
 //= require datetimepicker
 //= require growl
+//= require jquery.transit.min
 //= require_tree .
 //= require social-share-button
