@@ -6,6 +6,8 @@ en:
       date_format: "MM/DD/YYYY"
   split: " -"
   current_week: "Current week"
+  btn_search: "Search"
+  have_no_order: "Have no order rerult for search request"
   current_month: "Current Month"
   current_year: "Current Year"
   add_cart_succes: "Add to cart successfully!"
