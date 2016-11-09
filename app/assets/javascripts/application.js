@@ -27,3 +27,6 @@
 //= require growl
 //= require_tree .
 //= require social-share-button
+$(document).ready(function () {
+  $('.alert').fadeOut(5000);
+});

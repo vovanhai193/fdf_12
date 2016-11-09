@@ -260,6 +260,10 @@ en:
     admin_lte_2_login:
       login_box_message: "Sign in to start your session"
   dashboard:
+    order_managers:
+      index:
+        start_date: "Start date"
+        end_date: "End date"
     statistics:
       index:
         tittle: "Statistics order"
@@ -491,4 +495,5 @@ en:
     step2: "Step 2: Close Order"
     continue: "Continue"
     total_price: "Total price: "
+    done: "Done"
   order_day: "Order day"
