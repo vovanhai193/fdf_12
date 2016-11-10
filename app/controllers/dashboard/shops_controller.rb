@@ -1,5 +1,6 @@
 class Dashboard::ShopsController < BaseDashboardController
   before_action :load_shop, only: [:show, :edit, :update]
+  before_action :load_params_update, only: :show
 
   def new
     @shop = current_user.own_shops.build
@@ -20,6 +21,15 @@ class Dashboard::ShopsController < BaseDashboardController
     @shop = @shop.decorate
     @products = @shop.products.page(params[:page])
       .per Settings.common.products_per_page
+    if @start_hour.present? and @end_hour.present?
+      if compare_time_order @start_hour, @end_hour
+        @products.update_all status: :active, start_hour: @start_hour,
+          end_hour: @end_hour
+        flash.now[:success] = t "dashboard.shops.show.update_success"
+      else
+        flash.now[:danger] = t "dashboard.shops.show.update_faild"
+      end
+    end
   end
 
   def index
@@ -44,6 +54,11 @@ class Dashboard::ShopsController < BaseDashboardController
   def shop_params
     params.require(:shop).permit :id, :name, :description,
       :cover_image, :avatar
+  end
+
+  def load_params_update
+    @start_hour = params[:start_hour]
+    @end_hour = params[:end_hour]
   end
 
   def load_shop

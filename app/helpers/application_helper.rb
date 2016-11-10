@@ -18,7 +18,11 @@ module ApplicationHelper
   end
 
   def increase_one index
-    index + 1
+    index + Settings.order_increase
+  end
+
+  def compare_time_order start_hour, end_hour
+    start_hour < end_hour
   end
 
   def paginate objects, options = {}
