@@ -28,3 +28,6 @@
 //= require jquery.transit.min
 //= require_tree .
 //= require social-share-button
+$(document).ready(function () {
+  $('.alert').fadeOut(5000);
+});
