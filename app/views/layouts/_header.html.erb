@@ -59,12 +59,11 @@
                 <div class="icon-notification">
                   <i class="fa fa-bell fa-lg"></i>
                   <% if user_signed_in? %>
-                    <span class="items-count-noti", id="notification_count">
-                      <%= count_notification_read %>
+                    <span class="items-count-noti">
+                      <%= render "events/counter", counter: count_notification_unread %>
                     </span>
                   <% end %>
                 </div>
-                <span><%= t "common.notifications" %></span>
               </div>
             </a>
             <ul class="dropdown-menu dropdown-noti" role="menu"
@@ -76,7 +75,9 @@
                   </h4>
                 </li>
                 <% if user_signed_in? %>
+                <div id="events">
                   <%= render "events/list_events" %>
+                </div>
                 <% else %>
                   <li>
                     <p class="no-notification">

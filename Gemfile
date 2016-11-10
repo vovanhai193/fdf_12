@@ -33,6 +33,7 @@ gem "bootstrap-tagsinput-rails"
 gem "social-share-button"
 gem "chartkick"
 gem "ransack"
+gem "daemons"
 gem "delayed_job"
 gem "delayed_job_active_record"
 source "https://rails-assets.org" do
@@ -45,7 +46,7 @@ gem "omniauth"
 gem "json"
 gem "friendly_id", "~> 5.1.0"
 gem "ratyrate"
-
+gem "redis", "~> 3.0"
 group :development, :test do
   gem "byebug", platform: :mri
   gem "factory_girl_rails"

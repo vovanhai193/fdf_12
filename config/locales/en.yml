@@ -10,7 +10,7 @@ en:
   have_no_order: "Have no order rerult for search request"
   current_month: "Current Month"
   current_year: "Current Year"
-  add_cart_succes: "Add to cart successfully!"
+  add_cart_succes: "Updated success!"
   load_order: "Cannot find order"
   order_open_blank: "Don't have any order open!"
   submit: "Submit"
@@ -481,7 +481,7 @@ en:
     shop: "has just changed status"
     index: "Your Notification"
     product: "has a comment"
-    order: "has new order"
+    order: "status"
     status: "has just"
   order_statistics:
     id: "ID"

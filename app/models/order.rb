@@ -51,7 +51,6 @@ class Order < ApplicationRecord
   scope :group_month, -> {group "EXTRACT(month FROM created_at)"}
   scope :group_day, -> {group "EXTRACT(day FROM created_at)"}
   scope :on_today, -> {where "date(orders.created_at) = date(now())"}
-
   def build_order_products
     unless self.change_status
       cart.items.each do |item|
@@ -106,8 +105,13 @@ class Order < ApplicationRecord
   end
 
   def send_notification
-    Event.create message: "",
-      user_id: self.shop.owner_id, eventable_id: id, eventable_type: Order.name
+    Event.create message: "new",
+      user_id: self.shop.owner_id, eventable_id: shop.id, eventable_type: Order.name
+  end
+
+  def send_done_notification
+    Event.create message: :done,
+      user_id: self.user.id, eventable_id: shop.id, eventable_type: Order.name
   end
 
   def send_reject_notification_order
