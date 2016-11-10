@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :shop_managers, only: [:index, :create, :destroy]
       resources :order_managers, only: :index
       resources :order_products
+      resources :accepted_order_products, defaults: {format: "json"}
     end
     resources :statistics
   end

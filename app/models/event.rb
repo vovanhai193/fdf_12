@@ -53,6 +53,6 @@ class Event < ApplicationRecord
   end
 
   def send_notification
-    EventBroadcastJob.perform_later Event.unread.count, self
+    EventBroadcastJob.perform_now Event.unread.count, self
   end
 end

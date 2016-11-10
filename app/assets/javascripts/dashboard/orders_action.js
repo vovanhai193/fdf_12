@@ -3,6 +3,40 @@ $(document).ready(function() {
     $('input:checkbox').not(this).prop('checked', this.checked);
   });
 
+  $('.btnNext').on('click', function() {
+    var shopId = $('#shop-id').val();
+    $.ajax({
+      url : '/dashboard/shops/' + shopId + '/accepted_order_products',
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        content = "<div class='panel panel-default' id='tabs'>"+
+          "<div class='panel-body'> <div class='dropdown action'>"+
+          "<button class='list btn btn-primary btn-action btnPrev step1'"+
+          "id='tab-2' href='#step1' data-toggle='tab'>Back</button>"+
+          "<a class='list btn btn-success btn-action pull-right'"+
+          "href='/dashboard/shops/1/order_products'>Done</a></div></div></div>"+
+          "<table class='table table-bordered' <thead><tr> <th>ID" +
+          "</th> <th>Productname</th> <th>Quantity</th> <th>Price</th></tr>" +
+          "</thead> <tbody>";
+        for (var i = 0; i < data.length; i++) {
+          var row = "<tr><td>" + data[i].id + " </td> <td> <a href=" +
+            "/dashboard/shops/" + shopId + "/products/" + data[i].product_id +
+            "?order_product_id="+
+            data[i].id+">" + data[i].name  + "</a></td><td>" + data[i].quantity
+            + "</td><td>" +
+            data[i].price +"</td></tr>"
+          content += row;
+        }
+        content += '</tbody></table>'
+        $('#step2').html(content);
+      },
+      error: function(error_message) {
+        alert(error);
+      }
+    });
+  });
+
   $('.status-order').change(function() {
     itemId = $(this).parent().parent().children()[0].value;
     var selectedValue = $( '#status-order-'+ itemId +' option:selected' ).text()
@@ -32,9 +66,9 @@ $(document).ready(function() {
 
   $('.button').on('click', function() {
     var idOrders = [];
-    var shopId = $("#shop-id").val();
+    var shopId = $('#shop-id').val();
     action = $(this).val();
-    $(".orders-hidden").each(function (index, obj) {
+    $('.orders-hidden').each(function (index, obj) {
       if ($(obj).find('input:checkbox').prop('checked')) {
         idOrders.push(($(obj).children()[0]).value);
       }
@@ -125,14 +159,14 @@ $(document).ready(function() {
   });
 });
 
-$(document).on("click", ".step2", function() {
-  $("#stars").removeClass("btn-primary").addClass("btn-default");
-  $("#favorites").removeClass("btn-default").addClass("btn-primary");
+$(document).on('click', '.step2', function() {
+  $('#stars').removeClass('btn-primary').addClass('btn-default');
+  $('#favorites').removeClass('btn-default').addClass('btn-primary');
 });
 
-$(document).on("click", ".step1", function() {
-  $("#favorites").removeClass("btn-primary").addClass("btn-default");
-  $("#stars").removeClass("btn-default").addClass("btn-primary");
+$(document).on('click', '.step1', function() {
+  $('#favorites').removeClass('btn-primary').addClass('btn-default');
+  $('#stars').removeClass('btn-default').addClass('btn-primary');
 });
 
 $(document).ready(function(){
