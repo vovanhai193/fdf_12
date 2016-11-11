@@ -144,16 +144,11 @@ $orange_main: #ff5722;
 }
 
 .section_title {
-  background: url(header_bg.png) $orange_main;
-  font-family: "Roboto Condensed", sans-serif;
-  font-weight: 700;
-  text-align: center;
-  padding: 10px;
-  color: #fff;
-  border-radius: 4px;
-  -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.3);
+  font-family: "Source Sans Pro", "Lucida Grande", "HelveticaNeue",
+    "Helvetica", "Arial", sans-serif;;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-left: 15px;
 }
 
 .btn_view_all_wrapper {
@@ -195,6 +190,8 @@ $orange_main: #ff5722;
     opacity: 1;
     width: 100%;
     text-align: left;
+    overflow: hidden;
+    vertical-align: top;
 
     -webkit-transition: all .2s ease;
     -moz-transition: all .2s ease;
@@ -331,4 +328,29 @@ $orange_main: #ff5722;
   overflow: auto;
   border: 1px solid #ccc;
   padding: 2%
+}
+
+.margin{
+  margin-right: -3px !important;
+}
+
+.margin_top {
+  margin-top: 10px !important;
+}
+
+.margin_left {
+  margin-left: 60px;
+}
+
+.top_home {
+  width: 110% !important;
+  margin-left: -61px !important;
+}
+
+.width_dropdown {
+  width: 370px !important;;
+}
+
+.margin_left_a {
+  margin-left: -80px;
 }
