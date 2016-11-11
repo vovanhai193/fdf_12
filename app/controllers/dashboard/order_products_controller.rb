@@ -12,7 +12,7 @@ class Dashboard::OrderProductsController < BaseDashboardController
         order.send_done_notification
       end
       flash[:success] = t "flash.success.update_order"
-      redirect_to :back
+      redirect_to dashboard_shop_order_managers_path
     end
   end
 

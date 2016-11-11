@@ -41,14 +41,14 @@ class OrderProduct < ApplicationRecord
       .group("order_products.product_id,
         DATE_FORMAT(order_products.created_at, '%Y%m%d')")
   end
-  scope :order_products_accepted, ->shop_id do
+  scope :order_products_accepted, -> do
     joins(:product, :order)
       .select("products.name as name, sum(quantity) * products.price as price,
         sum(quantity) as quantity, products.id as product_id, orders.id as shop_id
         , order_products.status as status, order_products.id as id")
-      .where("order_products.status = ? and orders.shop_id = ? and
+      .where("order_products.status = ? and
         date(orders.created_at) = date(now())",
-        OrderProduct.statuses[:accepted], shop_id)
+        OrderProduct.statuses[:accepted])
       .group("order_products.product_id")
   end
 
