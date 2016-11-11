@@ -29,3 +29,5 @@ delay_check_order: 1
 max_content_scroll: 3
 count_tag: 0
 order_increase: 1
+minute_constant: 60
+minute_step: 5

@@ -3,7 +3,7 @@
     <div class="panel-body">
       <div class="margin-bottom-15">
         <strong><%= t"oder.status" %></strong>
-        <span class="label label-warning"><%= order.status %></span>
+        <%= status_order order %>
         <% if order.pending? %>
           <%= link_to t("oder.btn_cancel_oder"), order_path(order, shop_id: order.shop_id),
             method: :delete, class: "btn btn-xs btn-danger pull-right" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103102311) do
+ActiveRecord::Schema.define(version: 20161111074859) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -241,16 +241,17 @@ ActiveRecord::Schema.define(version: 20161103102311) do
 
   create_table "shops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.text     "description",    limit: 65535
-    t.integer  "status",                       default: 0
+    t.text     "description",      limit: 65535
+    t.integer  "status",                         default: 0
     t.string   "cover_image"
     t.string   "avatar"
-    t.float    "averate_rating", limit: 24
+    t.float    "averate_rating",   limit: 24
     t.integer  "owner_id"
     t.datetime "deleted_at"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                                     null: false
+    t.datetime "updated_at",                                                     null: false
     t.string   "slug"
+    t.time     "time_auto_reject",               default: '2000-01-01 00:30:00'
     t.index ["deleted_at"], name: "index_shops_on_deleted_at", using: :btree
     t.index ["owner_id"], name: "index_shops_on_owner_id", using: :btree
   end

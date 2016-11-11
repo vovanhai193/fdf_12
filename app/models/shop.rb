@@ -33,6 +33,8 @@ class Shop < ApplicationRecord
 
   validates :name, presence: true, length: {maximum: 50}
   validates :description, presence: true
+  validates :time_auto_reject, presence: true, allow_nil: true
+
   mount_uploader :cover_image, ShopCoverUploader
   mount_uploader :avatar, ShopAvatarUploader
 
@@ -86,7 +88,9 @@ class Shop < ApplicationRecord
   end
 
   def send_notification
-     Event.create message: self.status, user_id: owner_id,
-       eventable_id: id, eventable_type: Shop.name
+    if self.status_changed? && !self.pending?
+      Event.create message: self.status, user_id: owner_id,
+        eventable_id: id, eventable_type: Shop.name
+    end
   end
 end
