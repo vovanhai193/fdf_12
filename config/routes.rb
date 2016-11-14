@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  post '/rate' => 'rater#create', :as => 'rate'
+  get "set_language/update"
+  post "/rate" => "rater#create", :as => "rate"
   devise_for :admins, path: "admin",
     controllers: {sessions: "admin/sessions"}
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}

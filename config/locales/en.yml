@@ -506,3 +506,6 @@ en:
     total_price: "Total price: "
     done: "Done"
   order_day: "Order day"
+  language: "Language: "
+  english: "English"
+  vietnam: "Vietnamese"
