@@ -436,6 +436,8 @@ en:
     confirm: "You sure ?"
     not_oder: "Have not Oder"
     not_product_in_cart: "Have not products in cart"
+    something_deleted: "There are many your product have been deleted because time-expired"
+    allthing_deleted: "All of your product have been deleted because time-expired"
     status: "Status:"
     btn_cancel_oder: "Cancel"
     btn_confirm_oder: "Confirm Order"

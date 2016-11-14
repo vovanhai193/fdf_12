@@ -51,11 +51,15 @@ class Order < ApplicationRecord
   scope :group_month, -> {group "EXTRACT(month FROM created_at)"}
   scope :group_day, -> {group "EXTRACT(day FROM created_at)"}
   scope :on_today, -> {where "date(orders.created_at) = date(now())"}
+
   def build_order_products
     unless self.change_status
       cart.items.each do |item|
-        order_products.create product_id: item.product_id,
-          quantity: item.quantity, user_id: user_id
+        product = Product.find_by id: item.product_id
+        unless Time.now.is_between_short_time?(product.start_hour, product.end_hour)
+          order_products.create product_id: item.product_id,
+            quantity: item.quantity, user_id: user_id
+        end
       end
     end
   end
