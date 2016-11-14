@@ -487,6 +487,7 @@ en:
     product: "has a comment"
     order: "status"
     status: "has just"
+    read_all: "Mark all as read"
   order_statistics:
     id: "ID"
     name: "Productname"
