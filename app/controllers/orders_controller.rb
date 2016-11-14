@@ -48,8 +48,7 @@ class OrdersController < ApplicationController
       @order = Order.new params_create_order @cart_shop
       if @order.save
         delete_cart_item_shop session["cart"], @shop
-        flash[:success] = t "oder.success"
-        redirect_to order_path @order, shop_id: @shop.id
+        check_order @order, @cart_shop, @shop
       else
         flash[:danger] = t "oder.not_oder"
         redirect_to new_order_path
@@ -114,6 +113,20 @@ class OrdersController < ApplicationController
     if items.present?
       create_cart
       cart["items"] = cart["items"] - items
+    end
+  end
+
+  def check_order order, cart_shop, shop
+    if order.products.size == Settings.count_tag
+      order.destroy
+      flash[:danger] = t "oder.allthing_deleted"
+      redirect_to :back
+    elsif cart_shop.items.size > order.products.size
+      flash[:warning] = t "oder.something_deleted"
+      redirect_to order_path @order, shop_id: shop.id
+    else
+      flash[:success] = t "oder.success"
+      redirect_to order_path order, shop_id: shop.id
     end
   end
 end
