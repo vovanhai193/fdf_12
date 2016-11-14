@@ -73,6 +73,8 @@
                   <h4 class="title">
                     <span><%= t "common.notifications" %></span>
                   </h4>
+                  <h6><%= link_to t("notification.read_all"), read_all_events_path,
+                    method: :post, remote: true, class: "pull-right read-all" %></h6>
                 </li>
                 <% if user_signed_in? %>
                 <div id="events">

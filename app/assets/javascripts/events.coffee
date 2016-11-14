@@ -1,8 +1,8 @@
 $(document).ready ->
   $('#notifications-dropdown').click ->
-    $.ajax
-      type: 'PUT'
-      url: '/events'
-      dataType: 'json'
-      success: (data) ->
-        $('#notification_count').fadeOut 'slow'
+    $('#notification_count').fadeOut 'slow'
+    $('.mark-read').click ->
+      $.ajax
+        type: 'PUT'
+        url: '/events/' + $(this).data('id')
+        dataType: 'json'

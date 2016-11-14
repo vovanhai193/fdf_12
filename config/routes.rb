@@ -38,8 +38,9 @@ Rails.application.routes.draw do
   resources :orders
   resource :orders
   resources :users, only: :show
-  resources :events, only: [:index]
-  resource  :events, only: [:update]
+  resources :events, only: [:index, :update] do
+    post :read_all, on: :collection
+  end
   resources :categories do
     resources :products
   end
