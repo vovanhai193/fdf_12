@@ -54,4 +54,12 @@ module ApplicationHelper
       "unread"
     end
   end
+
+  def detail_price cart
+    @cart_price = 0
+    cart.each do |item|
+      @cart_price += item.total_price
+    end
+    @cart_price
+  end
 end

@@ -2,13 +2,13 @@ footer {
   clear: both;
   overflow: auto;
   z-index: 10;
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   color: #fff;
   background: #ff5722;
   padding-left: 10px;
+  text-align: center;
 
   #footer_content {
     width: 1160px;

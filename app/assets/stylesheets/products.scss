@@ -146,6 +146,12 @@ div {
 
 hr {
   @extend %extend_2;
+  border-style: inset;
+  border-width: 1px;
+  margin-left: 16px;
+  width: 98%;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .a-divider--section {
@@ -236,9 +242,13 @@ img {
 .image_product {
   position: relative;
   h3 {
-    text-align: center !important;
+    margin-top: 70px;
+    position: absolute;
     top: 50px;
-    color: black;
+    left: 10px;
+    color: #fff;
+    background-color: rgba(34, 133, 255, 0.62);
+    font-size: 22px;
   }
 }
 
