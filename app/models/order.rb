@@ -128,12 +128,17 @@ class Order < ApplicationRecord
   def update_new_status_order
     if self.pending?
       self.update_attributes(status: :rejected, change_status: true)
+      self.order_products.update_all status: :rejected
       send_reject_notification_order
     end
   end
 
   def check_status_order
-    delay(run_at: Settings.delay_check_order.minutes.from_now)
+    delay(run_at: time_auto_reject_order.minutes.from_now)
       .update_new_status_order
+  end
+
+  def time_auto_reject_order
+    shop.time_auto_reject.hour * Settings.minute_constant + shop.time_auto_reject.min
   end
 end

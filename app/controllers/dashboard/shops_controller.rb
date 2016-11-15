@@ -53,7 +53,7 @@ class Dashboard::ShopsController < BaseDashboardController
   private
   def shop_params
     params.require(:shop).permit :id, :name, :description,
-      :cover_image, :avatar
+      :cover_image, :avatar, :time_auto_reject
   end
 
   def load_params_update
