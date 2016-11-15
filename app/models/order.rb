@@ -115,7 +115,7 @@ class Order < ApplicationRecord
 
   def send_done_notification
     Event.create message: :done,
-      user_id: self.user.id, eventable_id: shop.id, eventable_type: Order.name
+      user_id: self.user.id, eventable_id: shop.id, eventable_type: OrderProduct.name
   end
 
   def send_reject_notification_order

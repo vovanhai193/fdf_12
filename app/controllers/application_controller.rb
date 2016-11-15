@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
   protect_from_forgery with: :exception
+  before_action :set_locale
   before_action :create_cart
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :load_events
@@ -38,5 +39,10 @@ class ApplicationController < ActionController::Base
       flash[:danger] = t "flash.danger.load_shop"
       redirect_to dashboard_shops_path
     end
+  end
+
+  def set_locale
+    I18n.locale = session[:locale] || I18n.default_locale
+    session[:locale] = I18n.locale
   end
 end
