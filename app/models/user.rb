@@ -14,6 +14,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
+  before_create :generate_authentication_token!
+
   has_many :shop_managers
   has_many :shops, through: :shop_managers
   has_many :own_shops, class_name: "Shop", foreign_key: :owner_id
@@ -28,6 +30,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, UserAvatarUploader
 
   validates :name, presence: true
+  validates :auth_token, uniqueness: true
   validate :image_size
 
   scope :by_date_newest, ->{order created_at: :desc}
@@ -46,6 +49,12 @@ class User < ApplicationRecord
 
   def should_generate_new_friendly_id?
     slug.blank? || name_changed? || super
+  end
+
+  def generate_authentication_token!
+    begin
+      self.auth_token = Devise.friendly_token
+    end while self.class.exists?(auth_token: auth_token)
   end
 
   private

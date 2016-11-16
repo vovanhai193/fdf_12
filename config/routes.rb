@@ -1,5 +1,7 @@
+require 'api_constraints'
 Rails.application.routes.draw do
 
+  mount SabisuRails::Engine => "/sabisu_rails"
   get "set_language/update"
   post "/rate" => "rater#create", :as => "rate"
   devise_for :admins, path: "admin",
@@ -47,4 +49,12 @@ Rails.application.routes.draw do
   end
   resources :tags, only: :show
   get "search(/:search)", to: "searches#index", as: :search
+
+  namespace :api, defaults: {format: :json},
+    contraints: {subdomain: "api"}, patch: "/" do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :users, only: [:index, :show, :create, :update, :destroy]
+      resources :sessions, only: [:create, :destroy]
+    end
+  end
 end

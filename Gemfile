@@ -36,6 +36,12 @@ gem "ransack"
 gem "daemons"
 gem "delayed_job"
 gem "delayed_job_active_record"
+gem 'active_model_serializers'
+gem 'sabisu_rails', github: "jvrsgsty/sabisu-rails"
+gem 'compass-rails', '~> 3.0.2'
+gem 'furatto'
+gem 'railties'
+gem 'rack', "~> 2.0"
 source "https://rails-assets.org" do
   gem "rails-assets-datetimepicker"
   gem "rails-assets-growl"
